@@ -17,7 +17,7 @@ var data = [
 		gia : 29000,
 		sale : 21000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : false
 
 
 	},
@@ -83,7 +83,7 @@ var data = [
 		gia : 37000,
 		sale : 33000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : false
 
 
 	},
@@ -138,7 +138,7 @@ var data = [
 		gia : 42000,
 		sale : 40000,
 		category: "Khác",
-		TT : true
+		TT : false
 
 
 	},
@@ -403,7 +403,7 @@ var data = [
 		gia : 23000,
 		sale : 15000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : false
 
 
 	},
@@ -436,7 +436,7 @@ var data = [
 		gia : 23000,
 		sale : 20000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : false
 
 
 	},
