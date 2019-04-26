@@ -418,7 +418,7 @@ var data = [
 
 
 	},
-	{
+		{
 		id: 39,
 		tenSP: "Conan-29",
 		img : "Book/truyentranh/9.jpg",
