@@ -177,6 +177,7 @@ function showBill (user = "duynm619") {
     }
   for(var i = 0; i < localStorage.length; i++)
   {
+    if(localStorage[localStorage.key(i)] == -1) continue;
     var val = data.find(function (book) {return book.tenSP == localStorage.key(i)});
     Total+=Math.min(val.sale,val.gia)*localStorage[localStorage.key(i)];
     ans+=`
