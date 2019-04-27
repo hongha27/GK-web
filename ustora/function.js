@@ -149,13 +149,10 @@ function productLeft (index = 0, cnt = 4) {
     var ans = "<ul>";
     for(var i = 0; i < data.length && cnt > 0; i++)
     {
-      if (data[i].TT == true)
-      {
-        cnt--;
-        ans += `
-            <li><a href="">${data[i].tenSP}</a></li>
-        `
-      }
+      cnt--;
+      ans += `
+          <li><a href="">${data[i].tenSP}</a></li>
+      `
     }
     ans+="</ul>"
     RecentPost.innerHTML=ans;
