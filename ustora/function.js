@@ -92,43 +92,75 @@ var sp = document.getElementById("cacsp");
 var idpr = document.getElementById("showsp");
 var sp = document.getElementById("cacsp");
 
-        
-        function showLike (index){
-            var dssp = "";
-            if(data.length != 0){
-                for(var i = (index-1)*10; i < index*10; i++ ){
-                  if (data[i].TT  == true){
-                    dssp += `
-                        <div class="col-md-3 col-sm-6 product" style="width: 200px" id - ${data[i].id}>
-                            <div class="single-shop-product">
-                                <div class="product-upper">
-                                    <img style= "width = "src="${data[i].img}" alt="">
-                                </div>
-                                <h2><a href="">${data[i].tenSP}</a></h2>
-                                <div class="product-carousel-price">
-                                    <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
-                                </div>  `;
-                                if(data[i].TT == true){
-                               dssp +=` <div class="product-option-shop ">
-                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "getDataIdpr(${data[i].id})">Mua Ngay</button>
-                                </div>  ` ;
-                            }   
-                                 else {
-                                     dssp += ` <div class="product-option-shop">
-                                    <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
-                                </div>  `;
-                                 }
-                                 dssp +=   `
-                            </div>
+function showLike (index, cnt = 4){
+    var dssp = "";
+    if(data.length != 0){
+        for(var i = 0; i < data.length && cnt > 0; i++ ){
+          if (data[i].TT  == true){
+            cnt--;
+            dssp += `
+                <div class="col-md-3 col-sm-6 product" style="width: 200px" id - ${data[i].id}>
+                    <div class="single-shop-product">
+                        <div class="product-upper">
+                            <img style= "width = "src="${data[i].img}" alt="">
                         </div>
+                        <h2><a href="">${data[i].tenSP}</a></h2>
+                        <div class="product-carousel-price">
+                            <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
+                        </div>  `;
+                        if(data[i].TT == true){
+                       dssp +=` <div class="product-option-shop ">
+                            <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "getDataIdpr(${data[i].id})">Mua Ngay</button>
+                        </div>  ` ;
+                    }   
+                         else {
+                             dssp += ` <div class="product-option-shop">
+                            <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
+                        </div>  `;
+                         }
+                         dssp +=   `
+                    </div>
+                </div>
 
-                    `;
-                  }
-                }
-            }
-           sp.innerHTML = dssp;
+            `;
+          }
         }
-        
+    }
+   sp.innerHTML = dssp;
+}
+
+function productLeft (index = 0, cnt = 4) {
+  var ans = "";
+  for(var i = index; i < index+cnt; i++)
+  {
+    ans += `
+            <div class="thubmnail-recent">
+              <img src="${data[i].img}" class="recent-thumb" alt="">
+              <h2><a href="">${data[i].tenSP}</a></h2>
+              <div class="product-sidebar-price">
+                  <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+              </div>                             
+            </div>
+          `;
+  }
+  ListLeft.innerHTML=ans;
+}
+  function recemtPost (cnt = 4) {
+    var ans = "<ul>";
+    for(var i = 0; i < data.length && cnt > 0; i++)
+    {
+      if (data[i].TT == true)
+      {
+        cnt--;
+        ans += `
+            <li><a href="">${data[i].tenSP}</a></li>
+        `
+      }
+    }
+    ans+="</ul>"
+    RecentPost.innerHTML=ans;
+  }
+
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Đạt
 
