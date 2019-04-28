@@ -24,7 +24,7 @@ var sp = document.getElementById("cacsp");
                                 </div>  `;
                                 if(data[i].TT == true){
                                dssp +=` <div class="product-option-shop ">
-                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "getDataIdpr(${data[i].id})">Mua Ngay</button>
+                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElement('${data[i].tenSP}')">Mua Ngay</button>
                                 </div>  ` ;
                             }   
                                  else {

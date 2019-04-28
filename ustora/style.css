@@ -48,7 +48,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
   width: 21%;
 }
 .header-area a {
-    color: #888;
+    color: #170202;
 }
 .user-menu ul {
     list-style: outside none none;
@@ -115,7 +115,7 @@ z-index: 999;}
     position: relative;
 }
 .shopping-item a {
-    color: #666;
+    color: #080303;
 }
 .cart-amunt {
     color: #5a88ca;
@@ -145,7 +145,8 @@ z-index: 999;}
     border-color: #5a88ca;
 }
 .shopping-item:hover a {
-    color: #fff;text-decoration: none
+    color: #0c0606;
+    text-decoration: none;
 }
 .shopping-item:hover .cart-amunt {
     color: #fff;
@@ -156,7 +157,7 @@ z-index: 999;}
 
 
 .mainmenu-area ul.navbar-nav li a {
-    color: #6e6a6a;
+    color: #0e0303;
     font-size: 14px;
     padding: 20px;
 }
@@ -697,9 +698,10 @@ width: 10px;
 .product-bit-title h2 {
   font-family: raleway;
   font-size: 50px;
-  font-weight: 200;
+  font-weight: 350;
   margin: 0;
-  padding: 50px 0;color: #fff;
+  padding: 50px 0;
+  color: #fff;
 }
 
 .single-product-area .zigzag-bottom {background-color: #f4f4f4}
@@ -712,6 +714,7 @@ width: 10px;
 .option {
     padding-bottom: 5%;
     padding-left: 8%;
+    font-weight: 400;
 }
 select {
     padding: 6px 80px 6px 80px;
@@ -1143,6 +1146,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 }
 .changecolor{
   background-color:#7da1d5;
+  color: black;
 }
 .changecolor:hover {
   background-color: lightblue;

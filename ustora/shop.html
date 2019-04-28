@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="css/font-awesome.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/owl.carousel.css">
@@ -33,25 +35,24 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-   
+  
   </head>
-  <body onload="showProduct(1)">
+  <body onload="showProduct(1); productLeft();recemtPost();showBill();">
    
     <div class="header-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+               <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                            <li><a href="bai4/DK.html"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Tài khoản của tôi </a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> Danh sách yêu thích</a></li>
+                            <li><a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a></li>
+                            <li><a href="checkout.html"><i class="fa fa-user"></i> Thanh toán</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Đăng nhập</a></li>
                         </ul>
                     </div>
                 </div>
-                
                 <div class="col-md-4">
                     <div class="header-right">
                         <ul class="list-unstyled list-inline">
@@ -110,14 +111,14 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.html">Trang Chủ</a></li>
-                        <li class="active"><a href="shop.html">Cửa Hàng</a></li>
-                        <li><a href="single-product.html">Chi Tiết Sản Phẩm</a></li>
-                        <li><a href="cart.html">Giỏ Hàng</a></li>
-                        <li><a href="checkout.html">Thanh Toán</a></li>
+                        <li><a href="index.html"><img src="https://img.icons8.com/windows/25/000000/home.png">Trang Chủ</a></li>
+                        <li class="active"> <a href="shop.html"><img src="https://img.icons8.com/windows/25/000000/courses.png">Cửa Hàng</a></li>
+                        <li><a href="single-product.html"><img src="https://img.icons8.com/windows/25/000000/book.png">Chi Tiết Sản Phẩm</a></li>
+                        <li><a href="cart.html"><img src="https://img.icons8.com/windows/25/000000/shopping-cart.png">Giỏ Hàng</a></li>
+                        <li><a href="checkout.html"><img src="https://img.icons8.com/windows/25/000000/stack-of-money.png">Thanh Toán</a></li>
                        <!--  <li><a href="#">Category</a></li> -->
                         <!-- <li><a href="#">Others</a></li> -->
-                        <li><a href="#">Liên Hệ</a></li>
+                        <li><a href="#"><img src="https://img.icons8.com/windows/25/000000/add-phone.png">Liên Hệ</a></li>
                     </ul>
                 </div>  
             </div>
