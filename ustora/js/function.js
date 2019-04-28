@@ -1,3 +1,4 @@
+
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Hà
 
@@ -24,7 +25,7 @@ var sp = document.getElementById("cacsp");
                                 </div>  `;
                                 if(data[i].TT == true){
                                dssp +=` <div class="product-option-shop ">
-                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElement('${data[i].tenSP}')">Mua Ngay</button>
+                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "getDataIdpr(${data[i].id})">Mua Ngay</button>
                                 </div>  ` ;
                             }   
                                  else {
@@ -45,46 +46,13 @@ var sp = document.getElementById("cacsp");
            //alert(dssp);
         }
        
-   // }
-   // // biết được sự kiện click, khi click vô sẽ lấy được nội dung của button đó
-   // document.body.addEventListener("click", function(){
-   //     if(event.target.nodeName == "BUTTON")
-   //         // console.log(event.target.textContent);
-            // console.log(button.getAttribute("data-idpr"));
-   // });    
-    // console.log(document.querySelector("data-idpr"));
-            
-       // ...onclick = "add_to_cart(${data[i].id})"...
-       
-       function getDataIdpr(x){
-           // var bynows= document.querySelectorAll('.bynow');
-           // for (var i = 0; i < bynows.length; i++) {
-           //     bynows[i].addEventListener('click',function(){
-           //         console.log(document.getElementById("myBtn").getAttribute('data-idpr'));
-           //       // Todo...
-           //     });
-               console.log(x);
-           // };
-        
-            // console.log(document.getElementsById("myBtn").getAttribute("data-idpr"));
-             
-          // console.log(getDataIdpr());
-       }
-
-       
-
-       function getProductById(idproduct){
-           for (var i = 0; i < data.length; i++) {
-              if(data[i].id == idproduct){
-                  return data[i];
-              }
-           }
-           return 0;
-       }
-       // lay data
-       function addProduct(product){
-           data.push(product);
-       }
+   // chuyển array thành JSON
+   //     var jsonProduct = JSON.stringify(data);
+   //     var originArray = JSON.parse(jsonProduct);
+   //    // console.log(jsonProduct);
+   //     for(let originObject of originArray){
+   //       console.log(originObject.tenSP);
+   //     }
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Duy
@@ -160,10 +128,12 @@ function recemtPost (cnt = 4) {
 
 function showBill (user = "duynm619") {
   var current = Bills.find(function (bill) {return bill.user == user && bill.deal == false;});
-  flag = true;
-  for (var i = 0; i < localStorage.length; i++)
-      if (localStorage[localStorage.key(i)] != -1){ flag = false; break;}
-  if (typeof current === "undefined" || (flag && localStorage.length != 0)){
+  flag = false;
+  for (var i = +flag; i < localStorage.length; i++)
+      if (localStorage[localStorage.key(i)] != -1){ flag = true; break;}
+  if (typeof current === "undefined" || (!flag && localStorage.length != 0)){
+    document.getElementById("NumProduct").innerHTML = +flag;
+    document.getElementById("TotalMoney").innerHTML = +flag+" VNĐ";
     CartShow.innerHTML = `<tr><td colspan = 6><h2>Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
     return;
   }
@@ -171,10 +141,9 @@ function showBill (user = "duynm619") {
   var Total = 0;
   if (localStorage.length == 0)
     for(var i = 0; i < current.products.length; i++)
-    {
-      if (localStorage.getItem(current.products[i]) == null)
+      if (localStorage.getItem(current.products[i]) === null)
         localStorage.setItem(current.products[i],current.number[i]);
-    }
+
   for(var i = 0; i < localStorage.length; i++)
   {
     if(localStorage[localStorage.key(i)] == -1) continue;
@@ -200,7 +169,7 @@ function showBill (user = "duynm619") {
               <td class="product-quantity">
                   <div class="quantity buttons_added">
                       <input type="button" class="minus" value="-" onclick='minusNumberElement("${val.tenSP}")'>
-                      <input type="number" size="4" class="input-text qty text" title="Qty" value="${localStorage[localStorage.key(i)]}" min="0" step="1">
+                      <input type="number" size="4" class="input-text qty text" title="Số lượng sản phẩm" value="${localStorage[localStorage.key(i)]}" min="0" step="1">
                       <input type="button" class="plus" value="+" onclick='plusNumberElement("${val.tenSP}")'>
                   </div>
               </td>
@@ -213,17 +182,16 @@ function showBill (user = "duynm619") {
   }
   CartShow.innerHTML = ans;
   STotal.innerHTML = Total+" VNĐ";
-  // document.getElementsByClassName("cart-amunt").textContent = Total+" VNĐ";
   document.getElementById("TotalMoney").innerHTML = Total+" VNĐ";
-  document.getElementById("NumProduct").innerHTML = localStorage.length;
+  document.getElementById("NumProduct").innerHTML = Object.values(localStorage).reduce((a,b) => (-~+a?+a:-~+a)+(-~+b?+b:-~+b));
 }
 
 function plusNumberElement (val, user = "duynm619") {
   // var val = "5 Centimet Trên giây", user = "duynm619";
   var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  localStorage.setItem(val, +localStorage.getItem(val)+1);
-  Bills[currentBill].number[currentProduct]++;
+  localStorage.setItem(val, Math.max(+localStorage.getItem(val)+1,1));
+  Bills[currentBill].number[currentProduct] = localStorage.getItem(val);
   // Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })]++;
   showBill(user);
 }
