@@ -62,6 +62,10 @@ var sp = document.getElementById("cacsp");
 var idpr = document.getElementById("showsp");
 var sp = document.getElementById("cacsp");
 
+function MoneyShow(val) {
+  return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+}
+
 function showLike (index, cnt = 4){
     var dssp = "";
     if(data.length != 0){
@@ -76,7 +80,7 @@ function showLike (index, cnt = 4){
                         </div>
                         <h2><a href="">${data[i].tenSP}</a></h2>
                         <div class="product-carousel-price">
-                            <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
+                            <ins>${MoneyShow(data[i].sale)} đ</ins> <del>${MoneyShow(data[i].gia)} đ</del>
                         </div>  `;
                         if(data[i].TT == true){
                        dssp +=` <div class="product-option-shop ">
@@ -108,7 +112,7 @@ function productLeft (index = 0, cnt = 4) {
               <img src="${data[i].img}" class="recent-thumb" alt="">
               <h2><a href="">${data[i].tenSP}</a></h2>
               <div class="product-sidebar-price">
-                  <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+                  <ins>${MoneyShow(data[i].gia)} VNĐ</ins> <del>${MoneyShow(data[i].sale)} VNĐ</del>
               </div>                             
             </div>
           `;
@@ -165,7 +169,7 @@ function showBill (user = "duynm619") {
               </td>
 
               <td class="product-price">
-                  <span class="amount">${Math.min(val.sale,val.gia)} VNĐ</span> 
+                  <span class="amount">${MoneyShow(Math.min(val.sale,val.gia))} VNĐ</span> 
               </td>
 
               <td class="product-quantity">
@@ -177,14 +181,16 @@ function showBill (user = "duynm619") {
               </td>
 
               <td class="product-subtotal">
-                  <span class="amount">${localStorage[localStorage.key(i)]*Math.min(val.sale,val.gia)} VND</span> 
+                  <span class="amount">${MoneyShow(localStorage[localStorage.key(i)]*Math.min(val.sale,val.gia))} VND</span> 
               </td>
             </tr>
          `;
   }
+
+  // console.log(MoneyShow(Total));
   CartShow.innerHTML = ans;
-  STotal.innerHTML = Total+" VNĐ";
-  document.getElementById("TotalMoney").innerHTML = Total+" VNĐ";
+  STotal.innerHTML = MoneyShow(Total)+" VNĐ";
+  document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
   document.getElementById("NumProduct").innerHTML = Object.values(localStorage).reduce((a,b) => (-~+a?+a:-~+a)+(-~+b?+b:-~+b));
 }
 
