@@ -138,7 +138,7 @@ $(document).ready(function () {
         if (localStorage.carts) 
             CurrentCart = JSON.parse(localStorage.carts);
 
-    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('shop.html') == -1) 
+    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('cart.html') != -1) 
     {
         showLike(); 
         productLeft();

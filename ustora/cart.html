@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/DN.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,7 +39,130 @@
     <![endif]-->
   </head>
   <body>
-   
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="container">
+            <div class="box-center" id="dangNhap">
+                <p class="author">
+                    <div class="content" class="font-family: 'papyrus', cursive;">
+                        Welecome to Minh Duy Site
+                        <hr width="85%" style="margin: auto;">
+                        Đăng nhập
+                    </div>
+                    <div style="text-align: left; font-size: 25px;">
+                        <table style="margin-top: 0.3in; margin-left: 0.2in; font-size: 20px; border-collapse:separate; border-spacing:0 15px;">
+                            <tr style="margin: 10px; padding: 5px;">
+                                <td>Tên đăng nhập: </td>
+                                <td width="1%"></td>
+                                <td><input type="text" size="30%" id="DN_Name" style="font-size: 15px; padding: 1px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mật khẩu: 
+                                </td>
+                                <td></td>
+                                <td><input type="password" size="30%" id="DN_Pw" style="font-size: 15px; padding: 1px;"></td>
+                            </tr>
+                        </table>
+                        <div style="text-align: center;">
+                            <br>
+                            <button class="DNn" style="font-size: 20px;width: 388px;height: 40px; color: black;">Đăng nhập</button>
+                        </div>
+                        <div style="text-align: center; margin-top: -0.1in;">
+                            <br>
+                            <button class="DK" style="font-size: 20px;width: 175px;height: 40px; color: black;">Đăng ký</button>
+                            <button class="QPw" style="font-size: 20px;width: 175px;height: 40px; color: black; margin-left: 30px;">Quên mật khẩu</button>
+                        </div>
+                    </div>
+                </p>
+                <p class="list-icon" style="margin-top: 0.45in;">
+                    <div class="list-icon" style="margin-top: 0.7in;">Liên hệ với tôi: Nguyễn Minh Duy</div>
+                    <a href="#" class="icon">
+                        <img src="image/facebook.png" alt="">
+                    </a>
+                    <a href="#" class="icon">
+                        <img class="icon_contact" src="image/twitter.png" alt="">
+                    </a>
+                    <a href="#" class="icon">
+                        <img class="icon_contact" src="image/youtube.png" alt="">
+                    </a>
+                    <a href="#" class="icon">
+                        <img class="icon_contact" src="image/twitch.png" alt="">
+                    </a>
+                    <a href="#" class="icon">
+                        <img class="icon_contact" src="image/telegram.png" alt="">
+                    </a>
+                    <a href="#" class="icon">
+                        <img class="icon_contact" src="image/skype.png" alt="">
+                    </a>
+                </p>
+            </div>
+
+            <div class="box-center" id="dangKy">
+                <p class="author">
+                    <div class="content" class="font-family: 'papyrus', cursive;">
+                        Welecome to Minh Duy Site
+                        <hr width="85%" style="margin: auto;">
+                        Đăng ký
+                    </div>
+                    <div style="text-align: left; margin-left: 5px; font-size: 25px">
+                        <table style="margin-top: 0.1in; font-size: 20px; margin-left: 0.2in; border-collapse:separate; border-spacing:0 15px;">
+                            <tr>
+                                <td width="45%">Tên đăng nhập: </td>
+                                <td><input type="text" size="25%" id="DK_Name" style="font-size: 15px; padding: 1px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mật khẩu: 
+                                </td>
+                                <td><input type="password" size="25%" id="DK_Pw" style="font-size: 15px; padding: 1px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Nhập lại mật khẩu: 
+                                </td>
+                                <td><input type="password" size="25%" id="DK_RPw" style="font-size: 15px; padding: 1px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Ngày sinh: 
+                                </td>
+                                <td>
+                                    <input type="date" id="DK_Birth" style="font-size: 15px; width: 100%; padding: 1px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Giới tính: 
+                                </td>
+                                <td>
+                                    <input type="radio" name="gender" id="Male"><h style="color: white;"> Nam &nbsp&nbsp&nbsp&nbsp&nbsp</h>
+                                    <input type="radio" name="gender" id="Female"><h style="color: white;"> Nữ</h><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email: 
+                                </td>
+                                <td><input type="text" size="25%" id="DK_Email" style="font-size: 15px; padding: 1px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Điện thoại: 
+                                </td>
+                                <td><input type="text" size="25%" id="DK_Mobile" style="font-size: 15px; padding: 1px;"></td>
+                            </tr>
+                        </table>
+                        <div style="text-align: center; margin-top: 0.5em;">
+                            <button class="DKk" style="font-size: 20px;width: 388px;height: 40px; color: black;">Đăng ký</button>
+                        </div>
+                        <div style="text-align: center; margin-top: 0.6em;">
+                            <button class="DN" style="font-size: 20px;width: 388px;height: 40px; color: black;">Đăng nhập</button>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
     <div class="header-area">
         
         <div class="container">
@@ -48,6 +175,7 @@
                             <li><a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a></li>
                             <li><a href="checkout.html"><i class="fa fa-user"></i> Thanh toán</a></li>
                             <li><a href="../DN/"><i class="fa fa-user"></i> Đăng nhập</a></li>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Đăng nhập</button>
                         </ul>
                     </div>
                 </div>
@@ -693,5 +821,8 @@
     <script src="js/function.js"></script>
 
     <script src="js/cart.js"></script>
+    <script src="js/DN.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </body>
 </html>
