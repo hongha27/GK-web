@@ -302,7 +302,7 @@ function minusNumberElement (val, user = "duynm619") {
 function delElement (val, user = "duynm619") {
   var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  CurrentCart.splice(val,1)
+  CurrentCart.splice(index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val}),1);
   localStorage.setItem('carts', JSON.stringify(CurrentCart));
   // localStorage.setItem(val, -1);
   // Bills[currentBill].number[currentProduct] = -1;
