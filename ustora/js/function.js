@@ -61,6 +61,7 @@ var sp = document.getElementById("cacsp");
 
 var idpr = document.getElementById("showsp");
 var sp = document.getElementById("cacsp");
+var CurrentCart = [];
 
 function MoneyShow(val) {
   return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -132,30 +133,45 @@ function recemtPost (cnt = 4) {
   RecentPost.innerHTML=ans;
 }
 
+$(document).ready(function () {
+    if (typeof (Storage) !== 'undefined') 
+        if (localStorage.carts) 
+            CurrentCart = JSON.parse(localStorage.carts);
+
+    showLike(); 
+    productLeft();
+    recemtPost();
+    showBill();;
+});
+
 function showBill (user = "duynm619") {
   var current = Bills.find(function (bill) {return bill.user == user && bill.deal == false;});
-  flag = false;
-  for (var i = +flag; i < localStorage.length; i++)
-      if (localStorage[localStorage.key(i)] != -1){ flag = true; break;}
-  if (typeof current === "undefined" || (!flag && localStorage.length != 0)){
+  if (typeof (Storage) !== 'undefined') {
+      if (!localStorage.carts) {
+          for (var i = 0; i < current.products.length; i++)
+          { 
+              var a = {};
+              a[current.products[i]] = current.number[i];
+              CurrentCart.push(a);
+          }
+          localStorage.setItem('carts', JSON.stringify(CurrentCart));
+      }
+  }
+
+  if (typeof current === "undefined" || localStorage.carts.length == 0){
     document.getElementById("NumProduct").innerHTML = +flag;
     document.getElementById("TotalMoney").innerHTML = +flag+" VNĐ";
     CartShow.innerHTML = `<tr><td colspan = 6><h2>Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
     return;
   }
+  CurrentCart = JSON.parse(localStorage.carts);
   var ans = "";
   var Total = 0;
-  if (localStorage.length == 0)
-    for(var i = 0; i < current.products.length; i++)
-      if (localStorage.getItem(current.products[i]) === null)
-        localStorage.setItem(current.products[i],current.number[i]);
-
-  for(var i = 0; i < localStorage.length; i++)
+  for (var i = 0; i < CurrentCart.length; i++)
   {
-    if(localStorage[localStorage.key(i)] == -1) continue;
-    var val = data.find(function (book) {return book.tenSP == localStorage.key(i)});
-    Total+=Math.min(val.sale,val.gia)*localStorage[localStorage.key(i)];
-    ans+=`
+      var val = data.find(function (book) {return book.tenSP == Object.keys(CurrentCart[i])});
+      Total+=Math.min(val.sale,val.gia)*Object.values(CurrentCart[i]);
+      ans+=`
             <tr class="cart_item">
               <td class="product-remove">
                   <input type="button" title="Remove this item" value="X" onclick='delElement("${val.tenSP}")'>
@@ -175,31 +191,88 @@ function showBill (user = "duynm619") {
               <td class="product-quantity">
                   <div class="quantity buttons_added">
                       <input type="button" class="minus" value="-" onclick='minusNumberElement("${val.tenSP}")'>
-                      <input type="number" size="4" class="input-text qty text" title="Số lượng sản phẩm" value="${localStorage[localStorage.key(i)]}" min="0" step="1">
+                      <input type="number" size="4" class="input-text qty text" title="Số lượng sản phẩm" value="${Object.values(CurrentCart[i])}" min="0" step="1">
                       <input type="button" class="plus" value="+" onclick='plusNumberElement("${val.tenSP}")'>
                   </div>
               </td>
 
               <td class="product-subtotal">
-                  <span class="amount">${MoneyShow(localStorage[localStorage.key(i)]*Math.min(val.sale,val.gia))} VND</span> 
+                  <span class="amount">${MoneyShow(Object.values(CurrentCart[i])*Math.min(val.sale,val.gia))} VND</span> 
               </td>
             </tr>
          `;
   }
 
+  // flag = false;
+  // for (var i = +flag; i < localStorage.length; i++)
+  //     if (localStorage[localStorage.key(i)] != -1){ flag = true; break;}
+  // if (typeof current === "undefined" || (!flag && localStorage.length != 0)){
+  //   document.getElementById("NumProduct").innerHTML = +flag;
+  //   document.getElementById("TotalMoney").innerHTML = +flag+" VNĐ";
+  //   CartShow.innerHTML = `<tr><td colspan = 6><h2>Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
+  //   return;
+  // }
+  // var ans = "";
+  // var Total = 0;
+  // if (localStorage.length == 0)
+  //   for(var i = 0; i < current.products.length; i++)
+  //     if (localStorage.getItem(current.products[i]) === null)
+  //       localStorage.setItem(current.products[i],current.number[i]);
+
+  // for(var i = 0; i < localStorage.length; i++)
+  // {
+  //   if(localStorage[localStorage.key(i)] == -1) continue;
+  //   var val = data.find(function (book) {return book.tenSP == localStorage.key(i)});
+  //   Total+=Math.min(val.sale,val.gia)*localStorage[localStorage.key(i)];
+  //   ans+=`
+  //           <tr class="cart_item">
+  //             <td class="product-remove">
+  //                 <input type="button" title="Remove this item" value="X" onclick='delElement("${val.tenSP}")'>
+  //             </td>
+  //             <td class="product-thumbnail">
+  //                 <a href="#"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="${val.img}"></a>
+  //             </td>
+
+  //             <td class="product-name" width="30%" id - ${val.tenSP}.replace(' ','')>
+  //                 <a href="#">${val.tenSP}</a> 
+  //             </td>
+
+  //             <td class="product-price">
+  //                 <span class="amount">${MoneyShow(Math.min(val.sale,val.gia))} VNĐ</span> 
+  //             </td>
+
+  //             <td class="product-quantity">
+  //                 <div class="quantity buttons_added">
+  //                     <input type="button" class="minus" value="-" onclick='minusNumberElement("${val.tenSP}")'>
+  //                     <input type="number" size="4" class="input-text qty text" title="Số lượng sản phẩm" value="${localStorage[localStorage.key(i)]}" min="0" step="1">
+  //                     <input type="button" class="plus" value="+" onclick='plusNumberElement("${val.tenSP}")'>
+  //                 </div>
+  //             </td>
+
+  //             <td class="product-subtotal">
+  //                 <span class="amount">${MoneyShow(localStorage[localStorage.key(i)]*Math.min(val.sale,val.gia))} VND</span> 
+  //             </td>
+  //           </tr>
+  //        `;
+  // }
+
   // console.log(MoneyShow(Total));
   CartShow.innerHTML = ans;
   STotal.innerHTML = MoneyShow(Total)+" VNĐ";
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
-  document.getElementById("NumProduct").innerHTML = Object.values(localStorage).reduce((a,b) => (-~+a?+a:-~+a)+(-~+b?+b:-~+b));
+  // document.getElementById("NumProduct").innerHTML = Object.values(CurrentCart).reduce((a,b) => (-~+a?+a:-~+a)+(-~+b?+b:-~+b));
+  document.getElementById("NumProduct").innerHTML = CurrentCart.length;
 }
 
 function plusNumberElement (val, user = "duynm619") {
   // var val = "5 Centimet Trên giây", user = "duynm619";
   var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  localStorage.setItem(val, Math.max(+localStorage.getItem(val)+1,1));
-  Bills[currentBill].number[currentProduct] = localStorage.getItem(val);
+  var index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val});
+  // localStorage.setItem(val, Math.max(+localStorage.getItem(val)+1,1));
+  CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index])+1,1);
+  // Bills[currentBill].number[currentProduct] = localStorage.getItem(val);
+  localStorage.setItem('carts', JSON.stringify(CurrentCart));
   // Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })]++;
   showBill(user);
 }
@@ -207,19 +280,32 @@ function plusNumberElement (val, user = "duynm619") {
 function minusNumberElement (val, user = "duynm619") {
   var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  localStorage.setItem(val, Math.max(+localStorage.getItem(val)-1,1));
-  Bills[currentBill].number[currentProduct] = Math.max(Bills[currentBill].number[currentProduct]-1,0);
-  // Bills[currentBill].number[currentProduct] = Math.max(Bills[currentBill].number[currentProduct]-1, 0);
-  // Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })] = Math.max(Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })]-1, 0);
+  var index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val});
+  // localStorage.setItem(val, Math.max(+localStorage.getItem(val)+1,1));
+  CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index])-1,1);
+  // Bills[currentBill].number[currentProduct] = localStorage.getItem(val);
+  localStorage.setItem('carts', JSON.stringify(CurrentCart));
+  // Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })]++;
   showBill(user);
+
+
+  // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
+  // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
+  // localStorage.setItem(val, Math.max(+localStorage.getItem(val)-1,1));
+  // Bills[currentBill].number[currentProduct] = Math.max(Bills[currentBill].number[currentProduct]-1,0);
+  // // Bills[currentBill].number[currentProduct] = Math.max(Bills[currentBill].number[currentProduct]-1, 0);
+  // // Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })] = Math.max(Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })]-1, 0);
+  // showBill(user);
 }
 
 function delElement (val, user = "duynm619") {
   var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  localStorage.setItem(val, -1);
-  Bills[currentBill].number[currentProduct] = -1;
-  Bills[currentBill].products.splice(currentProduct, 1);
+  CurrentCart.splice(val,1)
+  localStorage.setItem('carts', JSON.stringify(CurrentCart));
+  // localStorage.setItem(val, -1);
+  // Bills[currentBill].number[currentProduct] = -1;
+  // Bills[currentBill].products.splice(currentProduct, 1);
   // localStorage.setItem(val,-1);
   // localStorage.removeItem(val);
 
@@ -228,15 +314,20 @@ function delElement (val, user = "duynm619") {
 }
 
 function addElement (val, user = "duynm619") {
-  var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
-  var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  if (currentProduct != -1)
+  // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
+  // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
+  var index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val});
+  if (index != -1)
     plusNumberElement(val,user);
   else
   {
-    localStorage.setItem(val, 1);
-    Bills[currentBill].products.push(val);
-    Bills[currentBill].number.push(1);
+    var a = {};
+    a[val] = 1;
+    CurrentCart.push(a);
+    localStorage.setItem('carts', JSON.stringify(CurrentCart));
+    // localStorage.setItem(val, 1);
+    // Bills[currentBill].products.push(val);
+    // Bills[currentBill].number.push(1);
   }
   showBill(user);
 }
