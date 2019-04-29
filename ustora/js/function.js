@@ -25,7 +25,7 @@ var sp = document.getElementById("cacsp");
                                 </div>  `;
                                 if(data[i].TT == true){
                                dssp +=` <div class="product-option-shop ">
-                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElement('${data[i].tenSP}')">Mua Ngay</button>
+                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].tenSP}')">Mua Ngay</button>
                                 </div>  ` ;
                             }   
                                  else {
@@ -138,10 +138,13 @@ $(document).ready(function () {
         if (localStorage.carts) 
             CurrentCart = JSON.parse(localStorage.carts);
 
-    showLike(); 
-    productLeft();
-    recemtPost();
-    showBill();;
+    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('shop.html') == -1) 
+    {
+        showLike(); 
+        productLeft();
+        recemtPost();
+        showBill();;
+    }
 });
 
 function showBill (user = "duynm619") {
@@ -265,6 +268,37 @@ function showBill (user = "duynm619") {
   document.getElementById("NumProduct").innerHTML = CurrentCart.length;
 }
 
+function RefreshShopCart (user = "duynm619") {
+  var current = Bills.find(function (bill) {return bill.user == user && bill.deal == false;});
+  if (typeof (Storage) !== 'undefined') {
+      if (!localStorage.carts) {
+          for (var i = 0; i < current.products.length; i++)
+          { 
+              var a = {};
+              a[current.products[i]] = current.number[i];
+              CurrentCart.push(a);
+          }
+          localStorage.setItem('carts', JSON.stringify(CurrentCart));
+      }
+  }
+
+  if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0){
+    document.getElementById("NumProduct").innerHTML = 0;
+    document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
+    return;
+  }
+  CurrentCart = JSON.parse(localStorage.carts);
+  var ans = "";
+  var Total = 0;
+  for (var i = 0; i < CurrentCart.length; i++)
+  {
+      var val = data.find(function (book) {return book.tenSP == Object.keys(CurrentCart[i])});
+      Total+=Math.min(val.sale,val.gia)*Object.values(CurrentCart[i]);
+  }
+  document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
+  document.getElementById("NumProduct").innerHTML = CurrentCart.length;
+}
+
 function plusNumberElement (val, user = "duynm619") {
   // var val = "5 Centimet Trên giây", user = "duynm619";
   var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
@@ -331,6 +365,30 @@ function addElement (val, user = "duynm619") {
     // Bills[currentBill].number.push(1);
   }
   showBill(user);
+}
+
+function addElementShop (val, user = "duynm619") {
+  // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
+  // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
+  var index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val});
+  if (index != -1)
+  {
+    // plusNumberElement(val,user);
+    CurrentCart[index][val] = Math.max(Object.values(CurrentCart[index])+1,1);
+    localStorage.setItem('carts', JSON.stringify(CurrentCart));
+  }
+    
+  else
+  {
+    var a = {};
+    a[val] = 1;
+    CurrentCart.push(a);
+    localStorage.setItem('carts', JSON.stringify(CurrentCart));
+    // localStorage.setItem(val, 1);
+    // Bills[currentBill].products.push(val);
+    // Bills[currentBill].number.push(1);
+  }
+  RefreshShopCart(user);
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
