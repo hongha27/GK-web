@@ -143,9 +143,17 @@ $(document).ready(function () {
         showLike(); 
         productLeft();
         recemtPost();
-        showBill();;
+        showBill();
+        LoadUser();
     }
 });
+
+function LoadUser () {
+    if(localStorage.user)
+      document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" id="LogOut"><i class="fa fa-user"></i> Đăng xuất(`+localStorage.user+`)</a>`;
+    else
+      document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Đăng nhập</a>`;
+}
 
 function showBill (user = "duynm619") {
   var current = Bills.find(function (bill) {return bill.user == user && bill.deal == false;});

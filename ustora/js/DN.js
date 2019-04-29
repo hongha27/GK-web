@@ -1,4 +1,9 @@
 $(function(){
+	$('#LogOut').click(function(event) {
+		localStorage.removeItem('user');
+		LoadUser(); 
+		location.reload();
+	});
 	$('.DK').click(function(event) {
 		$('#dangKy').css('display', 'block');
 		$('#dangNhap').css('display', 'none');
@@ -11,6 +16,24 @@ $(function(){
 	$('.DNn').click(function(event) {
 		if ($('#DN_Name').val() == "" || $('#DN_Pw').val() == "")
 			alert("Bạn chưa nhập tài khoản hoặc mật khẩu.");
+		else
+		{
+			var index = accounts.findIndex(function (valid) {return valid["username"] == $('#DN_Name').val();});
+			if (index == -1)
+				alert('Tài khoản không tồn tại.');
+			else
+			{
+				if (accounts[index]["password"] != $('#DN_Pw').val())
+					alert('Mật khẩu không chính xác.')
+				else
+				{
+					alert('Đăng nhập thành công.')
+					document.getElementById('UserLog').innerHTML = `<a href="#"  class="btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Đăng xuất(`+$('#DN_Name').val()+")</a>";
+					localStorage.setItem('user',  $('#DN_Name').val());
+					location.reload();
+				}
+			}
+		}
 	});
 	$('.DKk').click(function(event) {
 		if ($('#DK_Name').val() == "" || $('#DK_Pw').val() == "" || $('#DK_RPw').val() == "" || $('#DK_Email').val() == "" || $('#DK_Mobile').val() == "" || $('#DK_Birth').val() == "" || $('[type="radio"]:checked').val() == undefined)
