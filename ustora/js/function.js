@@ -374,7 +374,7 @@ function addElementShop (val, user = "duynm619") {
   if (index != -1)
   {
     // plusNumberElement(val,user);
-    CurrentCart[index][val] = Math.max(Object.values(CurrentCart[index])+1,1);
+    CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index])+1,1);
     localStorage.setItem('carts', JSON.stringify(CurrentCart));
   }
     
