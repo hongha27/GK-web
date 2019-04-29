@@ -8,6 +8,9 @@
     float: right;
     margin-left: 15px;
 }
+/*tr td:first-child.cart_item{
+    color: black;
+}*/
 .aligncenter {
     display: block;
     margin: 0 auto 15px;
@@ -66,7 +69,7 @@ body { font-family: 'Roboto Condensed', sans-serif; }
     padding: 10px;
     font-family: 'Roboto Condensed', sans-serif;
 }
-.user-menu li a i.fa {
+.user-menu li a i  .fa {
     margin-right: 5px;
 }
 .header-right ul.list-inline {

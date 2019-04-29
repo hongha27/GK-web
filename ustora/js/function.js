@@ -104,16 +104,16 @@ function showLike (index, cnt = 4){
    sp.innerHTML = dssp;
 }
 
-function productLeft (index = 0, cnt = 4) {
+function productLeft (val = data,index = 0, cnt = 4) {
   var ans = "";
   for(var i = index; i < index+cnt; i++)
   {
     ans += `
             <div class="thubmnail-recent">
-              <img src="${data[i].img}" class="recent-thumb" alt="">
-              <h2><a href="">${data[i].tenSP}</a></h2>
+              <img src="${val[i].img}" class="recent-thumb" alt="">
+              <h2><a href="">${val[i].tenSP}</a></h2>
               <div class="product-sidebar-price">
-                  <ins>${MoneyShow(data[i].gia)} VNĐ</ins> <del>${MoneyShow(data[i].sale)} VNĐ</del>
+                  <ins>${MoneyShow(val[i].gia)} VNĐ</ins> <del>${MoneyShow(val[i].sale)} VNĐ</del>
               </div>                             
             </div>
           `;
