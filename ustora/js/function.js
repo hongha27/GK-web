@@ -161,6 +161,7 @@ function showBill (user = "duynm619") {
   if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0){
     document.getElementById("NumProduct").innerHTML = 0;
     document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
+    STotal.innerHTML = 0+" VNĐ";
     CartShow.innerHTML = `<tr><td colspan = 6><h2>Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
     return;
   }
