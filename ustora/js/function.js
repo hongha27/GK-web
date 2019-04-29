@@ -214,6 +214,19 @@ function showBill (user = "duynm619") {
             </tr>
          `;
   }
+  // ans +=`
+  //       <tr>
+  //         <td class="actions" colspan="6">
+  //             <div class="coupon">
+  //                 <label for="coupon_code">Giảm giá :</label>
+  //                 <input type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="input-text" name="coupon_code">
+  //                 <input type="submit" value="Áp dụng" name="apply_coupon" class="button">
+  //             </div>
+  //             <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button">
+  //             <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward">
+  //         </td>
+  //       </tr>
+  // `;
 
   // flag = false;
   // for (var i = +flag; i < localStorage.length; i++)

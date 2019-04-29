@@ -34,7 +34,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body onload="productLeft();recemtPost();">
+  <body onload="productLeft();recemtPost();RefreshShopCart();">
    
     <div class="header-area">
         <div class="container">
@@ -91,7 +91,7 @@
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Giỏ hàng - <span class="cart-amunt">150.000 VND</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">1</span></a>
+                       <a href="cart.html">Giỏ hàng - <span class="cart-amunt" id="TotalMoney"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count" id="NumProduct"></span></a>
                     </div>
                 </div>
             </div>
@@ -1091,9 +1091,13 @@
     
     <!-- Main Script -->
     <script src="js/main.js"></script>
-    <script src="shopdata.js"></script>
+    <script src="js/shopdata.js"></script>
 
-    <script src="function.js"></script>
-    <script src="shoppingcart.js"></script>
+    <script src="js/function.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/DN.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </body>
 </html>
