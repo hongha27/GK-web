@@ -520,6 +520,123 @@ function addElementShop (val, user = "duynm619") {
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Đạt
+var idpr = document.getElementById("showsp");
+var sp = document.getElementById("cacsp");
+
+function SliderArea (cnt = 4) { 
+  var ans = "<ul>";
+  for(var i = 0; i < data.length && cnt > 0; i++)
+  {
+    cnt--;
+    ans += `
+        <li>
+          <img src="${data[i].img}" alt="Slide" class="icon">
+          <div class="caption-group">
+            <h2 class="caption title">
+              <span class="primary"><strong>${data[i].tenSP}</strong></span>
+            </h2>
+          <h4 class="caption subtitle">${data[i].category}</h4>
+          <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+          </div>
+        </li>
+    `
+  }
+  ans+="</ul>"
+  Slider.innerHTML=ans;
+}
+
+function ListProductsLast (index = 1, cnt = 6) { 
+  var ars = "";
+  for(var i = index; i <= index+cnt; i++)
+  {
+    ars += `
+            <div class="single-product">
+              <div class="product-f-image">
+                <img src="${data[i].img}" alt="">
+                <div class="product-hover">
+                  <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                  <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                </div>
+                <h2><a href="">${data[i].tenSP}</a></h2>
+                <div class="product-wid-price">
+                  <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+                </div>                                             
+            </div>
+          `;
+  }
+  ListItem.innerHTML=ars;
+}
+function ListProduct1 (index, cnt = 3) {
+  var ars = "";
+  for(var i = 0; i < cnt; i++)
+  {
+    ars += `
+            <div class="single-wid-product">
+              <a href="single-product.html"><img src="${data[i].img}" alt="" class="product-thumb"></a>
+              <h2><a href="">${data[i].tenSP}</a></h2>
+              <div class="product-wid-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="product-wid-price">
+                <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+              </div>                                             
+            </div>
+          `;
+  }
+  ListView1.innerHTML=ars;
+}
+function ListProduct2 (index, cnt = 6) {
+  var ars = "";
+  for(var i = 3; i < cnt; i++)
+  {
+    ars += `
+            <div class="single-wid-product">
+              <a href="single-product.html"><img src="${data[i].img}" alt="" class="product-thumb"></a>
+              <h2><a href="">${data[i].tenSP}</a></h2>
+              <div class="product-wid-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="product-wid-price">
+                <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+              </div>                                             
+            </div>
+          `;
+  }
+  ListView2.innerHTML=ars;
+}
+function ListProduct3 (index, cnt = 9) {
+  var ars = "";
+  for(var i = 6; i < cnt; i++)
+  {
+    ars += `
+            <div class="single-wid-product">
+              <a href="single-product.html"><img src="${data[i].img}" alt="" class="product-thumb"></a>
+              <h2><a href="">${data[i].tenSP}</a></h2>
+              <div class="product-wid-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="product-wid-price">
+                <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+              </div>                                             
+            </div>
+          `;
+  }
+  ListView3.innerHTML=ars;
+}
+
+
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Lộc
