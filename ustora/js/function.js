@@ -207,6 +207,12 @@ function ApplyCoupon () {
     showBill();
 }
 
+
+function ToCheckout () {
+    event.preventDefault();
+    document.location = "checkout.html" 
+}
+
 function showBill (user = "duynm619") {
   var current = Bills.find(function (bill) {return bill.user == user && bill.deal == false;});
   if (typeof (Storage) !== 'undefined') {
@@ -220,13 +226,6 @@ function showBill (user = "duynm619") {
           localStorage.setItem('carts', JSON.stringify(CurrentCart));
       }
   }
-
-function ToCheckout () {
-    event.preventDefault();
-    document.location = "index.html" 
-}
-  
-
   if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0){
     document.getElementById("NumProduct").innerHTML = 0;
     document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
