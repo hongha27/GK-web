@@ -4,6 +4,17 @@
     float: left;
     margin-right: 15px;
 }
+.CPInput{
+    width: 62%;
+    height: 50%;
+    padding: 10px 10px;
+    line-height: 28px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+.CPLabel{
+    color: black;
+}
 .alignright {
     float: right;
     margin-left: 15px;
@@ -745,7 +756,7 @@ select {
 input[type="text"], input[type="password"], input[type="email"], textarea {
     border: 1px solid #ddd;
     /* padding: 0px; */
-    width: 100%;
+    /*width: 100%;*/
     font-size: 15px;
 }
 input[type="submit"], button[type=submit] {
@@ -969,6 +980,7 @@ td.product-quantity div.quantity {
 }
 td.actions div.coupon {
     float: left;
+    width: 100%;
 }
 .cart-collaterals {
     overflow: hidden;

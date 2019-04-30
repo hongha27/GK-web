@@ -95,6 +95,7 @@ var sp = document.getElementById("cacsp");
 var idpr = document.getElementById("showsp");
 var sp = document.getElementById("cacsp");
 var CurrentCart = [];
+var Total = 0;
 
 function MoneyShow(val) {
   return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -153,6 +154,7 @@ function productLeft (val = data,index = 0, cnt = 4) {
   }
   ListLeft.innerHTML=ans;
 }
+
 function recemtPost (cnt = 4) {
   var ans = "<ul>";
   for(var i = 0; i < data.length && cnt > 0; i++)
@@ -188,8 +190,21 @@ function LoadUser () {
       document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Đăng nhập</a>`;
 }
 
-function nothing () {
-  console.log('cc');
+function ApplyCoupon () {
+    var index = coupons.findIndex(function(val){return val.code == document.getElementById('coupon_code').value;});
+    if (index == -1)
+        alert('Mã giảm giá không hợp lệ.');
+    else
+    {
+        if (coupons[index].status)
+        {
+            localStorage.setItem('coupon', coupons[index].values);
+            alert('Sử dụng mã giảm giá thành công.');
+        }
+        else
+            alert('Mã giảm giá đã hết hạn.');
+    }
+    showBill();
 }
 
 function showBill (user = "duynm619") {
@@ -214,8 +229,8 @@ function showBill (user = "duynm619") {
     return;
   }
   CurrentCart = JSON.parse(localStorage.carts);
-  var ans = "";
-  var Total = 0;
+  var ans = "", cp = "";
+  Total = 0;
   for (var i = 0; i < CurrentCart.length; i++)
   {
       var val = data.find(function (book) {return book.tenSP == Object.keys(CurrentCart[i])});
@@ -251,19 +266,21 @@ function showBill (user = "duynm619") {
             </tr>
          `;
   }
-  // ans +=`
-  //       <tr>
-  //         <td class="actions" colspan="6">
-  //             <div class="coupon">
-  //                 <label for="coupon_code">Giảm giá :</label>
-  //                 <input type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="input-text" name="coupon_code">
-  //                 <input type="submit" value="Áp dụng" name="apply_coupon" class="button">
-  //             </div>
-  //             <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button">
-  //             <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward">
-  //         </td>
-  //       </tr>
-  // `;
+  ans +=`
+        <tr>
+          <td class="actions" colspan="4">
+              <div class="coupon">
+                  <label for="coupon_code" class="CPLabel">Giảm giá :</label>
+                  <input  size=15% type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="CPInput input-text" name="coupon_code">
+                  <input type="submit" value="Áp dụng" name="apply_coupon" class="button" onclick="ApplyCoupon()">
+              </div>
+          </td>
+          <td colspan="2" style="border-left:0">
+              <!-- <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button"> -->
+              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward">
+          </td>
+        </tr>
+  `;
 
   // flag = false;
   // for (var i = +flag; i < localStorage.length; i++)
@@ -333,11 +350,28 @@ function showBill (user = "duynm619") {
       FeeShip.innerHTML = '500.000 VND';
       Total+=500000;
   }
+  if (localStorage.coupon)
+  {
+      cp = 'Đã dùng mã giảm giá ';
+      if (localStorage.coupon.slice(-1) == '%')
+      {
+          Total = (Total/100) * (+localStorage.coupon.slice(0,-1));
+          cp += localStorage.coupon;
+      }
+          
+      else
+      {
+          Total = Math.max(Total - +localStorage.coupon,0);
+          cp += MoneyShow(localStorage.coupon) + ' VND';
+      }
+      cp += " (mã khác)";
+  }
   CartShow.innerHTML = ans;
   STotal.innerHTML = MoneyShow(Total)+" VNĐ";
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
   // document.getElementById("NumProduct").innerHTML = Object.values(CurrentCart).reduce((a,b) => (-~+a?+a:-~+a)+(-~+b?+b:-~+b));
   document.getElementById("NumProduct").innerHTML = CurrentCart.length;
+  document.getElementById('coupon_code').placeholder = cp;
 }
 
 function RefreshShopCart (user = "duynm619") {
@@ -361,11 +395,18 @@ function RefreshShopCart (user = "duynm619") {
   }
   CurrentCart = JSON.parse(localStorage.carts);
   var ans = "";
-  var Total = 0;
+  Total = 0;
   for (var i = 0; i < CurrentCart.length; i++)
   {
       var val = data.find(function (book) {return book.tenSP == Object.keys(CurrentCart[i])});
       Total+=Math.min(val.sale,val.gia)*Object.values(CurrentCart[i]);
+  }
+  if (localStorage.coupon)
+  {
+      if (localStorage.coupon.slice(-1) == '%')
+          Total = (Total/100) * (+localStorage.coupon.slice(0,-1));
+      else
+          Total = Math.max(Total - +localStorage.coupon,0);
   }
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
   document.getElementById("NumProduct").innerHTML = CurrentCart.length;
