@@ -408,6 +408,8 @@ function RefreshShopCart (user = "duynm619") {
       else
           Total = Math.max(Total - +localStorage.coupon,0);
   }
+  if (JSON.parse(localStorage["Ship"])[0] !=  'VN')
+      Total+=500000;
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
   document.getElementById("NumProduct").innerHTML = CurrentCart.length;
 }
