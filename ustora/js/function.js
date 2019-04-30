@@ -188,6 +188,11 @@ $(document).ready(function () {
         RefreshShopCart();
         LoadUser();
     }
+    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('contact.html') != -1) 
+    {
+        LoadUser();
+        RefreshShopCart();
+    }
 });
 
 function LoadUser () {
