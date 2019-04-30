@@ -53,8 +53,41 @@ var sp = document.getElementById("cacsp");
    //     for(let originObject of originArray){
    //       console.log(originObject.tenSP);
    //     }
+// làm nút qua lại// chưa xong
+// document.addEventListener('DOMContentLoaded', function(){
+//   var btn = document.querySelectorAll('.pagination ul li a span');
+//   nleft = btn[0];
+//   nright = btn[1];
+//   var slides = document.querySelectorAll('.pagination ul li a');
+//   var vtrislide = 4;
 
-
+//   changeslide = function(){
+//     vtrislide = vtrislide - 1;
+//     for (var i = 0; i < slides.length; i++) {
+//       if(vtrislide==0){
+//         vtrislide == slides.length - 1;
+//         slides[vtrislide].classList.add('ra');
+//       }
+//       else{
+//         slides[vtrislide].classList.add('ra');
+//       }
+//       nleft.addEventListener('click',changeslide);
+//     };
+//   }
+//     changeslide2 = function(){
+//    var slideht = document.querySelector('.pagination ul li ')
+//     for (var i = 0; i < slides.length; i++) {
+//       if(vtrislide==0){
+//         vtrislide == slides.length - 1;
+//         slides[vtrislide].classList.add('ra');
+//       }
+//       else{
+//         slides[vtrislide].classList.add('ra');
+//       }
+//       nleft.addEventListener('click',changeslide);
+//     };
+//   }
+// })
    
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Duy
@@ -70,7 +103,7 @@ function MoneyShow(val) {
 function showLike (index, cnt = 4){
     var dssp = "";
     if(data.length != 0){
-        for(var i = 0; i < data.length && cnt > 0; i++ ){
+        for(var i = 15; i < data.length && cnt > 0; i++ ){
           if (data[i].TT  == true){
             cnt--;
             dssp += `
@@ -218,19 +251,19 @@ function showBill (user = "duynm619") {
             </tr>
          `;
   }
-  ans +=`
-        <tr>
-          <td class="actions" colspan="6">
-              <div class="coupon">
-                  <label for="coupon_code">Giảm giá :</label>
-                  <input type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="input-text" name="coupon_code">
-                  <input type="submit" value="Áp dụng" name="apply_coupon" class="button">
-              </div>
-              <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button">
-              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward">
-          </td>
-        </tr>
-  `;
+  // ans +=`
+  //       <tr>
+  //         <td class="actions" colspan="6">
+  //             <div class="coupon">
+  //                 <label for="coupon_code">Giảm giá :</label>
+  //                 <input type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="input-text" name="coupon_code">
+  //                 <input type="submit" value="Áp dụng" name="apply_coupon" class="button">
+  //             </div>
+  //             <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button">
+  //             <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward">
+  //         </td>
+  //       </tr>
+  // `;
 
   // flag = false;
   // for (var i = +flag; i < localStorage.length; i++)

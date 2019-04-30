@@ -745,7 +745,8 @@ select {
 input[type="text"], input[type="password"], input[type="email"], textarea {
     border: 1px solid #ddd;
     /* padding: 0px; */
-    width: 78%;
+    width: 100%;
+    font-size: 15px;
 }
 input[type="submit"], button[type=submit] {
     background: none repeat scroll 0 0 #5a88ca;
@@ -1189,7 +1190,8 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
   width: 1%;
 }
 .ipDN{
-  font-size: 15px; padding: 1px;
+  font-size: 15px;
+  padding: 1px;
 }
 .dvDN{
   text-align: center;
@@ -1223,7 +1225,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 }
 .dateip{
   font-size: 15px;
-  width: 78%;%
+  width: 100%;%
   padding: 1px;
 }
 .clor{
