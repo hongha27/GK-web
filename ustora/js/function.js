@@ -221,6 +221,12 @@ function showBill (user = "duynm619") {
       }
   }
 
+function ToCheckout () {
+    event.preventDefault();
+    document.location = "index.html" 
+}
+  
+
   if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0){
     document.getElementById("NumProduct").innerHTML = 0;
     document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
@@ -277,7 +283,7 @@ function showBill (user = "duynm619") {
           </td>
           <td colspan="2" style="border-left:0">
               <!-- <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button"> -->
-              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward">
+              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="ToCheckout()">
           </td>
         </tr>
   `;
@@ -408,7 +414,7 @@ function RefreshShopCart (user = "duynm619") {
       else
           Total = Math.max(Total - +localStorage.coupon,0);
   }
-  if (JSON.parse(localStorage["Ship"])[0] !=  'VN')
+  if (JSON.parse(localStorage["Ship"])[0]["country"] !=  'VN')
       Total+=500000;
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
   document.getElementById("NumProduct").innerHTML = CurrentCart.length;
