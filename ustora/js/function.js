@@ -177,7 +177,7 @@ function showBill (user = "duynm619") {
     document.getElementById("NumProduct").innerHTML = 0;
     document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
     STotal.innerHTML = 0+" VNĐ";
-    CartShow.innerHTML = `<tr><td colspan = 6><h2>Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
+    CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
     return;
   }
   CurrentCart = JSON.parse(localStorage.carts);
@@ -218,19 +218,19 @@ function showBill (user = "duynm619") {
             </tr>
          `;
   }
-  // ans +=`
-  //       <tr>
-  //         <td class="actions" colspan="6">
-  //             <div class="coupon">
-  //                 <label for="coupon_code">Giảm giá :</label>
-  //                 <input type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="input-text" name="coupon_code">
-  //                 <input type="submit" value="Áp dụng" name="apply_coupon" class="button">
-  //             </div>
-  //             <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button">
-  //             <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward">
-  //         </td>
-  //       </tr>
-  // `;
+  ans +=`
+        <tr>
+          <td class="actions" colspan="6">
+              <div class="coupon">
+                  <label for="coupon_code">Giảm giá :</label>
+                  <input type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="input-text" name="coupon_code">
+                  <input type="submit" value="Áp dụng" name="apply_coupon" class="button">
+              </div>
+              <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button">
+              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward">
+          </td>
+        </tr>
+  `;
 
   // flag = false;
   // for (var i = +flag; i < localStorage.length; i++)

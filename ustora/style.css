@@ -744,7 +744,8 @@ select {
 }
 input[type="text"], input[type="password"], input[type="email"], textarea {
     border: 1px solid #ddd;
-    padding: 10px;
+    /* padding: 0px; */
+    width: 78%;
 }
 input[type="submit"], button[type=submit] {
     background: none repeat scroll 0 0 #5a88ca;
@@ -757,6 +758,7 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
 .single-sidebar input[type="text"] {
     margin-bottom: 10px;
     width: 100%;
+    height: 42px;
 }
 .thubmnail-recent {
     margin-bottom: 30px;
@@ -1169,4 +1171,74 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 }
 .changeform{
   font-family: 'Roboto Condensed', sans-serif;
+}
+.changehr{
+  width: 85%;
+  margin:auto;
+}
+.namelg{
+  text-align: left; font-size: 25px;
+}
+.tbname{
+  margin-top: 0.3in; margin-left: 0.2in; font-size: 20px; border-collapse:separate; border-spacing:0 15px;
+}
+.trname{
+  margin: 10px; padding: 5px;
+}
+.tdname2{
+  width: 1%;
+}
+.ipDN{
+  font-size: 15px; padding: 1px;
+}
+.dvDN{
+  text-align: center;
+}
+.DNn{
+  font-size: 20px;width: 388px;height: 40px; color: black;
+}
+.dvDN2{
+  text-align: center; margin-top: -0.1in;
+}
+.DK{
+  font-size: 20px;width: 175px;height: 40px; color: black;
+}
+.QPw{
+  font-size: 20px;width: 175px;height: 40px; color: black; margin-left: 30px;
+}
+.list-icon .lsticon{
+  margin-top: 0.45in;
+}
+.list-icon .lsticon1{
+  margin-top: 0.7in;
+}
+.divDK1{
+  text-align: left; margin-left: 5px; font-size: 25px;
+}
+.tableDK{
+  margin-top: 0.1in; font-size: 20px; margin-left: 0.2in; border-collapse:separate; border-spacing:0 15px;
+}
+.tddn{
+  width: 45%;
+}
+.dateip{
+  font-size: 15px;
+  width: 78%;%
+  padding: 1px;
+}
+.clor{
+  color: white;
+}
+.divd{
+  text-align: center; margin-top: 0.5em;
+}
+
+.divgd{
+  text-align: center; margin-top: 0.6em;
+}
+.DKk,.DN{
+ font-size: 20px;width: 388px;height: 40px; color: black;
+}
+.mauchu{
+  color: #6dafd0;
 }
