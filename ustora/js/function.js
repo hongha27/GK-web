@@ -155,6 +155,10 @@ function LoadUser () {
       document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Đăng nhập</a>`;
 }
 
+function nothing () {
+  console.log('cc');
+}
+
 function showBill (user = "duynm619") {
   var current = Bills.find(function (bill) {return bill.user == user && bill.deal == false;});
   if (typeof (Storage) !== 'undefined') {
@@ -282,6 +286,20 @@ function showBill (user = "duynm619") {
   // }
 
   // console.log(MoneyShow(Total));
+  if (localStorage.Ship)
+  {
+      var a = JSON.parse(localStorage.Ship);
+      document.getElementById('calc_shipping_country').value = Object.values(a[0]);
+      document.getElementById('calc_shipping_state').value = Object.values(a[1]);
+      document.getElementById('calc_shipping_postcode').value = Object.values(a[2]);
+  }
+  if (document.getElementById('calc_shipping_country').value ==  'VN')
+      FeeShip.innerHTML = 'Miễn Phí';
+  else
+  {
+      FeeShip.innerHTML = '500.000 VND';
+      Total+=500000;
+  }
   CartShow.innerHTML = ans;
   STotal.innerHTML = MoneyShow(Total)+" VNĐ";
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";

@@ -1,8 +1,21 @@
 $(function(){
+	$('#UpdateShip').click(function(event) {
+		localStorage.setItem('Ship', JSON.stringify([{"country":$('#calc_shipping_country').val()},{"state":$('#calc_shipping_state').val()},{"postcode":$('#calc_shipping_postcode').val()}]));
+	});
+	$('#calc_shipping_country').change(function(event) {
+		localStorage.setItem('Ship', JSON.stringify([{"country":$('#calc_shipping_country').val()},{"state":$('#calc_shipping_state').val()},{"postcode":$('#calc_shipping_postcode').val()}]));
+		showBill(localStorage.user);
+	});
 	$('#LogOut').click(function(event) {
 		localStorage.removeItem('user');
 		LoadUser(); 
 		location.reload();
+	});
+	$('.QPw').click(function(event) {
+		var mail = prompt("Hãy nhập mail đăng ký của bạn, chúng tôi sẽ gửi link khôi phục mật khẩu cho bạn", "xyz@gmail.com");
+		if (mail != null) {
+		    alert('Thông tin khôi phục đã được gửi đến: ' + mail);
+		}
 	});
 	$('.DK').click(function(event) {
 		$('#dangKy').css('display', 'block');
