@@ -1260,3 +1260,40 @@ p .list-icon .lsticon{
 p.list-icon.lsticon {
     margin-top: 13%;
 }
+.center-contact{
+  height: 900px;
+  padding-top: 20px;
+  background-color: #ececdf;
+}
+#left{ 
+  float: left; 
+  width: 449px; 
+  border-right: 1px groove; 
+} 
+#left h1{ 
+  padding-left: 30px; 
+  padding-bottom: 20px; 
+} 
+#left ul li { 
+  list-style-type: none; 
+  padding-bottom: 20px; 
+  font-size: 20px; 
+} 
+#right{ 
+  float: left; 
+  width: 900px; 
+} 
+#right form{ 
+  background-color: white; 
+  width: 450px; 
+  margin: 0 auto; 
+  text-align: left; 
+  padding-left: 20px; 
+  font-size: 20px; 
+  border-radius: 10px; 
+  padding: 20px; 
+} 
+#right form input{ 
+  border-radius: 5px; 
+  margin-bottom: 20px; 
+}
