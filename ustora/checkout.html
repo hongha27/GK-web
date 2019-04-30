@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/DN.css">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,8 +37,132 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body onload="productLeft();recemtPost();RefreshShopCart();">
-   
+  <body>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="container">
+            <div class="box-center" id="dangNhap">
+                <p class="author">
+                    <div class="content" class="font-family: 'papyrus', cursive;">
+                        Welecome to DDLH Shop
+                        <hr class="changehr">
+                        Đăng nhập
+                    </div>
+                    <div class="namelg" >
+                        <table class="tbname">
+                            <tr class="trname">
+                                <td>Tên đăng nhập: </td>
+                                <td class="tdname2"></td>
+                                <td><input class="ipDN" type="text" size="40%" id="DN_Name"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mật khẩu: 
+                                </td>
+                                <td></td>
+                                <td><input class="ipDN" type="password" size="40%" id="DN_Pw"></td>
+                            </tr>
+                        </table>
+                        <div class="dvDN">
+                            <br>
+                            <button class="DNn">Đăng nhập</button>
+                        </div>
+                        <div class="dvDN2">
+                            <br>
+                            <button class="DK">Đăng ký</button>
+                            <button class="QPw">Quên mật khẩu</button>
+                        </div>
+                    </div>
+                </p>
+                <p class="list-icon lsticon" style="">
+                    <div class="list-icon lsticon1">Liên hệ với chúng tôi</div>
+                    <a href="https://www.facebook.com/" class="icon">
+                        <img src="image/facebook.png" alt="">
+                    </a>
+                    <a href="https://twitter.com/" class="icon">
+                        <img class="icon_contact" src="image/twitter.png" alt="">
+                    </a>
+                    <a href="https://www.youtube.com/" class="icon">
+                        <img class="icon_contact" src="image/youtube.png" alt="">
+                    </a>
+                    <a href="https://www.twitch.tv/" class="icon">
+                        <img class="icon_contact" src="image/twitch.png" alt="">
+                    </a>
+                    <a href="https://telegram.org/" class="icon">
+                        <img class="icon_contact" src="image/telegram.png" alt="">
+                    </a>
+                    <a href="https://web.skype.com" class="icon">
+                        <img class="icon_contact" src="image/skype.png" alt="">
+                    </a>
+                </p>
+            </div>
+
+            <div class="box-center" id="dangKy">
+                <p class="author">
+                    <div class="content" class="font-family: 'papyrus', cursive;">
+                        Welecome to DDLH Shop
+                        <hr class="changehr">
+                        Đăng ký
+                    </div>
+                    <div class="divDK1">
+                        <table class="tableDK">
+                            <tr>
+                                <td class="tddn">Tên đăng nhập: </td>
+                                <td><input class="ipDk" type="text" size="30%" id="DK_Name" style=""></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mật khẩu: 
+                                </td>
+                                <td><input class="ipDN" type="password" size="30%" id="DK_Pw"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Nhập lại mật khẩu: 
+                                </td>
+                                <td><input class="ipDN" type="password" size="30%" id="DK_RPw"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Ngày sinh: 
+                                </td>
+                                <td>
+                                    <input class="dateip" type="date" id="DK_Birth">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Giới tính: 
+                                </td>
+                                <td>
+
+                                    <input type="radio" name="gender" id="Male"><h class= "clor"> Nam &nbsp&nbsp&nbsp&nbsp&nbsp</h>
+                                    <input type="radio" name="gender" id="Female"><h class= "clor"> Nữ</h><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email: 
+                                </td>
+                                <td><input class="ipDN" type="text" size="30%" id="DK_Email"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Điện thoại: 
+                                </td>
+                                <td><input class="ipDN" type="text" size="30%" id="DK_Mobile" ></td>
+                            </tr>
+                        </table>
+                        <div class="divd">
+                            <button class="DKk">Đăng ký</button>
+                        </div>
+                        <div class="divgd">
+                            <button class="DN">Đăng nhập</button>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
     <div class="header-area">
         <div class="container">
             <div class="row">
@@ -46,7 +173,7 @@
                             <li><a href="#"><i class="fa fa-heart"></i> Danh sách yêu thích</a></li>
                             <li><a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a></li>
                             <li><a href="checkout.html"><i class="fa fa-user"></i> Thanh toán</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Đăng nhập</a></li>
+                            <li><div id="UserLog"></div></li>
                         </ul>
                     </div>
                 </div>
@@ -1096,6 +1223,7 @@
     <script src="js/function.js"></script>
     <script src="js/account.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/coupon.js"></script>
     <script src="js/DN.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>

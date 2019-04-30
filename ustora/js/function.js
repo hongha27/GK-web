@@ -181,6 +181,13 @@ $(document).ready(function () {
         showBill();
         LoadUser();
     }
+    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('checkout.html') != -1) 
+    {
+        productLeft();
+        recemtPost();
+        RefreshShopCart();
+        LoadUser();
+    }
 });
 
 function LoadUser () {

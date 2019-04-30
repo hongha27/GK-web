@@ -1,4 +1,20 @@
 $(function(){
+	$('#ToTop').click(function(event) {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	$('#BtnDKmail').click(function(event) {
+		if ($('#DKMail').val() == "" || /.+@.+\.com/.exec($('#DKMail').val()) == null)
+		{
+			event.preventDefault();
+			alert('Mail không hợp lệ (vd: xyz@gmail.com)');
+		}
+		else
+		{
+			event.preventDefault();
+			alert('Bạn đã đăng ký thành công.\nNhững tin tức mới nhất của chúng tôi sẽ luôn được gửi đến '+$('#DKMail').val());
+			$('#DKMail').val("");
+		}
+	});
 	$('#UpdateShip').click(function(event) {
 		localStorage.setItem('Ship', JSON.stringify([{"country":$('#calc_shipping_country').val()},{"state":$('#calc_shipping_state').val()},{"postcode":$('#calc_shipping_postcode').val()}]));
 	});
