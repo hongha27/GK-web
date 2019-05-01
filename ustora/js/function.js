@@ -198,9 +198,16 @@ $(document).ready(function () {
 
 function LoadUser () {
     if(localStorage.user)
-      document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" id="LogOut"><i class="fa fa-user"></i> Đăng xuất(`+localStorage.user+`)</a>`;
+    {
+        // console.log(`<a href="myaccount.html"><img width=30 src="`+accounts[accounts.findIndex(function(val){return val.username == localStorage.user;})].img+`"> `+localStorage.user+`</a>`);
+        // accounts.findIndex(function(val){return val.username == localStorage.user;});
+        document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" id="LogOut"><i class="fa fa-user"></i> Đăng xuất(`+localStorage.user+`)</a>`;
+        document.getElementById('UserLogged').innerHTML = `<a style="text-transform: none; height: 65px;padding: 9px;" href="myaccount.html"><img style="border-radius: 50%;" width=50 src="`+accounts[accounts.findIndex(function(val){return val.username == localStorage.user;})].img+`"> `+localStorage.user+`</a>`;
+    }
     else
+    {
       document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Đăng nhập</a>`;
+    }
 }
 
 function ApplyCoupon () {
@@ -240,11 +247,11 @@ function showBill (user = "duynm619") {
       }
   }
   if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0){
-    document.getElementById("NumProduct").innerHTML = 0;
-    document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
-    STotal.innerHTML = 0+" VNĐ";
-    CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
-    return;
+      document.getElementById("NumProduct").innerHTML = 0;
+      document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
+      STotal.innerHTML = 0+" VNĐ";
+      CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
+      return;
   }
   CurrentCart = JSON.parse(localStorage.carts);
   var ans = "", cp = "";
