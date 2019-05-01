@@ -11,6 +11,12 @@
     border-right: 1px groove;
     text-align: center; 
 }
+.FloatRight{
+    width: 1259px;
+}
+.lastLi{
+    float: right;
+}
 .infoProfileForm{
     width: 70%;
     padding-left: 3.3in;

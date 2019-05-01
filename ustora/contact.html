@@ -163,7 +163,7 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> Tài khoản của tôi </a></li>
+                            <li><a href="#" onclick="checkLog()"><i class="fa fa-user"></i> Tài khoản của tôi </a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> Danh sách yêu thích</a></li>
                             <li><a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a></li>
                             <li><a href="checkout.html"><i class="fa fa-user"></i> Thanh toán</a></li>
@@ -226,16 +226,19 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div> 
-                <div class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse FloatRight">
                     <ul class="nav navbar-nav">
                         <li><a href="index.html"><img src="https://img.icons8.com/windows/25/000000/home.png">Trang Chủ</a></li>
                         <li><a href="shop.html"><img src="https://img.icons8.com/windows/25/000000/courses.png">Cửa Hàng</a></li>
                         <li><a href="single-product.html"><img src="https://img.icons8.com/windows/25/000000/book.png">Chi Tiết Sản Phẩm</a></li>
                         <li><a href="cart.html"><img src="https://img.icons8.com/windows/25/000000/shopping-cart.png">Giỏ Hàng</a></li>
                         <li><a href="checkout.html"><img src="https://img.icons8.com/windows/25/000000/stack-of-money.png">Thanh Toán</a></li>
-                  <!--       <li><a href="#">Category</a></li>
-                        <li><a href="#">Others</a></li> -->
+                        <!-- <li><a href="#">Loại hàng</a></li>
+                        <li><a href="#">khác</a></li> -->
                         <li class="active"><a href="contact.html"><img src="https://img.icons8.com/windows/25/000000/add-phone.png">Liên Hệ</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav lastLi">
+                        <li id="UserLogged"></li>
                     </ul>
                 </div>  
             </div>
@@ -301,6 +304,7 @@
                             <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
                             <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                         </div> -->
+                        
                         <p class="list-icon lsticon">
                             <div class="list-icon lsticon1">Liên hệ với chúng tôi</div>
                             <a href="https://www.facebook.com/" class="icon">
@@ -366,6 +370,27 @@
             </div>
         </div>
     </div> <!-- End footer top area -->
+    
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="copyright">
+                        <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="footer-card-icon">
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End footer bottom area -->
    
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>

@@ -32,4 +32,4 @@
             });
             //slider.reloadSlider();
         }
-})(jQuery); // End of use strict
+}) // End of use strict

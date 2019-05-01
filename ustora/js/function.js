@@ -194,7 +194,41 @@ $(document).ready(function () {
         LoadUser();
         RefreshShopCart();
     }
+    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('myaccount.html') != -1) 
+    {
+        LoadUser();
+        RefreshShopCart();
+    }
+    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('index.html') != -1) 
+    {
+        ListProductsLast();
+        ListProduct1();ListProduct2();
+        ListProduct3();
+        LoadUser();
+        RefreshShopCart()
+    }
+    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('shop.html') != -1) 
+    {
+        LoadUser();
+        RefreshShopCart();
+    }
+    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('single-product.html') != -1) 
+    {
+        LoadUser();
+        RefreshShopCart();
+        productLeft();
+        recemtPost();
+        findId();
+    }
 });
+
+function checkLog () {
+    if(localStorage.user)
+        document.location = "myaccount.html";
+    else
+        alert('Bạn chưa đăng nhập.')
+
+}
 
 function LoadUser () {
     if(localStorage.user)
@@ -230,7 +264,7 @@ function ApplyCoupon () {
 
 function ToCheckout () {
     event.preventDefault();
-    document.location = "checkout.html" 
+    document.location = "checkout.html";
 }
 
 function showBill (user = "duynm619") {
