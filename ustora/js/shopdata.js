@@ -6,8 +6,9 @@ var data = [
 		gia : 23000,
 		sale : 20000,
 		category: "Ngôn Tình",
-		TT : true
-
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 	},
 	{
@@ -17,7 +18,9 @@ var data = [
 		gia : 29000,
 		sale : 21000,
 		category: "Ngôn Tình",
-		TT : false
+		TT : false,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -28,7 +31,9 @@ var data = [
 		gia : 35000,
 		sale : 30000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -39,7 +44,9 @@ var data = [
 		gia : 40000,
 		sale : 34000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -50,7 +57,9 @@ var data = [
 		gia : 40000,
 		sale : 34000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -61,7 +70,9 @@ var data = [
 		gia : 42000,
 		sale : 35000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -72,7 +83,9 @@ var data = [
 		gia : 34000,
 		sale : 30000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -83,7 +96,9 @@ var data = [
 		gia : 37000,
 		sale : 33000,
 		category: "Ngôn Tình",
-		TT : false
+		TT : false,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -94,7 +109,9 @@ var data = [
 		gia : 38000,
 		sale : 32000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -105,7 +122,9 @@ var data = [
 		gia : 45000,
 		sale : 40000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -116,7 +135,9 @@ var data = [
 		gia : 70000,
 		sale : 60000,
 		category: "Khác",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -127,7 +148,9 @@ var data = [
 		gia : 47000,
 		sale : 42000,
 		category: "Khác",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -138,7 +161,9 @@ var data = [
 		gia : 42000,
 		sale : 40000,
 		category: "Khác",
-		TT : false
+		TT : false,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -149,7 +174,9 @@ var data = [
 		gia : 43000,
 		sale : 42000,
 		category: "Khác",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -160,7 +187,9 @@ var data = [
 		gia : 50000,
 		sale : 45000,
 		category: "Khác",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -171,7 +200,9 @@ var data = [
 		gia : 45000,
 		sale : 40000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -182,7 +213,9 @@ var data = [
 		gia : 49000,
 		sale : 43000,
 		category: "Ngôn Tình",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -193,7 +226,9 @@ var data = [
 		gia : 70000,
 		sale : 68000,
 		category: "Khác",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -204,7 +239,9 @@ var data = [
 		gia : 65000,
 		sale : 40000,
 		category: "Khác",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -215,7 +252,9 @@ var data = [
 		gia : 45000,
 		sale : 40000,
 		category: "Khác",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -226,7 +265,9 @@ var data = [
 		gia : 37000,
 		sale : 24000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -237,7 +278,9 @@ var data = [
 		gia : 45000,
 		sale : 40000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -248,7 +291,9 @@ var data = [
 		gia : 46000,
 		sale : 44000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -259,7 +304,9 @@ var data = [
 		gia : 48000,
 		sale : 40000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -270,7 +317,9 @@ var data = [
 		gia : 67000,
 		sale : 50000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -281,7 +330,9 @@ var data = [
 		gia : 76000,
 		sale : 67000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -292,7 +343,9 @@ var data = [
 		gia : 45000,
 		sale : 40000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -303,7 +356,9 @@ var data = [
 		gia : 14000,
 		sale : 12000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -314,7 +369,9 @@ var data = [
 		gia : 23000,
 		sale : 20000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -325,7 +382,9 @@ var data = [
 		gia : 43000,
 		sale : 40000,
 		category: "Trẻ Em",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -336,7 +395,9 @@ var data = [
 		gia : 32000,
 		sale : 20000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -347,7 +408,9 @@ var data = [
 		gia : 24000,
 		sale : 18000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -358,7 +421,9 @@ var data = [
 		gia : 24000,
 		sale : 20000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -369,7 +434,9 @@ var data = [
 		gia : 24000,
 		sale : 20000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -380,7 +447,9 @@ var data = [
 		gia : 32000,
 		sale : 20000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -392,7 +461,9 @@ var data = [
 		gia : 22000,
 		sale : 12000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -403,7 +474,9 @@ var data = [
 		gia : 23000,
 		sale : 15000,
 		category: "Truyện Tranh",
-		TT : false
+		TT : false,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -414,7 +487,9 @@ var data = [
 		gia : 22000,
 		sale : 12000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -425,7 +500,9 @@ var data = [
 		gia : 24000,
 		sale : 18000,
 		category: "Truyện Tranh",
-		TT : true
+		TT : true,
+		ND : "a",
+		TG : "a"
 
 
 	},
@@ -436,7 +513,9 @@ var data = [
 		gia : 23000,
 		sale : 20000,
 		category: "Truyện Tranh",
-		TT : false
+		TT : false,
+		ND : "a",
+		TG : "a"
 
 
 	},
