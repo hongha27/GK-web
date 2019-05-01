@@ -172,7 +172,8 @@ $(document).ready(function () {
     if (typeof (Storage) !== 'undefined') 
         if (localStorage.carts) 
             CurrentCart = JSON.parse(localStorage.carts);
-
+    if (!localStorage.Ship)
+        localStorage.setItem('Ship', '[{"country":"VN"},{"state":""},{"postcode":""}]');
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('cart.html') != -1) 
     {
         showLike(); 
@@ -383,6 +384,9 @@ function showBill (user = "duynm619") {
       }
       cp += " (mã khác)";
   }
+  else
+      cp = "Mã giảm giá";
+
   CartShow.innerHTML = ans;
   STotal.innerHTML = MoneyShow(Total)+" VNĐ";
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
