@@ -39,8 +39,8 @@
     <![endif]-->
   <!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400i,700&amp;subset=vietnamese" rel="stylesheet"> -->
   </head>
-  <body onload="showProduct(1);">
-    <div class="modal fade" id="myModal" role="dialog">
+  <body onload="showProduct(1);RefreshShopCart();">
+     <div class="modal fade" id="myModal" role="dialog">
         <div class="container">
             <div class="box-center" id="dangNhap">
                 <p class="author">
@@ -164,7 +164,10 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div> 
+
+
+
     <div class="header-area">
         <div class="container">
             <div class="row">
@@ -176,6 +179,9 @@
                             <li><a href="cart.html"><i class="fa fa-user"></i> Giỏ hàng của tôi</a></li>
                             <li><a href="checkout.html"><i class="fa fa-user"></i> Thanh toán</a></li>
                             <li><div id="UserLog"></div></li>
+
+
+                            
                         </ul>
                     </div>
                 </div>
@@ -183,21 +189,19 @@
                     <div class="header-right">
                         <ul class="list-unstyled list-inline">
                             <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">USD </span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">USD</a></li>
-                                    <li><a href="#">INR</a></li>
-                                    <li><a href="#">GBP</a></li>
-                                </ul>
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Loại tiền :</span><span class="value">VNĐ </span><b class="caret"></b></a>
+                                <!-- <ul class="dropdown-menu">
+                                    <li><a href="#">VNĐ</a></li>
+                                </ul> -->
                             </li>
 
                             <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">German</a></li>
-                                </ul>
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Ngôn ngữ :</span><span class="value">Tiếng Việt </span><b class="caret"></b></a>
+                                <!-- <ul class="dropdown-menu"> -->
+                                    <!-- <li><a href="#">Tiếng Việt</a></li> -->
+<!--                                     <li><a href="#">French</a></li>
+                                    <li><a href="#">German</a></li> -->
+                                <!-- </ul> -->
                             </li>
                         </ul>
                     </div>
@@ -260,7 +264,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Shop</h2>
+                        <h2>Cửa Hàng</h2>
                     </div>
                 </div>
             </div>
@@ -324,7 +328,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-about-us">
-                        <h2>u<span>Stora</span></h2>
+                        <h2><span>Sách</span></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
                         <div class="footer-social">
                             <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
