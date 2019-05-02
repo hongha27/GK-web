@@ -12,6 +12,7 @@ var accounts = [
 		state: "Vietnam",
 		email: "minhduynguyen10@gmail.com",
 		phone: "0933047332",
+		born: "06/11/1999"
 
 		// odered
 		// odereList = [{},{}]
@@ -30,7 +31,8 @@ var accounts = [
 		last_name: "Minh Duy",
 		state: "Vietnam",
 		email: "minhduynguyen10@gmail.com",
-		phone: "0933047332"
+		phone: "0933047332",
+		born: "16/4/1999",
 
 
 	},

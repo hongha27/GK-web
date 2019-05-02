@@ -25,7 +25,7 @@ var sp = document.getElementById("cacsp");
                                 </div>  `;
                                 if(data[i].TT == true){
                                dssp +=` <div class="product-option-shop ">
-                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].tenSP}')">Mua Ngay</button>
+                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
                                 </div>  ` ;
                             }   
                                  else {
@@ -104,22 +104,41 @@ function MoneyShow(val) {
 function showLike (index, cnt = 4){
     var dssp = "";
     if(data.length != 0){
-        for(var i = 15; i < data.length && cnt > 0; i++ ){
+        var c = Math.max((Math.random()*data.length-cnt)|0,1);
+        console.log(c);
+        console.log(data[c]);
+        for(var i = c; i < data.length && cnt > 0; i++ ){
           if (data[i].TT  == true){
             cnt--;
+             // dssp += `<div class="single-product">
+             //          <div class="product-f-image">
+             //            <img style=" height: 200px;" src="${data[i].img}"alt="">
+             //            <div class="product-hover">
+             //              <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
+             //                  <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+             //              <a class="view-details-link" href="single-product.html?id=${data[i].id}">
+             //              <i class="fa fa-link"></i>Thông tin</a>
+             //            </div>
+             //          </div>
+             //          <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+             //          <div class="product-carousel-price">
+             //            <ins>${MoneyShow(data[i].gia)}</ins>
+             //            <del>${MoneyShow(data[i].sale)}</del>
+             //          </div>
+             //        </div>`;
             dssp += `
-                <div class="col-md-3 col-sm-6 product" style="width: 200px" id - ${data[i].id}>
+                <div style="width: 200px;height: 320px;px;margin-left: 15px;" class="col-md-3 col-sm-6 product" id - ${data[i].id}>
                     <div class="single-shop-product">
                         <div class="product-upper">
-                            <img style= "width = "src="${data[i].img}" alt="">
+                            <a href="single-product.html?id=${data[i].id}"><img style= "width = "src="${data[i].img}" alt=""></a>
                         </div>
-                        <h2><a href="">${data[i].tenSP}</a></h2>
+                        <h2 style="height: 50px;"><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
                         <div class="product-carousel-price">
                             <ins>${MoneyShow(data[i].sale)} đ</ins> <del>${MoneyShow(data[i].gia)} đ</del>
                         </div>  `;
                         if(data[i].TT == true){
                        dssp +=` <div class="product-option-shop ">
-                            <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElement('${data[i].tenSP}')">Mua Ngay</button>
+                            <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElement('${data[i].id}')">Mua Ngay</button>
                         </div>  ` ;
                     }   
                          else {
@@ -216,9 +235,7 @@ $(document).ready(function () {
     {
         LoadUser();
         RefreshShopCart();
-        productLeft();
-        recemtPost();
-        findId();
+        
     }
 });
 
@@ -261,6 +278,20 @@ function ApplyCoupon () {
     showBill();
 }
 
+function RemoveCoupon () {
+    localStorage.removeItem('coupon');
+    showBill(); 
+}
+
+function RemoveCart () {
+    if(!confirm("Bạn có chắc chắn muốn xóa đơn hàng?")){
+        event.preventDefault();
+        return;
+    } 
+    CurrentCart = [];
+    localStorage.setItem('carts', JSON.stringify(CurrentCart));
+    showBill();  
+}
 
 function ToCheckout () {
     event.preventDefault();
@@ -292,19 +323,19 @@ function showBill (user = "duynm619") {
   Total = 0;
   for (var i = 0; i < CurrentCart.length; i++)
   {
-      var val = data.find(function (book) {return book.tenSP == Object.keys(CurrentCart[i])});
+      var val = data.find(function (book) {return book.id == Object.keys(CurrentCart[i])});
       Total+=Math.min(val.sale,val.gia)*Object.values(CurrentCart[i]);
       ans+=`
             <tr class="cart_item">
               <td class="product-remove">
-                  <input type="button" title="Remove this item" value="X" onclick='delElement("${val.tenSP}")'>
+                  <input type="button" title="Remove this item" value="X" onclick='delElement("${val.id}")'>
               </td>
               <td class="product-thumbnail">
-                  <a href="#"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="${val.img}"></a>
+                  <a href="single-product.html?id=${data[data.findIndex(function(book){return book.tenSP == val.tenSP;})].id}"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="${val.img}"></a>
               </td>
 
               <td class="product-name" width="30%" id - ${val.tenSP}.replace(' ','')>
-                  <a href="#">${val.tenSP}</a> 
+                  <a href="single-product.html?id=${data[data.findIndex(function(book){return book.tenSP == val.tenSP;})].id}">${val.tenSP}</a> 
               </td>
 
               <td class="product-price">
@@ -313,9 +344,9 @@ function showBill (user = "duynm619") {
 
               <td class="product-quantity">
                   <div class="quantity buttons_added">
-                      <input type="button" class="minus" value="-" onclick='minusNumberElement("${val.tenSP}")'>
+                      <input type="button" class="minus" value="-" onclick='minusNumberElement("${val.id}")'>
                       <input type="number" size="4" class="input-text qty text" title="Số lượng sản phẩm" value="${Object.values(CurrentCart[i])}" min="0" step="1">
-                      <input type="button" class="plus" value="+" onclick='plusNumberElement("${val.tenSP}")'>
+                      <input type="button" class="plus" value="+" onclick='plusNumberElement("${val.id}")'>
                   </div>
               </td>
 
@@ -331,13 +362,21 @@ function showBill (user = "duynm619") {
               <div class="coupon">
                   <label for="coupon_code" class="CPLabel">Giảm giá :</label>
                   <input  size=15% type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="CPInput input-text" name="coupon_code">
-                  <input type="submit" value="Áp dụng" name="apply_coupon" class="button" onclick="ApplyCoupon()">
+                  <input type="submit" value="Áp dụng" name="apply_coupon" class="button PadLeft" onclick="ApplyCoupon()">
               </div>
           </td>
           <td colspan="2" style="border-left:0">
               <!-- <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button"> -->
-              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="ToCheckout()">
+              <input type="submit" value="Bỏ coupon" name="deapply_coupon" class="checkout-button button alt wc-forward" onclick="RemoveCoupon()">
           </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+              <input type="submit" value="Xóa đơn hàng" name="deleteCart" class="checkout-button button alt wc-forward" onclick="RemoveCart()">
+          </td> 
+          <td colspan="3" style="border-left:0">
+              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="ToCheckout()">
+          </td> 
         </tr>
   `;
 
@@ -460,7 +499,7 @@ function RefreshShopCart (user = "duynm619") {
   Total = 0;
   for (var i = 0; i < CurrentCart.length; i++)
   {
-      var val = data.find(function (book) {return book.tenSP == Object.keys(CurrentCart[i])});
+      var val = data.find(function (book) {return book.id == Object.keys(CurrentCart[i])});
       Total+=Math.min(val.sale,val.gia)*Object.values(CurrentCart[i]);
   }
   if (localStorage.coupon)
