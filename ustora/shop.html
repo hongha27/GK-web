@@ -38,6 +38,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   <!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400i,700&amp;subset=vietnamese" rel="stylesheet"> -->
+  <script src="js/shopdata.js"></script>
   </head>
   <body onload="showProduct(1);RefreshShopCart();">
      <div class="modal fade" id="myModal" role="dialog">
@@ -274,16 +275,59 @@
     
     <div class="single-product-area">
         <div class="option">
-            <select>
-                <option value="--Lựa Chọn--">--Lựa Chọn--</option>
+            <select id="selectOpt">
+                <option disabled selected style="display:none;" value="--Lựa Chọn--">--Lựa Chọn--</option>
                 <option value="Ngôn Tình">Ngôn Tình</option>
                 <option value="Trẻ Em">Trẻ Em</option>
                 <option value="Truyện Tranh">Truyện Tranh</option>
-                <option value="Thể Loại Khác">Thể Loại Khác</option>
+                <option value="Khác">Thể Loại Khác</option>
             </select>
-            
+            <button class="btnselect" id="idselect" onclick="categories()">Chọn</button>
         </div>
+        <script type="text/javascript">
+            var myselect = document.getElementById("selectOpt");
+            
+            function categories(){
+            // console.log(typeof myselect.options[myselect.selectedIndex].value);
+            var ans = "";
 
+            var n = data.length - 1;
+                for (var i = n; i>0; i--){
+                // console.log(data[i].category);
+                if(myselect.options[myselect.selectedIndex].value == data[i].category){
+                    ans += `
+                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
+                            <div class="single-shop-product">
+                                <div class="product-upper">
+                                    <img style= "width = "src="${data[i].img}" alt="">
+                                </div>
+                                <h2><a href="">${data[i].tenSP}</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
+                                </div>  `;
+                                if(data[i].TT == true){
+                               ans +=` <div class="product-option-shop ">
+                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
+                                </div>  ` ;
+                            }   
+                                 else {
+                                     ans += ` <div class="product-option-shop">
+                                    <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
+                                </div>  `;
+                                 }
+                                 ans +=   `
+                            </div>
+                        </div>
+
+                    `;
+                    }
+                    }
+// console.log(ans);
+                
+                document.getElementById("cacsp").innerHTML = ans;
+            };
+
+        </script>
 
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -354,14 +398,15 @@
                 
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-menu">
-                        <h2 class="footer-wid-title">Categories</h2>
+                        <h2 class="footer-wid-title">Mặt Hàng</h2>
                         <ul>
-                            <li><a onclick="showProduct(1);" href="">Ngôn Tình</a></li>
-                            <li><a onclick="showProduct(2);" href="">Trẻ Em</a></li>
-                            <li><a onclick="showProduct(3);" href="">Truyện Tranh</a></li>
-                            <li><a onclick="showProduct(4);" href="">Thể Loại Khác</a></li>
+                            <li><a onclick="categories()" href="">Ngôn Tình</a></li>
+                            <li><a onclick="categories()" href="">Trẻ Em</a></li>
+                            <li><a onclick="categories()" href="">Truyện Tranh</a></li>
+                            <li><a onclick="categories()" href="">Thể Loại Khác</a></li>
                             <!-- <li><a href="">Gadets</a></li> -->
-                        </ul>                        
+                        </ul>   
+
                     </div>
                 </div>
                 
@@ -414,7 +459,7 @@
     
     <!-- Main Script -->
     <script src="js/main.js"></script>
-    <script src="js/shopdata.js"></script>
+    
 
     <script src="js/function.js"></script>
     <script src="js/account.js"></script>
