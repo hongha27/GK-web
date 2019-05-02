@@ -26,6 +26,8 @@ $(function(){
 		localStorage.removeItem('user');
 		LoadUser(); 
 		location.reload();
+		if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('myaccount.html') != -1)
+			document.location = "index.html";
 	});
 	$('.QPw').click(function(event) {
 		var mail = prompt("Hãy nhập mail đăng ký của bạn, chúng tôi sẽ gửi link khôi phục mật khẩu cho bạn", "xyz@gmail.com");

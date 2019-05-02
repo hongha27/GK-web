@@ -19,7 +19,7 @@ var sp = document.getElementById("cacsp");
                                 <div class="product-upper">
                                     <img style= "width = "src="${data[i].img}" alt="">
                                 </div>
-                                <h2><a href="">${data[i].tenSP}</a></h2>
+                                <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
                                 <div class="product-carousel-price">
                                     <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
                                 </div>  `;
@@ -105,8 +105,8 @@ function showLike (index, cnt = 4){
     var dssp = "";
     if(data.length != 0){
         var c = Math.max((Math.random()*data.length-cnt)|0,1);
-        // console.log(c);
-        // console.log(data[c]);
+        console.log(c);
+        console.log(data[c]);
         for(var i = c; i < data.length && cnt > 0; i++ ){
           if (data[i].TT  == true){
             cnt--;
