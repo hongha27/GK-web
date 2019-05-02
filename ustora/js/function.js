@@ -216,9 +216,7 @@ $(document).ready(function () {
     {
         LoadUser();
         RefreshShopCart();
-        productLeft();
-        recemtPost();
-        findId();
+        
     }
 });
 
@@ -261,6 +259,20 @@ function ApplyCoupon () {
     showBill();
 }
 
+function RemoveCoupon () {
+    localStorage.removeItem('coupon');
+    showBill(); 
+}
+
+function RemoveCart () {
+    if(!confirm("Bạn có chắc chắn muốn xóa đơn hàng?")){
+        event.preventDefault();
+        return;
+    } 
+    CurrentCart = [];
+    localStorage.setItem('carts', JSON.stringify(CurrentCart));
+    showBill();  
+}
 
 function ToCheckout () {
     event.preventDefault();
@@ -331,13 +343,21 @@ function showBill (user = "duynm619") {
               <div class="coupon">
                   <label for="coupon_code" class="CPLabel">Giảm giá :</label>
                   <input  size=15% type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="CPInput input-text" name="coupon_code">
-                  <input type="submit" value="Áp dụng" name="apply_coupon" class="button" onclick="ApplyCoupon()">
+                  <input type="submit" value="Áp dụng" name="apply_coupon" class="button PadLeft" onclick="ApplyCoupon()">
               </div>
           </td>
           <td colspan="2" style="border-left:0">
               <!-- <input type="submit" value="Cập nhật giỏ hàng" name="update_cart" class="button"> -->
-              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="ToCheckout()">
+              <input type="submit" value="Bỏ coupon" name="deapply_coupon" class="checkout-button button alt wc-forward" onclick="RemoveCoupon()">
           </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+              <input type="submit" value="Xóa đơn hàng" name="deleteCart" class="checkout-button button alt wc-forward" onclick="RemoveCart()">
+          </td> 
+          <td colspan="3" style="border-left:0">
+              <input type="submit" value="Thanh toán" name="proceed" class="checkout-button button alt wc-forward" onclick="ToCheckout()">
+          </td> 
         </tr>
   `;
 

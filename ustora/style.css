@@ -11,6 +11,15 @@
     border-right: 1px groove;
     text-align: center; 
 }
+.infoProfileFormLabel{
+    float: left;
+    width: 40%;
+    float: left;
+}
+.infoProfileFormText{
+    width: 60%;
+    padding-left: 2in;
+}
 .FloatRight{
     width: 1259px;
 }
