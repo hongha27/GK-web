@@ -105,8 +105,8 @@ function showLike (index, cnt = 4){
     var dssp = "";
     if(data.length != 0){
         var c = Math.max((Math.random()*data.length-cnt)|0,1);
-        // console.log(c);
-        // console.log(data[c]);
+        console.log(c);
+        console.log(data[c]);
         for(var i = c; i < data.length && cnt > 0; i++ ){
           if (data[i].TT  == true){
             cnt--;
