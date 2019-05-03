@@ -2,8 +2,8 @@ var Bills = [
 	{
 		id: "#1",
 		user: "duynm619",
-		products: ["1","2","5"],
-		number: [2,3,2],
+		products: ["1","2","5","3","6"],
+		number: [2,3,2,4,8],
 		coupon: "50%",
 		// products: {"Chào Mừng Đến NHK":2, "5 Centimet Trên giây":3}
 		deal: false

@@ -177,7 +177,7 @@ function MyProfileType () {
         
         <div id="HistoryBills">
             <div id="right">
-                <form class="ProHeight">
+                <form class="ProHeight" id="LSMHF">
                     <h1>Lịch sử mua hàng</h1>
                     <hr class="bold"><br>`;
                     
@@ -202,7 +202,7 @@ function MyProfileType () {
                             </div>`;
                   	for(var j = 0; j < Bills[i].products.length; j++)
                   	{
-                  		console.log(Bills[i].products[j]+1)
+                  		// console.log(Bills[i].products[j]+1)
                   		ans += `<div class="row">
                                 <a href="single-product.html?id=${Bills[i].products[j]}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
                                     <img src="${data[+Bills[i].products[j]-1].img}" alt="">
@@ -330,4 +330,5 @@ function MyProfileType () {
         		</form>
         	</div>
         </div>`;
+    $('#MyAccountPage').css('height', $('#right').height()+100);
 }
