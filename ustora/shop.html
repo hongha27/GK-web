@@ -38,7 +38,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   <!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400i,700&amp;subset=vietnamese" rel="stylesheet"> -->  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/shopdata.js"></script>
   </head>
   <body onload="showProduct(1);">
@@ -298,12 +297,12 @@
                 
                 
                 function srch(){
-
+                 var search = document.getElementById('idsearch').value;
               
                 var ans = "";
                 for (var i = n; i > 0; i--) {
-                    var search = document.getElementById('idsearch').value;
-                    console.log(search);
+                   
+                    // console.log(search);
                     if(search == data[i].tenSP || search == data[i].category){
                         ans +=  `
 
@@ -333,7 +332,12 @@
                         </div>
                     `;
                     }
+                  
                 }
+                 if(search ==""){
+                        alert('không tìm thấy');
+                       
+                    }
                 document.getElementById('cacsp').innerHTML = ans;
                 }
             </script>
@@ -370,14 +374,14 @@
                             </li>
                           </ul>
                         </nav>
-                        <script type="text/javascript">
+                        <!-- <script type="text/javascript">
                             $(function(){
                                 $('.active').click(function(event){
                                     $('.ac1').addClass('actleft')
                                 });
                             });
 
-                        </script>                        
+                        </script> -->                        
                     </div>
                 </div>
             </div>
@@ -513,7 +517,8 @@
     
     <!-- Main Script -->
     <script src="js/main.js"></script>
-    
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
     <script src="js/function.js"></script>
     <script src="js/account.js"></script>
