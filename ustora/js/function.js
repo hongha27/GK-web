@@ -14,6 +14,8 @@ var sp = document.getElementById("cacsp");
                   // console.log(data[i].TT);
                   // console.log(data[i].category);
                     dssp += `
+
+                        <div class="unselectable item">
                         <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
                             <div class="single-shop-product">
                                 <div class="product-upper">
@@ -36,7 +38,7 @@ var sp = document.getElementById("cacsp");
                                  dssp +=   `
                             </div>
                         </div>
-
+                        </div>
                     `;
                 }
             }
@@ -45,7 +47,56 @@ var sp = document.getElementById("cacsp");
            //console.log(dssp + "hh");
            //alert(dssp);
         }
-       
+        var myselect = document.getElementById("selectOpt");
+            
+            function categories(){
+            // console.log(typeof myselect.options[myselect.selectedIndex].value);
+            var ans = "";
+
+            var n = data.length - 1;
+                for (var i = n; i>0; i--){
+                // console.log(data[i].category);
+                if(myselect.options[myselect.selectedIndex].value == data[i].category){
+                    ans += `
+                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
+                            <div class="single-shop-product">
+                                <div class="product-upper">
+                                    <img style= "width = "src="${data[i].img}" alt="">
+                                </div>
+                                <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
+                                </div>  `;
+                                if(data[i].TT == true){
+                               ans +=` <div class="product-option-shop ">
+                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
+                                </div>  ` ;
+                            }   
+                                 else {
+                                     ans += ` <div class="product-option-shop">
+                                    <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
+                                </div>  `;
+                                 }
+                                 ans +=   `
+                            </div>
+                        </div>
+
+                    `;
+                    }
+                    }
+
+                
+                document.getElementById("cacsp").innerHTML = ans;
+            };
+            // console.log($('.option').offset().top);
+             $(window).scroll(function(){
+                    var cart = $('.shopping-cart');
+                    if(window.pageYOffset >= 300 && window.pageYOffset <= 1500){ cart.addClass('shopping'); 
+                    $('.gh').hide();}
+                    else{ cart.removeClass('shopping');
+                    $('.gh').show();}
+
+                    });
    // chuyển array thành JSON
    //     var jsonProduct = JSON.stringify(data);
    //     var originArray = JSON.parse(jsonProduct);
@@ -53,42 +104,27 @@ var sp = document.getElementById("cacsp");
    //     for(let originObject of originArray){
    //       console.log(originObject.tenSP);
    //     }
-// làm nút qua lại// chưa xong
-// document.addEventListener('DOMContentLoaded', function(){
-//   var btn = document.querySelectorAll('.pagination ul li a span');
-//   nleft = btn[0];
-//   nright = btn[1];
-//   var slides = document.querySelectorAll('.pagination ul li a');
-//   var vtrislide = 4;
 
-//   changeslide = function(){
-//     vtrislide = vtrislide - 1;
-//     for (var i = 0; i < slides.length; i++) {
-//       if(vtrislide==0){
-//         vtrislide == slides.length - 1;
-//         slides[vtrislide].classList.add('ra');
-//       }
-//       else{
-//         slides[vtrislide].classList.add('ra');
-//       }
-//       nleft.addEventListener('click',changeslide);
-//     };
-//   }
-//     changeslide2 = function(){
-//    var slideht = document.querySelector('.pagination ul li ')
-//     for (var i = 0; i < slides.length; i++) {
-//       if(vtrislide==0){
-//         vtrislide == slides.length - 1;
-//         slides[vtrislide].classList.add('ra');
-//       }
-//       else{
-//         slides[vtrislide].classList.add('ra');
-//       }
-//       nleft.addEventListener('click',changeslide);
-//     };
-//   }
-// })
-   
+//    $(document).ready(function() {
+//     var $dragging = null;
+ 
+//     $(document.body).on("mousemove", function(e) {
+//         if ($dragging) {
+//             $dragging.offset({
+//                 top: e.pageY-50,
+//                 left: e.pageX-50
+//             });
+//         }
+//     });
+    
+//     $(document.body).on("mousedown", "div.item", function (e) {
+//         $dragging = $(e.target);
+//     });
+    
+//     $(document.body).on("mouseup", function (e) {
+//         $dragging = null;
+//     });
+// });
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Duy
 
