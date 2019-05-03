@@ -13,6 +13,7 @@
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -24,6 +25,7 @@
     
     <!-- My CSS -->
     <link rel="stylesheet" href="css/DN.css">
+    <link rel="stylesheet" href="css/duy.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -259,71 +261,155 @@
         </div>
     </div>
     
-    <div class="center-contact">
-    	<div id="left">
-    		<h1>Quản lý tài khoản</h1>
-    		<ul>
-    			<li class="active"><a href="#">Thông tin tài khoản</a></li>
-    			<li><a href="#">Lịch sử mua hàng</a></li>
-    		</ul>
-    	</div>
-    	<div id="right">
-    		<form>
-    			<h1>Thông tin tài khoản</h1>
-    			<hr class="bold"><br>
-                <div class="avataProfileForm">
-                    <img src="image/ava.png" class="imgAva" alt="">
-                    <br>
-                    <a href="#">Thay đổi ảnh đại diện.</a>
-                </div>
-                <div class="infoProfileForm">
-                    <div class="infoProfileFormLabel">
-                        <div>Họ và tên:</div>
+    <div class="center-contact" id="MyAccountPage">
+        <!-- tab 1 -->
+        <div id="ProfileInfo">
+            <div id="left">
+                <h1>Quản lý tài khoản</h1>
+                <ul>
+                    <li class="accType SelectedLi"><a href="#">Thông tin tài khoản</a></li>
+                    <li class="accType"><a href="#">Lịch sử mua hàng</a></li>
+                </ul>
+            </div>
+        	<div id="right">
+        		<form class="height650">
+        			<h1>Thông tin tài khoản</h1>
+        			<hr class="bold"><br>
+                    <div class="avataProfileForm">
+                        <img src="image/ava.png" class="imgAva" alt="">
                         <br>
-                        <div>Số điện thoại:</div>
-                        <br>
-                        <div>Email:</div>
-                        <br>
-                        <div>Ngày sinh:</div>
-                        <br>
-                        <div>Giới tính:</div>
-                        <br>
-                        <!-- <div>Thay đổi mật khẩu</div> -->
+                        <a href="#" class="UndLine">Thay đổi ảnh đại diện.</a>
                     </div>
-                    <div class="infoProfileFormText">
-                        <input type="text" size="40">
-                        <br>
-                        <input type="text" size="40">
-                        <br>
-                        <input type="text" size="40">
-                        <br>
-                        <input type="date" style="width: 303px;">
-                        <br>
-                        <input type="radio"><h> Nam</h>
-                        <input type="radio"><h> Nữ</h>
-                        <br>
+                    
+                    <div class="ProfileInfo container">
+                        <div class="height50 row">
+                            <div class="col-md-3">Họ và tên:</div> 
+                            <div class="col-md-3">
+                                <input type="text" size="45" placeholder="Nhập tên mới" class="Profile">
+                            </div>
+                        </div> 
+                        <div class="height50 row">
+                            <div class="col-md-3">Số điện thoại:</div> 
+                            <div class="col-md-3">
+                                <input type="text" size="45" placeholder="Nhập số điện thoại mới" class="Profile">
+                            </div>
+                        </div> 
+                        <div class="height50 row">
+                            <div class="col-md-3">Email:</div> 
+                            <div class="col-md-3">
+                                <input type="text" size="45" placeholder="Nhập email mới" class="Profile">
+                            </div>
+                        </div> 
+                        <div class="height50 row"> 
+                            <div class="col-md-3">Ngày sinh:</div> 
+                            <div class="col-md-3">
+                                <input type="date" class="Profile width350">
+                            </div>
+                        </div> 
+                        <div class="height50 row">
+                            <div class="col-md-3">Giới tính:</div> 
+                            <div class="col-md-2">
+                                <input type="radio"> Nam
+                            </div>
+                            <div class="col-md-2">
+                                <input type="radio"> Nữ 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 width570">
+                                <form method="post" action="#" class="shipping_calculator">
+                                    <h2><a class="UndLine shipping-calculator-button" data-toggle="collapse" href="#calcalute-shipping-wrap" aria-expanded="false" aria-controls="calcalute-shipping-wrap">Thay đổi mật khẩu</a></h2>
 
+                                    <section id="calcalute-shipping-wrap" class="shipping-calculator-form collapse">
+                                    <div class="height50 row">
+                                        <div class="col-md-4">Mật khẩu hiện tại:</div> 
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Nhập mật khẩu hiệu tại" size="45" class="Profile">
+                                        </div>
+                                    </div>
+                                    <div class="height50 row">
+                                        <div class="col-md-4">Mật khẩu mới:</div> 
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Nhập mật khẩu mới" size="45" class="Profile">
+                                        </div>
+                                    </div>
+                                    <div class="height50 row"> 
+                                        <div class="col-md-4">Nhập lại mật khẩu:</div> 
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Nhập lại mật khẩu mới" size="45" class="Profile">
+                                        </div>
+                                    </div>
+                                    </section>
+                                </form>
+                            </div>
+                            <div class="LineBtnUpdate height50 row">
+                                <div class="col-md-5"></div>
+                                <div style="" class="col-md-2">
+                                    <input type="button" class="BtnUpdate" value="Cập nhật">
+                                </div>
+                                <div class="col-md-5"></div>
+                            </div> 
+                        </div>
                     </div>
-                    <!-- <input type="checkbox"> I have my Bill ID
-                    <br>
-                    <input type="text" name="Bill ID">
-                    <br>
-                    <span>Name:</span>
-                    <br>
-                    <input type="text" name="username">
-                    <br>
-                    <span>Email Address:</span>
-                    <br>
-                    <input type="text" name="email">
-                    <br>
-                    <span>Tell us your concerns:</span>
-                    <br>
-                    <textarea id="feedback" cols="30" rows="5"></textarea>
-                    <br>
-                    <input type="submit" value="Submit"> -->
-                </div>
-    		</form>
-    	</div>
+                    
+        		</form>
+        	</div>
+        </div>
+        <!-------------------------------------------- Tab 2 -------------------------------------------------->
+        <!-- <div id="HistoryBills">
+            <div id="left">
+                <h1>Quản lý tài khoản</h1>
+                <ul>
+                    <li class="accType"><a href="#">Thông tin tài khoản</a></li>
+                    <li class="accType SelectedLi"><a href="#">Lịch sử mua hàng</a></li>
+                </ul>
+            </div>
+            <div id="right">
+                <form class="ProHeight">
+                    <h1>Lịch sử mua hàng</h1>
+                    <hr class="bold"><br>
+                    <div>
+                        <div class="AutoWidth container">
+                            <div class="row">
+                                <div class="LabelBillCode col-md-2">Mã đơn hàng: </div>
+                                <div class="BillCode col-md-2">#694263235</div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-2">Trạng thái: </div>
+                                <div class="BillCode col-md-2">Đang giao hàng</div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="TextAlign BoderLeft BoderTop Border col-md-2">Hình ảnh</div>
+                                <div style="" class="BoderTop Border col-md-4">Tên sản phẩm</div>
+                                <div class="width12 BoderTop Border col-md-2">số lượng</div>
+                                <div class="width18 BoderTop Border col-md-2">đơn giá</div>
+                                <div class="width20 BoderTop Border col-md-2">Tổng</div>
+                            </div>
+                            <div class="row">
+                                <div class="TextAlign OldBill BoderLeft Border col-md-2">
+                                    <img src="Book/theloaikhac/4.jpg" alt="">
+                                </div>
+                                <div class="OldBill Border col-md-4">Sách vở như cc, đm sách vở như cc</div>
+                                <div class="width12 OldBill Border col-md-2">2</div>
+                                <div class="width18 OldBill Border col-md-2">500.000 VND</div>
+                                <div class="width20 OldBill Border col-md-2">1 củ</div>
+                            </div>
+                            <div class="row">
+                                <div class="BoderLeft Border col-md-6">
+                                    Đã áp dụng mã giảm giá
+                                </div>
+                                <div class="Border col-md-6">
+                                    Tổng đơn hàng
+                                </div>
+                            </div>
+                        </div>
+                        <br><hr class="half"><br>
+                    </div> -->
+                    
+                    
+                </form>
+            </div>
+        </div>
     </div>
     <div class="footer-top-area">
         <div class="zigzag-bottom"></div>
@@ -451,5 +537,6 @@
     <script src="js/DN.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
 </body>
 </html>
