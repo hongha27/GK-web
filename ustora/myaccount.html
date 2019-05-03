@@ -33,7 +33,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body onload="MyProfileType();LoadUser();RefreshShopCart();">
     <div class="modal fade" id="myModal" role="dialog">
         <div class="container">
             <div class="box-center" id="dangNhap">
@@ -263,14 +263,16 @@
     
     <div class="center-contact" id="MyAccountPage">
         <!-- tab 1 -->
-        <div id="ProfileInfo">
-            <div id="left">
-                <h1>Quản lý tài khoản</h1>
+        <div id="left">
+            <h1>Quản lý tài khoản</h1>
+            <div>
                 <ul>
-                    <li class="accType SelectedLi"><a href="#">Thông tin tài khoản</a></li>
-                    <li class="accType"><a href="#">Lịch sử mua hàng</a></li>
+                    <li class="accType SelectedLi"><a href="myaccount.html?tab=MyProfile">Thông tin tài khoản</a></li>
+                    <li class="accType"><a href="myaccount.html?tab=OldBills">Lịch sử mua hàng</a></li>
                 </ul>
             </div>
+        </div>
+        <div id="ProfileInfo">
         	<div id="right">
         		<form class="height650">
         			<h1>Thông tin tài khoản</h1>
@@ -355,6 +357,96 @@
         		</form>
         	</div>
         </div>
+        
+        <!-- <div id="HistoryBills">
+            <div id="right">
+                <form class="ProHeight">
+                    <h1>Lịch sử mua hàng</h1>
+                    <hr class="bold"><br>
+                    <div>
+                        <div class="AutoWidth container">
+                            <div class="row">
+                                <div class="LabelBillCode col-md-2">Mã đơn hàng: </div>
+                                <div class="BillCode col-md-2">#694263235</div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-2">Trạng thái: </div>
+                                <div class="BillCode col-md-2">Đang giao hàng</div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="TextAlign BoderLeft BoderTop Border col-md-2">Hình ảnh</div>
+                                <div style="" class="BoderTop Border col-md-4">Tên sản phẩm</div>
+                                <div class="width12 BoderTop Border col-md-2">số lượng</div>
+                                <div class="width18 BoderTop Border col-md-2">đơn giá</div>
+                                <div class="width20 BoderTop Border col-md-2">Tổng</div>
+                            </div>
+                            <div class="row">
+                                <div class="TextAlign OldBill BoderLeft Border col-md-2">
+                                    <img src="Book/theloaikhac/4.jpg" alt="">
+                                </div>
+                                <div class="OldBill Border col-md-4">Sách vở như cc, đm sách vở như cc</div>
+                                <div class="width12 OldBill Border col-md-2">2</div>
+                                <div class="width18 OldBill Border col-md-2">500.000 VND</div>
+                                <div class="width20 OldBill Border col-md-2">1 củ</div>
+                            </div>
+                            <div class="row">
+                                <div class="BoderLeft Border col-md-6">
+                                    Đã áp dụng mã giảm giá
+                                </div>
+                                <div class="Border col-md-6">
+                                    Tổng đơn hàng
+                                </div>
+                            </div>
+                        </div>
+                        <br><hr class="half"><br>
+                    </div>
+                    
+                    
+                </form>
+            </div>
+        </div> -->
+
+        <!-- <div id="right">
+                <form class="ProHeight">
+                    <h1>Lịch sử mua hàng</h1>
+                    <hr class="bold"><br>
+                    <div>
+                        <div class="AutoWidth container">
+                            <div class="row">
+                                <div class="LabelBillCode col-md-2">Mã đơn hàng: </div>
+                                <div class="BillCode col-md-2">#694263235</div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-2">Trạng thái: </div>
+                                <div class="BillCode col-md-2">Đang giao hàng</div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="TextAlign BoderLeft BoderTop Border col-md-2">Hình ảnh</div>
+                                <div style="" class="BoderTop Border col-md-4">Tên sản phẩm</div>
+                                <div class="width12 BoderTop Border col-md-2">số lượng</div>
+                                <div class="width18 BoderTop Border col-md-2">đơn giá</div>
+                                <div class="width20 BoderTop Border col-md-2">Tổng</div>
+                            </div>
+                            <div class="row">
+                                <div class="TextAlign OldBill BoderLeft Border col-md-2">
+                                    <img src="Book/theloaikhac/4.jpg" alt="">
+                                </div>
+                                <div class="OldBill Border col-md-4">Sách vở như cc, đm sách vở như cc</div>
+                                <div class="width12 OldBill Border col-md-2">2</div>
+                                <div class="width18 OldBill Border col-md-2">500.000 VND</div>
+                                <div class="width20 OldBill Border col-md-2">1 củ</div>
+                            </div>
+                            <div class="row">
+                                <div class="BoderLeft Border col-md-6">
+                                    Đã áp dụng mã giảm giá
+                                </div>
+                                <div class="Border col-md-6">
+                                    Tổng đơn hàng
+                                </div>
+                            </div>
+                        </div>
+                        <br><hr class="half"><br>
+                    </div>  -->
         <!-------------------------------------------- Tab 2 -------------------------------------------------->
         <!-- <div id="HistoryBills">
             <div id="left">
@@ -404,12 +496,12 @@
                             </div>
                         </div>
                         <br><hr class="half"><br>
-                    </div> -->
+                    </div>
                     
                     
                 </form>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="footer-top-area">
         <div class="zigzag-bottom"></div>

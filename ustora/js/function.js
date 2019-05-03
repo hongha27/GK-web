@@ -134,7 +134,7 @@ var CurrentCart = [];
 var Total = 0;
 
 function MoneyShow(val) {
-  return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+    return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')+' VNĐ';
 }
 
 function showLike (index, cnt = 4){
@@ -170,7 +170,7 @@ function showLike (index, cnt = 4){
                         </div>
                         <h2 style="height: 50px;"><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
                         <div class="product-carousel-price">
-                            <ins>${MoneyShow(data[i].sale)} đ</ins> <del>${MoneyShow(data[i].gia)} đ</del>
+                            <ins>${MoneyShow(data[i].sale)}</ins> <del>${MoneyShow(data[i].gia)}</del>
                         </div>  `;
                         if(data[i].TT == true){
                        dssp +=` <div class="product-option-shop ">
@@ -202,7 +202,7 @@ function productLeft (val = data,index = 0, cnt = 4) {
               <img src="${val[i].img}" class="recent-thumb" alt="">
               <h2><a href="single-product.html?id=${data[i].id}">${val[i].tenSP}</a></h2>
               <div class="product-sidebar-price">
-                  <ins>${MoneyShow(val[i].gia)} VNĐ</ins> <del>${MoneyShow(val[i].sale)} VNĐ</del>
+                  <ins>${MoneyShow(val[i].gia)}</ins> <del>${MoneyShow(val[i].sale)}</del>
               </div>                             
             </div>
           `;
@@ -251,8 +251,7 @@ $(document).ready(function () {
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('myaccount.html') != -1) 
     {
-        LoadUser();
-        RefreshShopCart();
+        
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('index.html') != -1) 
     {
@@ -375,7 +374,7 @@ function showBill (user = "duynm619") {
               </td>
 
               <td class="product-price">
-                  <span class="amount">${MoneyShow(Math.min(val.sale,val.gia))} VNĐ</span> 
+                  <span class="amount">${MoneyShow(Math.min(val.sale,val.gia))}</span> 
               </td>
 
               <td class="product-quantity">
@@ -387,7 +386,7 @@ function showBill (user = "duynm619") {
               </td>
 
               <td class="product-subtotal">
-                  <span class="amount">${MoneyShow(Object.values(CurrentCart[i])*Math.min(val.sale,val.gia))} VND</span> 
+                  <span class="amount">${MoneyShow(Object.values(CurrentCart[i])*Math.min(val.sale,val.gia))}</span> 
               </td>
             </tr>
          `;
@@ -481,7 +480,7 @@ function showBill (user = "duynm619") {
       FeeShip.innerHTML = 'Miễn Phí';
   else
   {
-      FeeShip.innerHTML = '500.000 VND';
+      FeeShip.innerHTML = '500.000 VNĐ';
       Total+=500000;
   }
   if (localStorage.coupon)
@@ -496,7 +495,7 @@ function showBill (user = "duynm619") {
       else
       {
           Total = Math.max(Total - +localStorage.coupon,0);
-          cp += MoneyShow(localStorage.coupon) + ' VND';
+          cp += MoneyShow(localStorage.coupon);
       }
       cp += " (mã khác)";
   }
@@ -504,8 +503,8 @@ function showBill (user = "duynm619") {
       cp = "Mã giảm giá";
 
   CartShow.innerHTML = ans;
-  STotal.innerHTML = MoneyShow(Total)+" VNĐ";
-  document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
+  STotal.innerHTML = MoneyShow(Total);
+  document.getElementById("TotalMoney").innerHTML = MoneyShow(Total);
   // document.getElementById("NumProduct").innerHTML = Object.values(CurrentCart).reduce((a,b) => (-~+a?+a:-~+a)+(-~+b?+b:-~+b));
   document.getElementById("NumProduct").innerHTML = CurrentCart.length;
   document.getElementById('coupon_code').placeholder = cp;
@@ -547,7 +546,7 @@ function RefreshShopCart (user = "duynm619") {
   }
   if (JSON.parse(localStorage["Ship"])[0]["country"] !=  'VN')
       Total+=500000;
-  document.getElementById("TotalMoney").innerHTML = MoneyShow(Total)+" VNĐ";
+  document.getElementById("TotalMoney").innerHTML = MoneyShow(Total);
   document.getElementById("NumProduct").innerHTML = CurrentCart.length;
 }
 
