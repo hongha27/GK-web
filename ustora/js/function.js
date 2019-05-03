@@ -736,7 +736,7 @@ function findId(){
   var ans="";
   ans+=`
     <div class="product-breadcroumb">
-      <a href="index.html">Home</a>
+      <a href="index.html">Trang chủ</a>
       <a href="">${data[tmp-1].category}</a>
       <a href="">${data[tmp-1].tenSP}</a>
     </div>
@@ -753,39 +753,39 @@ function findId(){
       <div class="product-inner">
         <h2 class="product-name">${data[tmp-1].tenSP}</h2>
         <div class="product-inner-price">
-          <ins>${data[tmp-1].gia}</ins> <del>${data[tmp-1].sale}</del>
+          <ins>${data[tmp-1].gia} VNĐ</ins> <del>${data[tmp-1].sale} VNĐ</del>
         </div>    
                                     
         <form action="" class="cart">
           <div class="quantity">
             <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
           </div>
-          <button class="add_to_cart_button" type="submit">Add to cart</button>
+          <button class="add_to_cart_button" type="submit">Thêm vào giỏ</button>
         </form>   
                                     
           <div class="product-inner-category">
-            <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+            <p>Category: <a href="">Summer</a>. Tags: <a href="">${data[i].Tag[0]}</a>, <a href="">${data[i].Tag[1]}</a>, <a href="">${data[i].Tag[2]}</a></p>
           </div> 
                                     
           <div role="tabpanel">
             <ul class="product-tab" role="tablist">
-              <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
-              <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
+              <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Mô tả</a></li>
+              <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Đánh giá</a></li>
             </ul>
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="home">
-              <h2>Product Description</h2>  
+              <h2>Chi tiết sản phẩm</h2>  
                <p>${data[tmp-1].ND}</p>
 
                <p>${data[tmp-1].TG}</p>
             </div>
           <div role="tabpanel" class="tab-pane fade" id="profile">
-            <h2>Reviews</h2>
+            <h2>Đánh giá</h2>
             <div class="submit-review">
-              <p><label for="name">Name</label> <input name="name" type="text"></p>
+              <p><label for="name">Tên</label> <input name="name" type="text"></p>
               <p><label for="email">Email</label> <input name="email" type="email"></p>
             <div class="rating-chooser">
-            <p>Your rating</p>
+            <p>Xếp hạng</p>
 
             <div class="rating-wrap-post">
              <i class="fa fa-star"></i>
@@ -795,10 +795,63 @@ function findId(){
              <i class="fa fa-star"></i>
             </div>
            </div>
-          <p><label for="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
-          <p><input type="submit" value="Submit"></p>
+          <p><label for="review">Đánh giá của bạn</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
+          <p><input type="submit" value="Gửi"></p>
         </div>
        </div>
   `
   test.innerHTML=ans;
+}
+function changeContact(){
+  var tmp = new URLSearchParams(window.location.search).get('id') || "";
+  var ans="";
+  switch (tmp){
+    case "account":
+    ans+=`
+      <li><a href="#">Làm thế nào để đăng nhập khi tôi quên mật khẩu?</a></li>
+      <li><a href="#">Làm thế nào để thay đổi số điện thoại đăng ký tài khoản?</a></li>
+      <li><a href="#">Làm thế nào để cập nhật email gắn với tài khoản của tôi?</a></li>
+      <li><a href="#">CHÍNH SÁCH BẢO HÀNH TẠI SHOP</a></li>
+      <li><a href="#">Làm thế nào để liên hệ với bộ phận Chăm Sóc Khách Hàng của Shop?</a></li>
+      <li><a href="#">Làm thế nào để đổi được mật khẩu?</a></li>
+    `
+    break;
+    case "bill":
+    ans+=`
+      <li><a href="#">Hướng dẫn mua hàng tại Shopee</a></li>
+      <li><a href="#">Shopee hỗ trợ những hình thức thanh toán nào?</a></li>
+      <li><a href="#">Làm sao liên kết tài khoản ngân hàng với Ví Airpay?</a></li>
+      <li><a href="#">Làm sao để nạp tiền vào Ví AirPay?</a></li>
+      <li><a href="#">Ví Điện tử AirPay là gì?</a></li>
+    `
+    break;
+    case "transpot":
+    ans+=`
+      <li><a href="#">Làm thế nào để kích hoạt đơn vị vận chuyển?</a></li>
+      <li><a href="#">Tôi có thể sử dụng dịch vụ vận chuyển của những đơn vị nào?</a></li>
+      <li><a href="#">Làm thế nào để sử dụng tính năng ‘Khuyến mãi phí vận chuyển’?</a></li>
+      <li><a href="#">Khi có sự cố vận chuyển xảy ra, tôi nên liên hệ bộ phận nào?</a></li>
+      <li><a href="#">Quy cách đóng gói hàng hóa để vận chuyển như thế nào?</a></li>
+    `
+    break;
+    case "refund":
+    ans+=`
+      <li><a href="#">Tôi có thể tự gửi hàng về cho Shop không?</a></li>
+      <li><a href="#">Tôi phải làm gì khi muốn trả hàng hoàn tiền?</a></li>
+      <li><a href="#">Tôi cần cung cấp những bằng chứng gì cho Shop để hỗ trợ giải quyết tranh chấp?</a></li>
+      <li><a href="#">Tôi không có tài khoản ngân hàng, làm sao để nhận được tiền hoàn lại?</a></li>
+      <li><a href="#">Tôi đồng ý với yêu cầu trả hàng/hoàn tiền của Người mua. Tôi cần phải làm gì?</a></li>
+      <li><a href="#">Tôi nên làm gì nếu nhận được yêu cầu trả hàng/hoàn tiền từ Người mua vì không nhận được hàng?</a></li>
+    `
+    break;
+    default:
+      ans+=`
+        <li><a href="#">Hướng dẫn mua hàng tại Shop</a></li>
+        <li><a href="#">Chính sách trả hàng của Shop là gì?</a></li>
+        <li><a href="#">Vì sao tôi không thể lựa chọn hình thức thanh toán khi nhận hàng (COD)?</a></li>
+        <li><a href="#">Tôi không đăng nhập Shopee được với số điện thoại đã đăng kí?</a></li>
+        <li><a href="#">Thời gian vận chuyển hàng qua Shopee là bao lâu?</a></li>
+      `
+  }
+  ques.innerHTML=ans;
 }
