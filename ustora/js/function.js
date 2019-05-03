@@ -235,48 +235,40 @@ $(document).ready(function () {
         productLeft();
         recemtPost();
         showBill();
-        LoadUser();
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('checkout.html') != -1) 
     {
         productLeft();
         recemtPost();
-        RefreshShopCart();
-        LoadUser();
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('contact.html') != -1) 
     {
-        LoadUser();
-        RefreshShopCart();
+
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('myaccount.html') != -1) 
     {
-        // LoadUser();
-        // RefreshShopCart();
+
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('index.html') != -1) 
     {
         ListProductsLast();
         ListProduct1();ListProduct2();
         ListProduct3();
-        LoadUser();
-        RefreshShopCart()
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('shop.html') != -1) 
     {
-        LoadUser();
-        RefreshShopCart();
+
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('single-product.html') != -1) 
     {
-        LoadUser();
-        RefreshShopCart();
-        
+
     }
+    LoadUser();
+    RefreshShopCart();
 });
 
 function checkLog () {
-    if(localStorage.user)
+    if (localStorage.user)
         document.location = "myaccount.html";
     else
         alert('Bạn chưa đăng nhập.')

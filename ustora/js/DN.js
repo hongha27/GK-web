@@ -27,7 +27,7 @@ $(function(){
 		localStorage.removeItem('user');
 		LoadUser(); 
 		location.reload();
-		if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('myaccount.html') != -1)
+		if (document.URL.substring(document.URL.lastIndexOf('?')).toString().includes('myaccount.html') != -1)
 			document.location = "index.html";
 	});
 	$('.QPw').click(function(event) {
@@ -152,6 +152,13 @@ $(function(){
 	});
 });
 
+function ToHistory () {
+	if (localStorage.user)
+		document.location = "myaccount.html?tab=OldBills";
+	else
+		alert('Bạn chưa đăng nhập.')
+}
+
 function MyProfileType () {
 	var val = "", page = new URLSearchParams(window.location.search).get('tab');
 	var CurrentUser = accounts.find(function (valid) { return valid.username == localStorage.user; });
@@ -207,7 +214,7 @@ function MyProfileType () {
                                 <a href="single-product.html?id=${Bills[i].products[j]}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
                                     <img src="${data[+Bills[i].products[j]-1].img}" alt="">
                                 </div></a>
-                                <a href="#"><div class="OldBill Border col-md-4">${data[+Bills[i].products[j]-1].tenSP}</div></a>
+                                <a href="single-product.html?id=${Bills[i].products[j]}"><div class="OldBill Border col-md-4">${data[+Bills[i].products[j]-1].tenSP}</div></a>
                                 <div class="width12 OldBill Border col-md-2">${Bills[i].number[j]}</div>
                                 <div class="width18 OldBill Border col-md-2">${MoneyShow(data[+Bills[i].products[j]-1].gia)}</div>
                                 <div class="width20 OldBill Border col-md-2">${MoneyShow(data[+Bills[i].products[j]-1].gia*Bills[i].number[j])}</div>
