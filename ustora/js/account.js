@@ -22,7 +22,7 @@ var accounts = [
 		password: "123123123",
 		role: "customer",
 		status: false,
-		img : "image/main.png",
+		img : "image/poro.jpg",
 		// infomation
 		first_name: "Nguyễn Minh Duy",
 		gender: "Nam",
