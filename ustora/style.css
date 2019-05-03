@@ -152,11 +152,14 @@ text-transform: uppercase;
 width: 100%;
 z-index: 999;}
 
-
+.logo{
+  float: left;
+}
 
 .logo h1 {
     font-size: 40px;
     margin: 30px 0;font-weight: 400;
+    border-right: 1px groove;
 }
 .logo h1 a {
     color: #999;
@@ -165,6 +168,13 @@ z-index: 999;}
 .logo h1 a span {
     color: #5a88ca;
 }
+.help{
+    float: left;
+    padding-top: 56px;
+    padding-left: 10px;
+    color: red;
+}
+
 .shopping-item {
     border: 1px solid #ddd;
     float: right;
@@ -758,14 +768,16 @@ width: 10px;
   margin: 10px 0 0;
 }
 
-.product-big-title-area {background: url(img/crossword.png) repeat scroll 0 0 #5a88ca}
+.product-big-title-area {
+  background: url(img/crossword.png) repeat scroll 0 0 #5a88ca;
+}
 
 .product-bit-title h2 {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 50px;
   font-weight: 350;
   margin: 0;
-  padding: 50px 0;
+  padding: 30px 0;
   color: #fff;
 }
 
@@ -1405,4 +1417,15 @@ div.unselectable {
     width: 30%;
     float: right;
     margin-right: 33%;
+}
+.container-question{
+  float: left;
+  padding-left: 50px;
+  font-size: 23px;
+}
+.container-question li{
+  list-style-type: none;
+  border-bottom: 1px groove;
+  margin: auto;
+  padding: 20px;
 }

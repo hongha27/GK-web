@@ -8,7 +8,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 	},
 	{
@@ -20,7 +21,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : false,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -33,7 +35,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -46,7 +49,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -59,7 +63,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -72,7 +77,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -85,7 +91,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -98,7 +105,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : false,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -111,7 +119,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -124,7 +133,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -137,7 +147,8 @@ var data = [
 		category: "Khác",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -150,7 +161,8 @@ var data = [
 		category: "Khác",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -163,7 +175,8 @@ var data = [
 		category: "Khác",
 		TT : false,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -176,7 +189,8 @@ var data = [
 		category: "Khác",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -189,7 +203,8 @@ var data = [
 		category: "Khác",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -202,7 +217,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -215,7 +231,8 @@ var data = [
 		category: "Ngôn Tình",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -228,7 +245,8 @@ var data = [
 		category: "Khác",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -241,7 +259,8 @@ var data = [
 		category: "Khác",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -254,7 +273,8 @@ var data = [
 		category: "Khác",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -267,7 +287,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -280,7 +301,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -293,7 +315,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -306,7 +329,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -319,7 +343,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -332,7 +357,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -345,7 +371,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -358,7 +385,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -371,7 +399,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -384,7 +413,8 @@ var data = [
 		category: "Trẻ Em",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -397,7 +427,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -410,7 +441,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -423,7 +455,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -436,7 +469,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -449,7 +483,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -463,7 +498,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -476,7 +512,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : false,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -489,7 +526,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -502,7 +540,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : true,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
@@ -515,7 +554,8 @@ var data = [
 		category: "Truyện Tranh",
 		TT : false,
 		ND : "a",
-		TG : "a"
+		TG : "a",
+		Tag : ["giảm giá","bán chạy","mới nhất"]
 
 
 	},
