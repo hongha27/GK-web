@@ -251,8 +251,7 @@ $(document).ready(function () {
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('myaccount.html') != -1) 
     {
-        LoadUser();
-        RefreshShopCart();
+        
     }
     if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('index.html') != -1) 
     {
