@@ -1398,21 +1398,21 @@ div.unselectable {
 }
 .btnse{
   float: right;
-  /* margin-bottom: -11px; */
+ 
   margin-top: -52px;
   color: #04040c;
   position: relative;
   background-color: #d2e8f1;
   padding-top: 8px;
   padding-bottom: 8px;
-  /* margin-top: -9px; */
+
   padding-right: 20px;
-  /* text-align: center; */
+
   padding-left: 20px;
-  /* margin-bottom: 12px; */
+
   font-size: 15px;
 }
-.single-sidebar {
+.single {
     margin-bottom: 50px;
     width: 30%;
     float: right;
