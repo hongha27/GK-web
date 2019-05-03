@@ -4,6 +4,7 @@
     float: left;
     margin-right: 15px;
 }
+<<<<<<< Updated upstream
 .avataProfileForm{
     float: left; 
     width: 30%; 
@@ -69,6 +70,8 @@ hr.bold{
     display: block;
     margin: 0 auto 15px;
 }
+=======
+>>>>>>> Stashed changes
 a:focus { outline: 0px solid }
 img {
     max-width: 100%;

@@ -7,28 +7,25 @@ var accounts = [
 		status: false,
 		img : "image/ava.png",
 		// infomation
-		first_name: "Nguyễn",
-		last_name: "Minh Duy",
+		name: "Nguyễn Minh Duy",
+		gender: "Nam",
 		state: "Vietnam",
 		email: "minhduynguyen10@gmail.com",
 		phone: "0933047332",
 		born: "06/11/1999"
 
-		// odered
-		// odereList = [{},{}]
-
 
 	},
 	{
-		id: 1,
+		id: 2,
 		username: "minhduy",
 		password: "123123123",
 		role: "customer",
 		status: false,
 		img : "image/main.png",
 		// infomation
-		first_name: "Nguyễn",
-		last_name: "Minh Duy",
+		first_name: "Nguyễn Minh Duy",
+		gender: "Nam",
 		state: "Vietnam",
 		email: "minhduynguyen10@gmail.com",
 		phone: "0933047332",
