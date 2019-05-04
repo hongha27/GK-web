@@ -1,4 +1,3 @@
-
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Hà
 
@@ -6,14 +5,14 @@
 var idpr = document.getElementById("showsp");
 var sp = document.getElementById("cacsp");
 
-        
-        function showProduct (index){
-            var dssp = "";
-            if(data.length != 0){
-                for(var i = (index-1)*10; i < index*10; i++ ){
-                  // console.log(data[i].TT);
-                  // console.log(data[i].category);
-                    dssp += `
+
+function showProduct(index) {
+  var dssp = "";
+  if (data.length != 0) {
+    for (var i = (index - 1) * 10; i < index * 10; i++) {
+      // console.log(data[i].TT);
+      // console.log(data[i].category);
+      dssp += `
 
                         <div class="unselectable item">
                         <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
@@ -25,39 +24,38 @@ var sp = document.getElementById("cacsp");
                                 <div class="product-carousel-price">
                                     <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
                                 </div>  `;
-                                if(data[i].TT == true){
-                               dssp +=` <div class="product-option-shop ">
+      if (data[i].TT == true) {
+        dssp += ` <div class="product-option-shop ">
                                     <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
-                                </div>  ` ;
-                            }   
-                                 else {
-                                     dssp += ` <div class="product-option-shop">
+                                </div>  `;
+      } else {
+        dssp += ` <div class="product-option-shop">
                                     <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
                                 </div>  `;
-                                 }
-                                 dssp +=   `
+      }
+      dssp += `
                             </div>
                         </div>
                         </div>
                     `;
-                }
-            }
-           //console.log(data);
-           sp.innerHTML = dssp;
-           //console.log(dssp + "hh");
-           //alert(dssp);
-        }
-        var myselect = document.getElementById("selectOpt");
-            
-            function categories(){
-            // console.log(typeof myselect.options[myselect.selectedIndex].value);
-            var ans = "";
+    }
+  }
+  //console.log(data);
+  sp.innerHTML = dssp;
+  //console.log(dssp + "hh");
+  //alert(dssp);
+}
+var myselect = document.getElementById("selectOpt");
 
-            var n = data.length - 1;
-                for (var i = n; i>0; i--){
-                // console.log(data[i].category);
-                if(myselect.options[myselect.selectedIndex].value == data[i].category){
-                    ans += `
+function categories() {
+  // console.log(typeof myselect.options[myselect.selectedIndex].value);
+  var ans = "";
+
+  var n = data.length - 1;
+  for (var i = n; i > 0; i--) {
+    // console.log(data[i].category);
+    if (myselect.options[myselect.selectedIndex].value == data[i].category) {
+      ans += `
                         <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
                             <div class="single-shop-product">
                                 <div class="product-upper">
@@ -67,47 +65,49 @@ var sp = document.getElementById("cacsp");
                                 <div class="product-carousel-price">
                                     <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
                                 </div>  `;
-                                if(data[i].TT == true){
-                               ans +=` <div class="product-option-shop ">
+      if (data[i].TT == true) {
+        ans += ` <div class="product-option-shop ">
                                     <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
-                                </div>  ` ;
-                            }   
-                                 else {
-                                     ans += ` <div class="product-option-shop">
+                                </div>  `;
+      } else {
+        ans += ` <div class="product-option-shop">
                                     <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
                                 </div>  `;
-                                 }
-                                 ans +=   `
+      }
+      ans += `
                             </div>
                         </div>
 
                     `;
-                    }
-                    }
+    }
+  }
 
-                
-                document.getElementById("cacsp").innerHTML = ans;
-            };
-            // console.log($('.option').offset().top);
-             $(window).scroll(function(){
-                    var cart = $('.shopping-cart');
-                    if(window.pageYOffset >= 300 && window.pageYOffset <= 1500){ cart.addClass('shopping'); 
-                    $('.gh').hide();}
-                    else{ cart.removeClass('shopping');
-                    $('.gh').show();}
 
-                    });
-   // chuyển array thành JSON
-   //     var jsonProduct = JSON.stringify(data);
-   //     var originArray = JSON.parse(jsonProduct);
-   //    // console.log(jsonProduct);
-   //     for(let originObject of originArray){
-   //       console.log(originObject.tenSP);
-   //     }
+  document.getElementById("cacsp").innerHTML = ans;
+};
+// console.log($('.option').offset().top);
+$(window).scroll(function () {
+  var cart = $('.shopping-cart');
+  if (window.pageYOffset >= 300 && window.pageYOffset <= 1500) {
+    cart.addClass('shopping');
+    $('.gh').hide();
+  } else {
+    cart.removeClass('shopping');
+    $('.gh').show();
+  }
+
+});
+// chuyển array thành JSON
+//     var jsonProduct = JSON.stringify(data);
+//     var originArray = JSON.parse(jsonProduct);
+//    // console.log(jsonProduct);
+//     for(let originObject of originArray){
+//       console.log(originObject.tenSP);
+//     }
 
 //    $(document).ready(function() {
 //     var $dragging = null;
- 
+
 //     $(document.body).on("mousemove", function(e) {
 //         if ($dragging) {
 //             $dragging.offset({
@@ -116,11 +116,11 @@ var sp = document.getElementById("cacsp");
 //             });
 //         }
 //     });
-    
+
 //     $(document.body).on("mousedown", "div.item", function (e) {
 //         $dragging = $(e.target);
 //     });
-    
+
 //     $(document.body).on("mouseup", function (e) {
 //         $dragging = null;
 //     });
@@ -134,35 +134,35 @@ var CurrentCart = [];
 var Total = 0;
 
 function MoneyShow(val) {
-  return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')+' VNĐ';
+  return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' VNĐ';
 }
 
-function showLike (index, cnt = 4){
-    var dssp = "";
-    if(data.length != 0){
-        var c = Math.max((Math.random()*data.length-cnt)|0,1);
-        // console.log(c);
-        // console.log(data[c]);
-        for(var i = c; i < data.length && cnt > 0; i++ ){
-          if (data[i].TT  == true){
-            cnt--;
-             // dssp += `<div class="single-product">
-             //          <div class="product-f-image">
-             //            <img style=" height: 200px;" src="${data[i].img}"alt="">
-             //            <div class="product-hover">
-             //              <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
-             //                  <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
-             //              <a class="view-details-link" href="single-product.html?id=${data[i].id}">
-             //              <i class="fa fa-link"></i>Thông tin</a>
-             //            </div>
-             //          </div>
-             //          <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
-             //          <div class="product-carousel-price">
-             //            <ins>${MoneyShow(data[i].gia)}</ins>
-             //            <del>${MoneyShow(data[i].sale)}</del>
-             //          </div>
-             //        </div>`;
-            dssp += `
+function showLike(index, cnt = 4) {
+  var dssp = "";
+  if (data.length != 0) {
+    var c = Math.max((Math.random() * data.length - cnt) | 0, 1);
+    // console.log(c);
+    // console.log(data[c]);
+    for (var i = c; i < data.length && cnt > 0; i++) {
+      if (data[i].TT == true) {
+        cnt--;
+        // dssp += `<div class="single-product">
+        //          <div class="product-f-image">
+        //            <img style=" height: 200px;" src="${data[i].img}"alt="">
+        //            <div class="product-hover">
+        //              <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
+        //                  <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+        //              <a class="view-details-link" href="single-product.html?id=${data[i].id}">
+        //              <i class="fa fa-link"></i>Thông tin</a>
+        //            </div>
+        //          </div>
+        //          <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+        //          <div class="product-carousel-price">
+        //            <ins>${MoneyShow(data[i].gia)}</ins>
+        //            <del>${MoneyShow(data[i].sale)}</del>
+        //          </div>
+        //        </div>`;
+        dssp += `
                 <div style="width: 200px;height: 320px;px;margin-left: 15px;" class="col-md-3 col-sm-6 product" id - ${data[i].id}>
                     <div class="single-shop-product">
                         <div class="product-upper">
@@ -172,31 +172,29 @@ function showLike (index, cnt = 4){
                         <div class="product-carousel-price">
                             <ins>${MoneyShow(data[i].sale)}</ins> <del>${MoneyShow(data[i].gia)}</del>
                         </div>  `;
-                        if(data[i].TT == true){
-                       dssp +=` <div class="product-option-shop ">
+        if (data[i].TT == true) {
+          dssp += ` <div class="product-option-shop ">
                             <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElement('${data[i].id}')">Mua Ngay</button>
-                        </div>  ` ;
-                    }   
-                         else {
-                             dssp += ` <div class="product-option-shop">
+                        </div>  `;
+        } else {
+          dssp += ` <div class="product-option-shop">
                             <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
                         </div>  `;
-                         }
-                         dssp +=   `
+        }
+        dssp += `
                     </div>
                 </div>
 
             `;
-          }
-        }
+      }
     }
-   sp.innerHTML = dssp;
+  }
+  sp.innerHTML = dssp;
 }
 
-function productLeft (val = data,index = 0, cnt = 4) {
+function productLeft(val = data, index = 0, cnt = 4) {
   var ans = "";
-  for(var i = index; i < index+cnt; i++)
-  {
+  for (var i = index; i < index + cnt; i++) {
     ans += `
             <div class="thubmnail-recent">
               <img src="${val[i].img}" class="recent-thumb" alt="">
@@ -207,153 +205,147 @@ function productLeft (val = data,index = 0, cnt = 4) {
             </div>
           `;
   }
-  ListLeft.innerHTML=ans;
+  ListLeft.innerHTML = ans;
 }
 
-function recemtPost (cnt = 4) {
+function recemtPost(cnt = 4) {
   var ans = "<ul>";
-  for(var i = 0; i < data.length && cnt > 0; i++)
-  {
+  for (var i = 0; i < data.length && cnt > 0; i++) {
     cnt--;
     ans += `
         <li><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></li>
     `
   }
-  ans+="</ul>"
-  RecentPost.innerHTML=ans;
+  ans += "</ul>"
+  RecentPost.innerHTML = ans;
 }
 
 $(document).ready(function () {
-    if (typeof (Storage) !== 'undefined') 
-        if (localStorage.carts) 
-            CurrentCart = JSON.parse(localStorage.carts);
-    if (!localStorage.Ship)
-        localStorage.setItem('Ship', '[{"country":"VN"},{"state":""},{"postcode":""}]');
-    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('cart.html') != -1) 
-    {
-        showLike(); 
-        productLeft();
-        recemtPost();
-        showBill();
-    }
-    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('checkout.html') != -1) 
-    {
-        productLeft();
-        recemtPost();
-    }
-    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('contact.html') != -1) 
-    {
+  if (typeof (Storage) !== 'undefined')
+    if (localStorage.carts)
+      CurrentCart = JSON.parse(localStorage.carts);
+  if (!localStorage.Ship)
+    localStorage.setItem('Ship', '[{"country":"VN"},{"state":""},{"postcode":""}]');
+  if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('cart.html') != -1) {
+    showLike();
+    productLeft();
+    recemtPost();
+    showBill();
+  }
+  if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('checkout.html') != -1) {
+    productLeft();
+    recemtPost();
+  }
+  if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('contact.html') != -1) {
 
-    }
-    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('myaccount.html') != -1) 
-    {
+  }
+  if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('myaccount.html') != -1) {
 
-    }
-    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('index.html') != -1) 
-    {
-        ListProductsLast();
-        ListProduct1();ListProduct2();
-        ListProduct3();
-    }
-    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('shop.html') != -1) 
-    {
+  }
+  if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('index.html') != -1) {
+    // ListProductsLast();
+    ListProduct1();
+    ListProduct2();
+    ListProduct3();
+  }
+  if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('shop.html') != -1) {
 
-    }
-    if(document.URL.substring(document.URL.lastIndexOf('?')).toString().search('single-product.html') != -1) 
-    {
+  }
+  if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('single-product.html') != -1) {
 
-    }
-    LoadUser();
-    RefreshShopCart();
+  }
+  LoadUser();
+  RefreshShopCart();
 });
 
-function checkLog () {
-    if (localStorage.user)
-        document.location = "myaccount.html";
-    else
-        alert('Bạn chưa đăng nhập.')
+function checkLog() {
+  if (localStorage.user)
+    document.location = "myaccount.html";
+  else
+    alert('Bạn chưa đăng nhập.')
 
 }
 
-function LoadUser () {
-    if(localStorage.user)
-    {
-        // console.log(`<a href="myaccount.html"><img width=30 src="`+accounts[accounts.findIndex(function(val){return val.username == localStorage.user;})].img+`"> `+localStorage.user+`</a>`);
-        // accounts.findIndex(function(val){return val.username == localStorage.user;});
-        document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" id="LogOut"><i class="fa fa-user"></i> Đăng xuất(`+localStorage.user+`)</a>`;
-        document.getElementById('UserLogged').innerHTML = `<a style="text-transform: none; height: 65px;padding: 9px;" href="myaccount.html"><img style="border-radius: 50%;" width=50 src="`+accounts[accounts.findIndex(function(val){return val.username == localStorage.user;})].img+`"> `+localStorage.user+`</a>`;
-    }
-    else
-    {
-      document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Đăng nhập</a>`;
-    }
-}
-
-function ApplyCoupon () {
-    var index = coupons.findIndex(function(val){return val.code == document.getElementById('coupon_code').value;});
-    if (index == -1)
-        alert('Mã giảm giá không hợp lệ.');
-    else
-    {
-        if (coupons[index].status)
-        {
-            localStorage.setItem('coupon', coupons[index].values);
-            alert('Sử dụng mã giảm giá thành công.');
-        }
-        else
-            alert('Mã giảm giá đã hết hạn.');
-    }
-    showBill();
-}
-
-function RemoveCoupon () {
-    localStorage.removeItem('coupon');
-    showBill(); 
-}
-
-function RemoveCart () {
-    if(!confirm("Bạn có chắc chắn muốn xóa đơn hàng?")){
-        event.preventDefault();
-        return;
-    } 
-    CurrentCart = [];
-    localStorage.setItem('carts', JSON.stringify(CurrentCart));
-    showBill();  
-}
-
-function ToCheckout () {
-    event.preventDefault();
-    document.location = "checkout.html";
-}
-
-function showBill (user = "duynm619") {
-  var current = Bills.find(function (bill) {return bill.user == user && bill.deal == false;});
-  if (typeof (Storage) !== 'undefined') {
-      if (!localStorage.carts) {
-          for (var i = 0; i < current.products.length; i++)
-          { 
-              var a = {};
-              a[current.products[i]] = current.number[i];
-              CurrentCart.push(a);
-          }
-          localStorage.setItem('carts', JSON.stringify(CurrentCart));
-      }
+function LoadUser() {
+  if (localStorage.user) {
+    // console.log(`<a href="myaccount.html"><img width=30 src="`+accounts[accounts.findIndex(function(val){return val.username == localStorage.user;})].img+`"> `+localStorage.user+`</a>`);
+    // accounts.findIndex(function(val){return val.username == localStorage.user;});
+    document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" id="LogOut"><i class="fa fa-user"></i> Đăng xuất(` + localStorage.user + `)</a>`;
+    document.getElementById('UserLogged').innerHTML = `<a style="text-transform: none; height: 65px;padding: 9px;" href="myaccount.html"><img style="border-radius: 50%;" width=50 src="` + accounts[accounts.findIndex(function (val) {
+      return val.username == localStorage.user;
+    })].img + `"> ` + localStorage.user + `</a>`;
+  } else {
+    document.getElementById('UserLog').innerHTML = `<a href="#" class="btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Đăng nhập</a>`;
   }
-  if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0){
-      document.getElementById("NumProduct").innerHTML = 0;
-      document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
-      STotal.innerHTML = 0+" VNĐ";
-      CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
-      return;
+}
+
+function ApplyCoupon() {
+  var index = coupons.findIndex(function (val) {
+    return val.code == document.getElementById('coupon_code').value;
+  });
+  if (index == -1)
+    alert('Mã giảm giá không hợp lệ.');
+  else {
+    if (coupons[index].status) {
+      localStorage.setItem('coupon', coupons[index].values);
+      alert('Sử dụng mã giảm giá thành công.');
+    } else
+      alert('Mã giảm giá đã hết hạn.');
+  }
+  showBill();
+}
+
+function RemoveCoupon() {
+  localStorage.removeItem('coupon');
+  showBill();
+}
+
+function RemoveCart() {
+  if (!confirm("Bạn có chắc chắn muốn xóa đơn hàng?")) {
+    event.preventDefault();
+    return;
+  }
+  CurrentCart = [];
+  localStorage.setItem('carts', JSON.stringify(CurrentCart));
+  showBill();
+}
+
+function ToCheckout() {
+  event.preventDefault();
+  document.location = "checkout.html";
+}
+
+function showBill(user = "duynm619") {
+  var current = Bills.find(function (bill) {
+    return bill.user == user && bill.deal == false;
+  });
+  if (typeof (Storage) !== 'undefined') {
+    if (!localStorage.carts) {
+      for (var i = 0; i < current.products.length; i++) {
+        var a = {};
+        a[current.products[i]] = current.number[i];
+        CurrentCart.push(a);
+      }
+      localStorage.setItem('carts', JSON.stringify(CurrentCart));
+    }
+  }
+  if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0) {
+    document.getElementById("NumProduct").innerHTML = 0;
+    document.getElementById("TotalMoney").innerHTML = 0 + " VNĐ";
+    STotal.innerHTML = 0 + " VNĐ";
+    CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
+    return;
   }
   CurrentCart = JSON.parse(localStorage.carts);
-  var ans = "", cp = "";
+  var ans = "",
+    cp = "";
   Total = 0;
-  for (var i = 0; i < CurrentCart.length; i++)
-  {
-      var val = data.find(function (book) {return book.id == Object.keys(CurrentCart[i])});
-      Total+=Math.min(val.sale,val.gia)*Object.values(CurrentCart[i]);
-      ans+=`
+  for (var i = 0; i < CurrentCart.length; i++) {
+    var val = data.find(function (book) {
+      return book.id == Object.keys(CurrentCart[i])
+    });
+    Total += Math.min(val.sale, val.gia) * Object.values(CurrentCart[i]);
+    ans += `
             <tr class="cart_item">
               <td class="product-remove">
                   <input type="button" title="Remove this item" value="X" onclick='delElement("${val.id}")'>
@@ -384,7 +376,7 @@ function showBill (user = "duynm619") {
             </tr>
          `;
   }
-  ans +=`
+  ans += `
         <tr>
           <td class="actions" colspan="4">
               <div class="coupon">
@@ -462,38 +454,30 @@ function showBill (user = "duynm619") {
   // }
 
   // console.log(MoneyShow(Total));
-  if (localStorage.Ship)
-  {
-      var a = JSON.parse(localStorage.Ship);
-      document.getElementById('calc_shipping_country').value = Object.values(a[0]);
-      document.getElementById('calc_shipping_state').value = Object.values(a[1]);
-      document.getElementById('calc_shipping_postcode').value = Object.values(a[2]);
+  if (localStorage.Ship) {
+    var a = JSON.parse(localStorage.Ship);
+    document.getElementById('calc_shipping_country').value = Object.values(a[0]);
+    document.getElementById('calc_shipping_state').value = Object.values(a[1]);
+    document.getElementById('calc_shipping_postcode').value = Object.values(a[2]);
   }
-  if (document.getElementById('calc_shipping_country').value ==  'VN')
-      FeeShip.innerHTML = 'Miễn Phí';
-  else
-  {
-      FeeShip.innerHTML = '500.000';
-      Total+=500000;
+  if (document.getElementById('calc_shipping_country').value == 'VN')
+    FeeShip.innerHTML = 'Miễn Phí';
+  else {
+    FeeShip.innerHTML = '500.000';
+    Total += 500000;
   }
-  if (localStorage.coupon)
-  {
-      cp = 'Đã dùng mã giảm giá ';
-      if (localStorage.coupon.slice(-1) == '%')
-      {
-          Total = (Total/100) * (+localStorage.coupon.slice(0,-1));
-          cp += localStorage.coupon;
-      }
-          
-      else
-      {
-          Total = Math.max(Total - +localStorage.coupon,0);
-          cp += MoneyShow(localStorage.coupon) ;
-      }
-      cp += " (mã khác)";
-  }
-  else
-      cp = "Mã giảm giá";
+  if (localStorage.coupon) {
+    cp = 'Đã dùng mã giảm giá ';
+    if (localStorage.coupon.slice(-1) == '%') {
+      Total = (Total / 100) * (+localStorage.coupon.slice(0, -1));
+      cp += localStorage.coupon;
+    } else {
+      Total = Math.max(Total - +localStorage.coupon, 0);
+      cp += MoneyShow(localStorage.coupon);
+    }
+    cp += " (mã khác)";
+  } else
+    cp = "Mã giảm giá";
 
   CartShow.innerHTML = ans;
   STotal.innerHTML = MoneyShow(Total);
@@ -503,65 +487,78 @@ function showBill (user = "duynm619") {
   document.getElementById('coupon_code').placeholder = cp;
 }
 
-function RefreshShopCart (user = "duynm619") {
-  var current = Bills.find(function (bill) {return bill.user == user && bill.deal == false;});
+function RefreshShopCart(user = "duynm619") {
+  var current = Bills.find(function (bill) {
+    return bill.user == user && bill.deal == false;
+  });
   if (typeof (Storage) !== 'undefined') {
-      if (!localStorage.carts) {
-          for (var i = 0; i < current.products.length; i++)
-          { 
-              var a = {};
-              a[current.products[i]] = current.number[i];
-              CurrentCart.push(a);
-          }
-          localStorage.setItem('carts', JSON.stringify(CurrentCart));
+    if (!localStorage.carts) {
+      for (var i = 0; i < current.products.length; i++) {
+        var a = {};
+        a[current.products[i]] = current.number[i];
+        CurrentCart.push(a);
       }
+      localStorage.setItem('carts', JSON.stringify(CurrentCart));
+    }
   }
 
-  if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0){
+  if (typeof current === "undefined" || JSON.parse(localStorage.carts).length == 0) {
     document.getElementById("NumProduct").innerHTML = 0;
-    document.getElementById("TotalMoney").innerHTML = 0+" VNĐ";
+    document.getElementById("TotalMoney").innerHTML = 0 + " VNĐ";
     return;
   }
   CurrentCart = JSON.parse(localStorage.carts);
   var ans = "";
   Total = 0;
-  for (var i = 0; i < CurrentCart.length; i++)
-  {
-      var val = data.find(function (book) {return book.id == Object.keys(CurrentCart[i])});
-      Total+=Math.min(val.sale,val.gia)*Object.values(CurrentCart[i]);
+  for (var i = 0; i < CurrentCart.length; i++) {
+    var val = data.find(function (book) {
+      return book.id == Object.keys(CurrentCart[i])
+    });
+    Total += Math.min(val.sale, val.gia) * Object.values(CurrentCart[i]);
   }
-  if (localStorage.coupon)
-  {
-      if (localStorage.coupon.slice(-1) == '%')
-          Total = (Total/100) * (+localStorage.coupon.slice(0,-1));
-      else
-          Total = Math.max(Total - +localStorage.coupon,0);
+  if (localStorage.coupon) {
+    if (localStorage.coupon.slice(-1) == '%')
+      Total = (Total / 100) * (+localStorage.coupon.slice(0, -1));
+    else
+      Total = Math.max(Total - +localStorage.coupon, 0);
   }
-  if (JSON.parse(localStorage["Ship"])[0]["country"] !=  'VN')
-      Total+=500000;
+  if (JSON.parse(localStorage["Ship"])[0]["country"] != 'VN')
+    Total += 500000;
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total);
   document.getElementById("NumProduct").innerHTML = CurrentCart.length;
 }
 
-function plusNumberElement (val, user = "duynm619") {
+function plusNumberElement(val, user = "duynm619") {
   // var val = "5 Centimet Trên giây", user = "duynm619";
-  var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
-  var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  var index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val});
+  var currentBill = Bills.findIndex(function (valid) {
+    return valid.user == user && valid.deal == false
+  });
+  var currentProduct = Bills[currentBill].products.findIndex(function (valid) {
+    return valid == val;
+  });
+  var index = CurrentCart.findIndex(function (valid) {
+    return Object.keys(valid) == val
+  });
   // localStorage.setItem(val, Math.max(+localStorage.getItem(val)+1,1));
-  CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index])+1,1);
+  CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index]) + 1, 1);
   // Bills[currentBill].number[currentProduct] = localStorage.getItem(val);
   localStorage.setItem('carts', JSON.stringify(CurrentCart));
   // Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })]++;
   showBill(user);
 }
 
-function minusNumberElement (val, user = "duynm619") {
-  var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
-  var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  var index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val});
+function minusNumberElement(val, user = "duynm619") {
+  var currentBill = Bills.findIndex(function (valid) {
+    return valid.user == user && valid.deal == false
+  });
+  var currentProduct = Bills[currentBill].products.findIndex(function (valid) {
+    return valid == val;
+  });
+  var index = CurrentCart.findIndex(function (valid) {
+    return Object.keys(valid) == val
+  });
   // localStorage.setItem(val, Math.max(+localStorage.getItem(val)+1,1));
-  CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index])-1,1);
+  CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index]) - 1, 1);
   // Bills[currentBill].number[currentProduct] = localStorage.getItem(val);
   localStorage.setItem('carts', JSON.stringify(CurrentCart));
   // Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].number[Bills[Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false })].products.findIndex(function (valid) { return valid == val; })]++;
@@ -577,10 +574,16 @@ function minusNumberElement (val, user = "duynm619") {
   // showBill(user);
 }
 
-function delElement (val, user = "duynm619") {
-  var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
-  var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  CurrentCart.splice(index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val}),1);
+function delElement(val, user = "duynm619") {
+  var currentBill = Bills.findIndex(function (valid) {
+    return valid.user == user && valid.deal == false
+  });
+  var currentProduct = Bills[currentBill].products.findIndex(function (valid) {
+    return valid == val;
+  });
+  CurrentCart.splice(index = CurrentCart.findIndex(function (valid) {
+    return Object.keys(valid) == val
+  }), 1);
   localStorage.setItem('carts', JSON.stringify(CurrentCart));
   // localStorage.setItem(val, -1);
   // Bills[currentBill].number[currentProduct] = -1;
@@ -592,14 +595,15 @@ function delElement (val, user = "duynm619") {
   showBill(user);
 }
 
-function addElement (val, user = "duynm619") {
+function addElement(val, user = "duynm619") {
   // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  var index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val});
+  var index = CurrentCart.findIndex(function (valid) {
+    return Object.keys(valid) == val
+  });
   if (index != -1)
-    plusNumberElement(val,user);
-  else
-  {
+    plusNumberElement(val, user);
+  else {
     var a = {};
     a[val] = 1;
     CurrentCart.push(a);
@@ -611,19 +615,17 @@ function addElement (val, user = "duynm619") {
   showBill(user);
 }
 
-function addElementShop (val, user = "duynm619") {
+function addElementShop(val, user = "duynm619") {
   // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  var index = CurrentCart.findIndex(function (valid) {return Object.keys(valid) == val});
-  if (index != -1)
-  {
+  var index = CurrentCart.findIndex(function (valid) {
+    return Object.keys(valid) == val
+  });
+  if (index != -1) {
     // plusNumberElement(val,user);
-    CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index])+1,1);
+    CurrentCart[index][val] = Math.max(+Object.values(CurrentCart[index]) + 1, 1);
     localStorage.setItem('carts', JSON.stringify(CurrentCart));
-  }
-    
-  else
-  {
+  } else {
     var a = {};
     a[val] = 1;
     CurrentCart.push(a);
@@ -640,10 +642,9 @@ function addElementShop (val, user = "duynm619") {
 var idpr = document.getElementById("showsp");
 var sp = document.getElementById("cacsp");
 
-function SliderArea (cnt = 4) { 
+function SliderArea(cnt = 4) {
   var ans = "<ul>";
-  for(var i = 0; i < data.length && cnt > 0; i++)
-  {
+  for (var i = 0; i < data.length && cnt > 0; i++) {
     cnt--;
     ans += `
         <li>
@@ -658,58 +659,34 @@ function SliderArea (cnt = 4) {
         </li>
     `
   }
-  ans+="</ul>"
-  Slider.innerHTML=ans;
+  ans += "</ul>"
+  Slider.innerHTML = ans;
 }
 
-function ListProductsLast (index = 1, cnt = 6) { 
+// function ListProductsLast(index = 1, cnt = 6) {
+//   var ars = "";
+//   for (var i = index; i <= index + cnt; i++) {
+//     ars += `
+//             <div class="single-product">
+//               <div class="product-f-image">
+//                 <img src="${data[i].img}" alt="">
+//                 <div class="product-hover">
+//                   <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+//                   <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+//                 </div>
+//                 <h2><a href="">${data[i].tenSP}</a></h2>
+//                 <div class="product-wid-price">
+//                   <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+//                 </div>                                             
+//             </div>
+//           `;
+//   }
+//   ListItem.innerHTML = ars;
+// }
+
+function ListProduct1(index, cnt = 3) {
   var ars = "";
-  for(var i = index; i <= index+cnt; i++)
-  {
-    ars += `
-            <div class="single-product">
-              <div class="product-f-image">
-                <img src="${data[i].img}" alt="">
-                <div class="product-hover">
-                  <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                  <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                </div>
-                <h2><a href="">${data[i].tenSP}</a></h2>
-                <div class="product-wid-price">
-                  <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
-                </div>                                             
-            </div>
-          `;
-  }
-  ListItem.innerHTML=ars;
-}
-function ListProduct1 (index, cnt = 3) {
-  var ars = "";
-  for(var i = 0; i < cnt; i++)
-  {
-    ars += `
-            <div class="single-wid-product">
-              <a href="single-product.html"><img src="${data[i].img}" alt="" class="product-thumb"></a>
-              <h2><a href="">${data[i].tenSP}</a></h2>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product-wid-price">
-                <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
-              </div>                                             
-            </div>
-          `;
-  }
-  ListView1.innerHTML=ars;
-}
-function ListProduct2 (index, cnt = 6) {
-  var ars = "";
-  for(var i = 3; i < cnt; i++)
-  {
+  for (var i = 0; i < cnt; i++) {
     ars += `
             <div class="single-wid-product">
               <a href="single-product.html"><img src="${data[i].img}" alt="" class="product-thumb"></a>
@@ -727,42 +704,64 @@ function ListProduct2 (index, cnt = 6) {
             </div>
           `;
   }
-  ListView2.innerHTML=ars;
-}
-function ListProduct3 (index, cnt = 9) {
-  var ars = "";
-  for(var i = 6; i < cnt; i++)
-  {
-    ars += `
-            <div class="single-wid-product">
-              <a href="single-product.html"><img src="${data[i].img}" alt="" class="product-thumb"></a>
-              <h2><a href="">${data[i].tenSP}</a></h2>
-              <div class="product-wid-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product-wid-price">
-                <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
-              </div>                                             
-            </div>
-          `;
-  }
-  ListView3.innerHTML=ars;
+  ListView1.innerHTML = ars;
 }
 
+function ListProduct2(index, cnt = 6) {
+  var ars = "";
+  for (var i = 3; i < cnt; i++) {
+    ars += `
+            <div class="single-wid-product">
+              <a href="single-product.html"><img src="${data[i].img}" alt="" class="product-thumb"></a>
+              <h2><a href="">${data[i].tenSP}</a></h2>
+              <div class="product-wid-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="product-wid-price">
+                <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+              </div>                                             
+            </div>
+          `;
+  }
+  ListView2.innerHTML = ars;
+}
+
+function ListProduct3(index, cnt = 9) {
+  var ars = "";
+  for (var i = 6; i < cnt; i++) {
+    ars += `
+            <div class="single-wid-product">
+              <a href="single-product.html"><img src="${data[i].img}" alt="" class="product-thumb"></a>
+              <h2><a href="">${data[i].tenSP}</a></h2>
+              <div class="product-wid-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="product-wid-price">
+                <ins>${data[i].gia} VNĐ</ins> <del>${data[i].sale} VNĐ</del>
+              </div>                                             
+            </div>
+          `;
+  }
+  ListView3.innerHTML = ars;
+}
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // phần code của Lộc
-function findId(){
+function findId() {
   var tmp = new URLSearchParams(window.location.search).get('id') || "";
-  if (tmp=="")
-    tmp=1;
-  var ans="";
-  ans+=`
+  if (tmp == "")
+    tmp = 1;
+  var ans = "";
+  ans += `
     <div class="product-breadcroumb">
       <a href="index.html">Trang chủ</a>
       <a href="">${data[tmp-1].category}</a>
@@ -828,14 +827,15 @@ function findId(){
         </div>
        </div>
   `
-  test.innerHTML=ans;
+  test.innerHTML = ans;
 }
-function changeContact(){
+
+function changeContact() {
   var tmp = new URLSearchParams(window.location.search).get('id') || "";
-  var ans="";
-  switch (tmp){
+  var ans = "";
+  switch (tmp) {
     case "account":
-    ans+=`
+      ans += `
       <li><a href="#">Làm thế nào để đăng nhập khi tôi quên mật khẩu?</a></li>
       <li><a href="#">Làm thế nào để thay đổi số điện thoại đăng ký tài khoản?</a></li>
       <li><a href="#">Làm thế nào để cập nhật email gắn với tài khoản của tôi?</a></li>
@@ -843,27 +843,27 @@ function changeContact(){
       <li><a href="#">Làm thế nào để liên hệ với bộ phận Chăm Sóc Khách Hàng của Shop?</a></li>
       <li><a href="#">Làm thế nào để đổi được mật khẩu?</a></li>
     `
-    break;
+      break;
     case "bill":
-    ans+=`
+      ans += `
       <li><a href="#">Hướng dẫn mua hàng tại Shopee</a></li>
       <li><a href="#">Shopee hỗ trợ những hình thức thanh toán nào?</a></li>
       <li><a href="#">Làm sao liên kết tài khoản ngân hàng với Ví Airpay?</a></li>
       <li><a href="#">Làm sao để nạp tiền vào Ví AirPay?</a></li>
       <li><a href="#">Ví Điện tử AirPay là gì?</a></li>
     `
-    break;
+      break;
     case "transpot":
-    ans+=`
+      ans += `
       <li><a href="#">Làm thế nào để kích hoạt đơn vị vận chuyển?</a></li>
       <li><a href="#">Tôi có thể sử dụng dịch vụ vận chuyển của những đơn vị nào?</a></li>
       <li><a href="#">Làm thế nào để sử dụng tính năng ‘Khuyến mãi phí vận chuyển’?</a></li>
       <li><a href="#">Khi có sự cố vận chuyển xảy ra, tôi nên liên hệ bộ phận nào?</a></li>
       <li><a href="#">Quy cách đóng gói hàng hóa để vận chuyển như thế nào?</a></li>
     `
-    break;
+      break;
     case "refund":
-    ans+=`
+      ans += `
       <li><a href="#">Tôi có thể tự gửi hàng về cho Shop không?</a></li>
       <li><a href="#">Tôi phải làm gì khi muốn trả hàng hoàn tiền?</a></li>
       <li><a href="#">Tôi cần cung cấp những bằng chứng gì cho Shop để hỗ trợ giải quyết tranh chấp?</a></li>
@@ -871,9 +871,9 @@ function changeContact(){
       <li><a href="#">Tôi đồng ý với yêu cầu trả hàng/hoàn tiền của Người mua. Tôi cần phải làm gì?</a></li>
       <li><a href="#">Tôi nên làm gì nếu nhận được yêu cầu trả hàng/hoàn tiền từ Người mua vì không nhận được hàng?</a></li>
     `
-    break;
+      break;
     default:
-      ans+=`
+      ans += `
         <li><a href="#">Hướng dẫn mua hàng tại Shop</a></li>
         <li><a href="#">Chính sách trả hàng của Shop là gì?</a></li>
         <li><a href="#">Vì sao tôi không thể lựa chọn hình thức thanh toán khi nhận hàng (COD)?</a></li>
@@ -881,5 +881,5 @@ function changeContact(){
         <li><a href="#">Thời gian vận chuyển hàng qua Shopee là bao lâu?</a></li>
       `
   }
-  ques.innerHTML=ans;
+  ques.innerHTML = ans;
 }

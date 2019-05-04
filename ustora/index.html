@@ -212,9 +212,9 @@
                     </div>
                 </div>
                 
-                <div class="col-sm-6">
+                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Giỏ hàng - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                       <a href="cart.html">Giỏ hàng - <span class="cart-amunt" id="TotalMoney"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count" id="NumProduct"></span></a>
                     </div>
                 </div>
             </div>
@@ -347,27 +347,28 @@
                         <h2 class="section-title">Sản Phẩm Mới Nhất</h2>
                         <div class="product-carousel" id="ListItem" >
                             <script>
-                                var ars="";
-                                var n = data.length - 1;
-                                    for (var i = n; i >= n-9 && i>0; i--)
-                                      ars += `<div class="single-product">
-                                                <div class="product-f-image">
-                                                  <img style=" height: 200px;" src="${data[i].img}"alt="">
-                                                  <div class="product-hover">
-                                                    <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
-                                                        <i class="fa fa-shopping-cart" data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')"></i>Mua Ngay</a>
-                                                    <a class="view-details-link" href="single-product.html?id=${data[i].id}">
-                                                    <i class="fa fa-link"></i>Thông tin</a>
-                                                  </div>
-                                                </div>
-                                                <h2><a href="single-product.html? id=${data[i].id}">${data[i].tenSP}</a></h2>
-                                                <div class="product-carousel-price">
-                                                  <ins>$${data[i].gia}</ins>
-                                                  <del>$${data[i].sale}</del>
-                                                </div>
-                                              </div>`;
+                                var ans="", count = 0;
+                                    var n = data.length - 1;
+                                    for (var i = n; i >= n-9 && i>0; i--){
+                                        count++;
+                                                                          ans += `<div class="single-product">
+                                                                                    <div class="product-f-image">
+                                                                                      <img style=" height: 297px;" src="${data[i].img}"alt="">
+                                                                                      <div class="product-hover">
+                                                                                        <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
+                                                                                            <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                                                        <a class="view-details-link" href="single-product.html?id=${data[i].id}">
+                                                                                        <i class="fa fa-link"></i>Thông tin</a>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+                                                                                    <div class="product-carousel-price">
+                                                                                      <ins>${data[i].gia} VNĐ</ins>
+                                                                                      <del>${data[i].sale} VNĐ</del>
+                                                                                    </div>
+                                                                                  </div>`;}
                           
-                                document.getElementById('ListItem').innerHTML=ars;
+                                document.getElementById('ListItem').innerHTML = ans;
                             </script>
                         </div>
                     </div>
@@ -727,9 +728,8 @@
     
     <!-- Main Script -->
     <script src="js/main.js"></script>
-    <script src="js/shopdata.js"></script>
 
-    <!-- <script src="js/function.js"></script> -->
+    <script src="js/function.js"></script>
     <script src="js/account.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/coupon.js"></script>
