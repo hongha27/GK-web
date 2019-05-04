@@ -213,7 +213,7 @@ function MyProfileType () {
                   		// console.log(Bills[i].products[j]+1)
                   		ans += `<div class="row">
                                 <a href="single-product.html?id=${Bills[i].products[j]}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
-                                    <img src="${data[+Bills[i].products[j]-1].img}" alt="">
+                                    <img style="height:95%;" src="${data[+Bills[i].products[j]-1].img}" alt="">
                                 </div></a>
                                 <a href="single-product.html?id=${Bills[i].products[j]}"><div class="OldBill Border col-md-4">${data[+Bills[i].products[j]-1].tenSP}</div></a>
                                 <div class="width12 OldBill Border col-md-2">${Bills[i].number[j]}</div>
@@ -278,7 +278,7 @@ function MyProfileType () {
 
         	ans += `<div class="row">
         						<a href="single-product.html?id=${1+data.findIndex(function (valid){return valid.id == CurrentBook.id;})}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
-                                    <img src="${CurrentBook.img}" alt="">
+                                    <img style="height:95%;" src="${CurrentBook.img}" alt="">
                                 </div></a>
                                 <a href="single-product.html?id=${1+data.findIndex(function (valid){return valid.id == CurrentBook.id;})}"><div class="OldBill Border col-md-4">${CurrentBook.tenSP}</div></a>
                                 
