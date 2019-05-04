@@ -1295,7 +1295,7 @@ p.list-icon.lsticon {
 }
 #left{ 
   float: left; 
-  width: 449px; 
+  width: 25%; 
   border-right: 1px groove; 
 } 
 #left h1{ 
