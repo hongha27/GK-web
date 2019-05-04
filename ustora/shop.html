@@ -453,17 +453,68 @@
                 </div>
                 
                 <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu">
+                    <div class="footer-menu" id="ALL">
                         <h2 class="footer-wid-title">Thể loại nổi bật</h2>
                         <ul>
-                            <li><a href="">Ngôn Tình</a></li>
-                            <li><a href="">Trẻ Em</a></li>
-                            <li><a href="">Truyện Tranh</a></li>
-                            <li><a href="">Thể Loại Khác</a></li>
+                            <li class="pNT" id="NT" onclick="getCategory('${data[i].category}')">Ngôn Tình</li>
+                            <li class="pNT" id="TE">Trẻ Em</li>
+                            <li class="pNT" id="TT">Truyện Tranh</li>
+                            <li class="pNT" id="TLK">Thể Loại Khác</li>
                             <!-- <li><a href="">Gadets</a></li> -->
                         </ul>  
 
                     </div>
+
+
+                    <script type="text/javascript">
+                        var bien = document.getElementById("ALL");
+
+                        // var tE = document.getElementById("TE").innerHTML;
+                        // var tT = document.getElementById("TT").innerHTML;
+                        // var tlK = document.getElementById("TLK").innerHTML;
+                        function getCategory(e){
+                            var Dt= e.target;
+                            // alert(Dt.innerHTML);
+                    //    var ngT = document.getElementById("TE").innerText;
+                    //     console.log(ngT);
+                         var ans = "";
+
+                          var n = data.length - 1;
+                          for (var i = n; i > 0; i--) {
+                            if (Dt.innerHTML == data[i].category) {
+                              ans += `
+                            <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
+                                <div class="single-shop-product">
+                                    <div class="product-upper">
+                                        <img style= "width = "src="${data[i].img}" alt="">
+                                    </div>
+                                    <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+                                    <div class="product-carousel-price">
+                                        <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
+                                    </div>  `;
+                                if (data[i].TT == true) {
+                                ans += ` <div class="product-option-shop ">
+                                        <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
+                                    </div>  `;
+                              } else {
+                                ans += ` <div class="product-option-shop">
+                                        <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
+                                        </div>  `;
+                              }
+                              ans += `
+                            </div>
+                        </div>
+
+                    `;
+                      }
+                     }
+
+
+                    document.getElementById("cacsp").innersHTML = ans;
+                        };
+                    ALL.addEventListener("click", getCategory, false); 
+                      
+                    </script>
                 </div>
                 
                 <div class="col-md-3 col-sm-6">

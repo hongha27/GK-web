@@ -24,16 +24,16 @@ function showProduct(index) {
                                 <div class="product-carousel-price">
                                     <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
                                 </div>  `;
-      if (data[i].TT == true) {
-        dssp += ` <div class="product-option-shop ">
+                              if (data[i].TT == true) {
+                              dssp += ` <div class="product-option-shop ">
                                     <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
                                 </div>  `;
-      } else {
-        dssp += ` <div class="product-option-shop">
+                              } else {
+                                dssp += ` <div class="product-option-shop">
                                     <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
                                 </div>  `;
-      }
-      dssp += `
+                              }
+                            dssp += `
                             </div>
                         </div>
                         </div>

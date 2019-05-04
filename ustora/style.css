@@ -1401,3 +1401,6 @@ div.unselectable {
   margin: auto;
   padding: 20px;
 }
+.pNT{
+  cursor: pointer;
+}
