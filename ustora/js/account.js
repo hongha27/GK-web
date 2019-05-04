@@ -12,8 +12,9 @@ var accounts = [
 		state: "Vietnam",
 		email: "minhduynguyen10@gmail.com",
 		phone: "0933047332",
-		born: "06/11/1999"
+		born: "06/11/1999",
 
+		wishlist: [1,22,13]
 
 	},
 	{
@@ -30,6 +31,8 @@ var accounts = [
 		email: "minhduynguyen10@gmail.com",
 		phone: "0933047332",
 		born: "16/4/1999",
+
+		wishlist: [5,6,9]
 
 
 	},

@@ -116,6 +116,9 @@ div.ProfileInfo{
     height: 400px; 
     margin-left: 40px;
 }
+div.Red{
+    color: red;
+}
 hr.bold{
     height : 2px;
     border-width : 0;

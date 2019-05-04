@@ -178,6 +178,7 @@ function MyProfileType () {
                 <ul>
                     <li class="accType"><a href="myaccount.html?tab=MyProfile">Thông tin tài khoản</a></li>
                     <li class="accType SelectedLi"><a href="myaccount.html?tab=OldBills">Lịch sử mua hàng</a></li>
+                    <li class="accType"><a href="myaccount.html?tab=WishList">Danh sách yêu thích</a></li>
                 </ul>
             </div>
         </div>
@@ -241,6 +242,64 @@ function MyProfileType () {
         </div>`;
         MyAccountPage.innerHTML = ans;
 	}
+	else if (page == 'WishList')
+	{
+		var ans = "";
+		ans += `<div id="left">
+            <h1>Quản lý tài khoản</h1>
+            <div>
+
+                <ul>
+                    <li class="accType"><a href="myaccount.html?tab=MyProfile">Thông tin tài khoản</a></li>
+                    <li class="accType"><a href="myaccount.html?tab=OldBills">Lịch sử mua hàng</a></li>
+                    <li class="accType SelectedLi"><a href="myaccount.html?tab=WishList">Danh sách yêu thích</a></li>
+                </ul>
+            </div>
+        </div>
+
+		<div id="WishList">
+            <div id="right">
+                <form  class="ProHeight">
+                    <h1>Danh sách yêu thích</h1>
+                    <hr class="bold"><br>
+                    <div>
+                    	<div class="AutoWidth container">
+                    		<div class="row">
+                                <div class="TextAlign BoderLeft BoderTop Border col-md-2">Hình ảnh</div>
+                                <div style="" class="BoderTop Border col-md-4">Tên sản phẩm</div>
+                                <div class="width20 BoderTop Border col-md-2">Giá hiện tại</div>
+                                <div class="BoderTop Border col-md-3">Trạng thái</div>
+                            </div>
+
+        `;
+        for (var i = 0; i < CurrentUser.wishlist.length; i++)
+        {
+        	CurrentBook = data.find(function(val){return val.id == CurrentUser.wishlist[i];});
+
+        	ans += `<div class="row">
+        						<a href="single-product.html?id=${1+data.findIndex(function (valid){return valid.id == CurrentBook.id;})}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
+                                    <img src="${CurrentBook.img}" alt="">
+                                </div></a>
+                                <a href="single-product.html?id=${1+data.findIndex(function (valid){return valid.id == CurrentBook.id;})}"><div class="OldBill Border col-md-4">${CurrentBook.tenSP}</div></a>
+                                
+                                <div class="width20 OldBill Border col-md-2">${MoneyShow(CurrentBook.gia)}</div>
+                                <div class="${CurrentBook.TT?"":"Red "}OldBill Border col-md-3">${CurrentBook.TT?"Còn hàng":"Hết hàng"}</div>
+                            </div>`;
+        }
+
+
+
+                    ans+=    `</div>
+                        <br><hr class="half"><br>
+                    </div>
+                    
+                    
+                </form>
+            </div>
+        </div>`;
+
+        MyAccountPage.innerHTML = ans;
+	}
 
 	else
 		MyAccountPage.innerHTML = `<div id="left">
@@ -249,6 +308,7 @@ function MyProfileType () {
                 <ul>
                     <li class="accType SelectedLi"><a href="myaccount.html?tab=MyProfile">Thông tin tài khoản</a></li>
                     <li class="accType"><a href="myaccount.html?tab=OldBills">Lịch sử mua hàng</a></li>
+                    <li class="accType"><a href="myaccount.html?tab=WishList">Danh sách yêu thích</a></li>
                 </ul>
             </div>
         </div>
@@ -338,4 +398,11 @@ function MyProfileType () {
         	</div>
         </div>`;
     $('#MyAccountPage').css('height', $('#right').height()+100);
+}
+
+function ToWishList () {
+    if(localStorage.user)
+        document.location = "myaccount.html?tab=WishList";
+    else
+        alert('Bạn chưa đăng nhập.');
 }
