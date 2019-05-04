@@ -182,7 +182,6 @@ z-index: 999;}
     background: none repeat scroll 0 0 #000;
 }
 
-
 .mainmenu-area ul.navbar-nav li a {
     color: #0e0303;
     font-size: 14px;
@@ -193,7 +192,6 @@ z-index: 999;}
 .mainmenu-area .nav > li > a:focus {color: #FFF;}
 
 .slider-area { width:70%; position:relative; margin:0 auto; padding:5px;}
-
 
 /*-------------------------
 [9. Block slider]
