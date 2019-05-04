@@ -353,23 +353,23 @@
                                     var n = data.length - 1;
                                     for (var i = n; i >= n-9 && i>0; i--){
                                         count++;
-                                                                          ans += `<div class="single-product">
-                                                                                    <div class="product-f-image">
-                                                                                      <img style=" height: 297px;" src="${data[i].img}"alt="">
-                                                                                      <div class="product-hover">
-                                                                                        <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
-                                                                                            <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
-                                                                                        <a class="view-details-link" href="single-product.html?id=${data[i].id}">
-                                                                                        <i class="fa fa-link"></i>Thông tin</a>
-                                                                                      </div>
-                                                                                    </div>
-                                                                                    <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
-                                                                                    <div class="product-carousel-price">
-                                                                                      <ins>${data[i].gia} VNĐ</ins>
-                                                                                      <del>${data[i].sale} VNĐ</del>
-                                                                                    </div>
-                                                                                  </div>`;}
-                          
+                                      ans += `<div class="single-product">
+                                                <div class="product-f-image">
+                                                  <img style=" height: 297px;" src="${data[i].img}"alt="">
+                                                  <div class="product-hover">
+                                                    <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
+                                                        <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                    <a class="view-details-link" href="single-product.html?id=${data[i].id}">
+                                                    <i class="fa fa-link"></i>Thông tin</a>
+                                                  </div>
+                                                </div>
+                                                <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+                                                <div class="product-carousel-price">
+                                                  <ins>${data[i].gia} VNĐ</ins>
+                                                  <del>${data[i].sale} VNĐ</del>
+                                                </div>
+                                              </div>`;}
+
                                 document.getElementById('ListItem').innerHTML = ans;
                             </script>
                         </div>
