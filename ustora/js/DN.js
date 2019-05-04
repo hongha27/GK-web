@@ -260,7 +260,7 @@ function MyProfileType () {
                     <div class="avataProfileForm">
                         <img src="${CurrentUser.img}" class="imgAva" alt="">
                         <br>
-                        <a href="#" class="UndLine">Thay đổi ảnh đại diện.</a>
+                        <a href="#" onclick="alert('Chức năng này chưa có sẵn.')" class="UndLine">Thay đổi ảnh đại diện.</a>
                     </div>
                     
                     <div class="ProfileInfo container">
@@ -327,7 +327,7 @@ function MyProfileType () {
                             <div class="LineBtnUpdate height50 row">
                                 <div class="col-md-5"></div>
                                 <div style="" class="col-md-2">
-                                    <input type="button" class="BtnUpdate" value="Cập nhật">
+                                    <input type="button" class="BtnUpdate" onclick="alert('Bạn đã cập nhật thông tin thàng công.')" value="Cập nhật">
                                 </div>
                                 <div class="col-md-5"></div>
                             </div> 

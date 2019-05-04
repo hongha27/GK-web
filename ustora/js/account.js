@@ -24,7 +24,7 @@ var accounts = [
 		status: false,
 		img : "image/poro.jpg",
 		// infomation
-		first_name: "Nguyễn Minh Duy",
+		name: "Nguyễn Minh Duy",
 		gender: "Nam",
 		state: "Vietnam",
 		email: "minhduynguyen10@gmail.com",

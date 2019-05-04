@@ -310,6 +310,16 @@ z-index: 999;}
   size: cover;
   position: unset;
 }
+.block-slider{
+  border:none;
+  width: 100%;
+  position: unset;
+}
+.block-slider ul li{
+  list-style: none;
+  position: relative;
+}
+
 /*----------------------
 [10. Block top seller ]
 ------------------------*/

@@ -134,7 +134,7 @@ var CurrentCart = [];
 var Total = 0;
 
 function MoneyShow(val) {
-  return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')+'VNĐ';
+  return val.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')+' VNĐ';
 }
 
 function showLike (index, cnt = 4){
