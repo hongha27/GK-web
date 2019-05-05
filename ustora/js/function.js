@@ -15,7 +15,8 @@ function showProduct(index) {
       dssp += `
 
                         <div class="unselectable item">
-                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
+                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id} id="boxA" draggable="true" 
+     ondragstart="return dragStart(event,${data[i].id})">
                             <div class="single-shop-product">
                                 <div class="product-upper">
                                     <img style= "width = "src="${data[i].img}" alt="">
