@@ -168,7 +168,7 @@ function showLike(index, cnt = 4) {
                         <div class="product-upper">
                             <a href="single-product.html?id=${data[i].id}"><img style= "width = "src="${data[i].img}" alt=""></a>
                         </div>
-                        <h2 style="height: 50px;"><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+                        <h2 style="text-transform: none; height: 50px;"><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
                         <div class="product-carousel-price">
                             <ins>${MoneyShow(data[i].sale)}</ins> <del>${MoneyShow(data[i].gia)}</del>
                         </div>  `;
@@ -196,7 +196,7 @@ function productLeft(val = data, index = 0, cnt = 4) {
   var ans = "";
   for (var i = index; i < index + cnt; i++) {
     ans += `
-            <div class="thubmnail-recent">
+            <div style = "width: 90%;" class="thubmnail-recent">
               <img src="${val[i].img}" class="recent-thumb" alt="">
               <h2><a href="single-product.html?id=${data[i].id}">${val[i].tenSP}</a></h2>
               <div class="product-sidebar-price">
