@@ -460,12 +460,6 @@ function showBill(user = "duynm619") {
     document.getElementById('calc_shipping_state').value = Object.values(a[1]);
     document.getElementById('calc_shipping_postcode').value = Object.values(a[2]);
   }
-  if (document.getElementById('calc_shipping_country').value == 'VN')
-    FeeShip.innerHTML = 'Miễn Phí';
-  else {
-    FeeShip.innerHTML = '500.000';
-    Total += 500000;
-  }
   if (localStorage.coupon) {
     cp = 'Đã dùng mã giảm giá ';
     if (localStorage.coupon.slice(-1) == '%') {
@@ -477,8 +471,14 @@ function showBill(user = "duynm619") {
     }
     cp += " (mã khác)";
   } else
-    cp = "Mã giảm giá";
+    cp = "Nhập mã giảm giá (chỉ giảm giá hàng)";
 
+  if (document.getElementById('calc_shipping_country').value == 'VN')
+    FeeShip.innerHTML = 'Miễn Phí';
+  else {
+    FeeShip.innerHTML = '500.000';
+    Total += 500000;
+  }
   CartShow.innerHTML = ans;
   STotal.innerHTML = MoneyShow(Total);
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total);

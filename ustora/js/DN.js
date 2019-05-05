@@ -450,11 +450,20 @@ function CheckoutInfo () {
             var val = data.find(function (book) { return book.id == Object.keys(CurrentCart[i]);});
             total += +Math.min(val.sale, val.gia) * +Object.values(CurrentCart[i]);
         }
+        if (localStorage.coupon){
+            if (localStorage.coupon.slice(-1) == '%')
+                total = (total / 100) * (+localStorage.coupon.slice(0, -1));
+            else
+                total = Math.max(total - +localStorage.coupon, 0);
+        }
+
+            
         $('#BillingFirstName').val(name.shift());
         $('#BillingLastName').val(name.join(' '));
         $('#BillingEmail').val(CurrentUser.email);
         $('#BillingPhone').val(CurrentUser.phone);
         $('#CheckoutMoney').text(MoneyShow(total));
+        $('#CheckoutCoupon').text(localStorage.coupon? "Đã dùng mã giảm giá: "+ (localStorage.coupon.slice(-1) == '%' ? localStorage.coupon : MoneyShow(localStorage.coupon)) : "Không");
         $('#ShippingMethod').text(ship == 0 ? 'Miễn phí vận chuyển' : MoneyShow(ship));
         $('#TotalBill').text(MoneyShow(total+ship));
     }
