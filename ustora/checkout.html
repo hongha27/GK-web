@@ -274,16 +274,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="single-sidebar">
+                    <!-- <div class="single-sidebar">
                         <h2 class="sidebar-title">Tìm sản phẩm</h2>
                         <form action="">
                             <input type="text" placeholder="Tìm sản phẩm...">
                             <input type="submit" value="Tìm">
                         </form>
-                    </div>
+                    </div> -->
                     
                     <div class="single-sidebar">
-                        <h2 class="sidebar-title">Sản phẩm</h2>
+                        <h2 class="sidebar-title">Sản phẩm mới</h2>
                         <!-- <div class="thubmnail-recent">
                             <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
@@ -317,7 +317,7 @@
                         </div>
                     </div>
                     
-                    <div class="single-sidebar">
+                    <div style="width: 90%;" class="single-sidebar">
                         <h2 class="sidebar-title">Bài đăng gần đây</h2>
                         <!-- <ul>
                             <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
@@ -335,7 +335,7 @@
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <div class="woocommerce-info">Bạn đã từng mua hàng? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Nhấn vào để đăng nhập</a>
+                            <!-- <div class="woocommerce-info">Bạn đã từng mua hàng? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Nhấn vào để đăng nhập</a>
                             </div>
 
                             <form id="login-form-wrap" class="login collapse" method="post">
@@ -381,15 +381,15 @@
                                 </p>
 
                                 <div class="clear"></div>
-                            </form>
+                            </form> -->
 
                             <form enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout">
 
                                 <div id="customer_details" class="col2-set">
-                                    <div class="col-1">
+                                    <div class="">
                                         <div class="woocommerce-billing-fields">
                                             <h3>Chi tiết thanh toán</h3>
-                                            <p id="billing_country_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
+                                           <!-- <p id="billing_country_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"> 
                                                 <label class="" for="billing_country">Quốc gia <abbr title="required" class="required">*</abbr>
                                                 </label>
                                                 <select class="country_to_state country_select" id="billing_country" name="billing_country">
@@ -639,82 +639,69 @@
                                                     <option value="ZM">Zambia</option>
                                                     <option value="ZW">Zimbabwe</option>
                                                 </select>
-                                            </p>
+                                            </p> -->
 
-                                            <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                            <p style="float: left; width: 50%;" id="billing_first_name_field" class="form-row form-row-first validate-required">
                                                 <label class="" for="billing_first_name">Họ <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="billing_first_name" name="billing_first_name" class="input-text ">
+                                                <input style="width: 95%; padding: 5px;" type="text" value="" placeholder="" id="billing_first_name" name="billing_first_name" class="input-text ">
                                             </p>
 
-                                            <p id="billing_last_name_field" class="form-row form-row-last validate-required">
+                                            <p style="float: left; width: 50%;" id="billing_last_name_field" class="form-row form-row-last validate-required">
                                                 <label class="" for="billing_last_name">Tên <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="billing_last_name" name="billing_last_name" class="input-text ">
+                                                <input style="width: 95%; padding: 5px;" type="text" value="" placeholder="" id="billing_last_name" name="billing_last_name" class="input-text ">
                                             </p>
                                             <div class="clear"></div>
 
-                                            <p id="billing_company_field" class="form-row form-row-wide">
+                                            <!-- <p id="billing_company_field" class="form-row form-row-wide">
                                                 <label class="" for="billing_company">Tên công ty</label>
                                                 <input type="text" value="" placeholder="" id="billing_company" name="billing_company" class="input-text ">
-                                            </p>
+                                            </p> -->
 
-                                            <p id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
+                                            <p style="float: left; width: 100%;" id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
                                                 <label class="" for="billing_address_1">Địa chỉ <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="Địa chỉ đường" id="billing_address_1" name="billing_address_1" class="input-text ">
+                                                <input style="float: left; width: 47.5%; margin-right: 3%; padding: 5px;" type="text" value="" placeholder="Địa chỉ đường" id="billing_address_1" name="billing_address_1" class="input-text ">
+
+                                                <input style="float: left;width: 47.5%; padding: 5px;" type="text" value="" placeholder="Căn hộ, số tầng, số phòng etc. (không bắt buộc)" id="billing_address_2" name="billing_address_2" class="input-text ">
                                             </p>
 
-                                            <p id="billing_address_2_field" class="form-row form-row-wide address-field">
-                                                <input type="text" value="" placeholder="Căn hộ, số tầng, số phòng etc. (không bắt buộc)" id="billing_address_2" name="billing_address_2" class="input-text ">
-                                            </p>
-
-                                            <p id="billing_city_field" class="form-row form-row-wide address-field validate-required" data-o_class="form-row form-row-wide address-field validate-required">
+                                            <p style="float: left; width: 50%;" id="billing_city_field" class="form-row form-row-wide address-field validate-required" data-o_class="form-row form-row-wide address-field validate-required">
                                                 <label class="" for="billing_city">Tòa nhà / Thành phố <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="Tòa nhà / Thành phố" id="billing_city" name="billing_city" class="input-text ">
+                                                <input style="float: left; width: 95%; margin-right: 3%; padding: 5px;" type="text" value="" placeholder="Tòa nhà / Thành phố" id="billing_city" name="billing_city" class="input-text ">
                                             </p>
 
-                                            <p id="billing_state_field" class="form-row form-row-first address-field validate-state" data-o_class="form-row form-row-first address-field validate-state">
+                                            <p style="float: left; width: 50%;" id="billing_state_field" class="form-row form-row-first address-field validate-state" data-o_class="form-row form-row-first address-field validate-state">
                                                 <label class="" for="billing_state">Quốc gia</label>
-                                                <input type="text" id="billing_state" name="billing_state" placeholder="Quận / Huyện" value="" class="input-text ">
-                                            </p>
-                                            <p id="billing_postcode_field" class="form-row form-row-last address-field validate-required validate-postcode" data-o_class="form-row form-row-last address-field validate-required validate-postcode">
-                                                <label class="" for="billing_postcode">Mã bưu điện <abbr title="required" class="required">*</abbr>
-                                                </label>
-                                                <input type="text" value="" placeholder="Mã bưu điện / Zip code" id="billing_postcode" name="billing_postcode" class="input-text ">
+                                                <input style="float: left; width: 95%; margin-right: 3%; padding: 5px;" type="text" id="billing_state" name="billing_state" placeholder="Quận / Huyện" value="" class="input-text ">
                                             </p>
 
                                             <div class="clear"></div>
 
-                                            <p id="billing_email_field" class="form-row form-row-first validate-required validate-email">
+                                            <p style="float: left; width: 50%;" id="billing_email_field" class="form-row form-row-first validate-required validate-email">
                                                 <label class="" for="billing_email">Địa chỉ email <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="billing_email" name="billing_email" class="input-text ">
+                                                <input style="float: left; width: 95%; margin-right: 3%; padding: 5px;" type="text" value="" placeholder="" id="billing_email" name="billing_email" class="input-text ">
                                             </p>
 
-                                            <p id="billing_phone_field" class="form-row form-row-last validate-required validate-phone">
+                                            <p style="float: left; width: 50%;" id="billing_phone_field" class="form-row form-row-last validate-required validate-phone">
                                                 <label class="" for="billing_phone">Điện thoại <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="billing_phone" name="billing_phone" class="input-text ">
+                                                <input style="float: left; width: 95%; margin-right: 3%; padding: 5px;" type="text" value="" placeholder="" id="billing_phone" name="billing_phone" class="input-text ">
                                             </p>
                                             <div class="clear"></div>
 
-
-                                            <div class="create-account">
-                                                <p>Tạo một tài khoản bằng cách nhập thông tin theo mẫu. Nếu bạn đã có tài khoản, hãy đăng nhập ở đầu trang.</p>
-                                                <p id="account_password_field" class="form-row validate-required">
-                                                    <label class="" for="account_password">Mật khẩu <abbr title="required" class="required">*</abbr>
-                                                    </label>
-                                                    <input type="password" value="" placeholder="Password" id="account_password" name="account_password" class="input-text">
-                                                </p>
-                                                <div class="clear"></div>
-                                            </div>
+                                            <p id="order_comments_field" class="form-row notes">
+                                                <label class="" for="order_comments">Ghi chú khác</label>
+                                                <textarea cols="5" rows="5" placeholder="Ghi chú về đơn hàng của bạn hoặc ghi chú đặc biệt cho người giao hàng." id="order_comments" class="input-text " name="order_comments"></textarea>
+                                            </p>
 
                                         </div>
                                     </div>
 
-                                    <div class="col-2">
+                                    <!-- <div class="col-2">
                                         <div class="woocommerce-shipping-fields">
                                             <h3 id="ship-to-different-address">
                         <label class="checkbox" for="ship-to-different-address-checkbox">Giao hàng đến một địa chỉ khác?</label>
@@ -1021,45 +1008,42 @@
 
 
                                             </div>
+ -->
 
 
 
 
+                                            
 
-                                            <p id="order_comments_field" class="form-row notes">
-                                                <label class="" for="order_comments">Ghi chú khác</label>
-                                                <textarea cols="5" rows="2" placeholder="Ghi chú về đơn hàng của bạn hoặc ghi chú đặc biệt cho người giao hàng." id="order_comments" class="input-text " name="order_comments"></textarea>
-                                            </p>
-
-
+<!-- 
                                         </div>
 
                                     </div>
 
-                                </div>
+                                </div> -->
 
                                 <h3 id="order_review_heading">Đơn hàng của bạn</h3>
 
                                 <div id="order_review" style="position: relative;">
                                     <table class="shop_table">
-                                        <thead>
+                                        <!-- <thead>
                                             <tr>
                                                 <th class="product-name">Sản phẩm</th>
                                                 <th class="product-total">Tổng</th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                        </thead> -->
+                                        <!-- <tbody>
                                             <tr class="cart_item">
                                                 <td class="product-name">
                                                     Ship Your Idea <strong class="product-quantity">× 1</strong> </td>
                                                 <td class="product-total">
                                                     <span class="amount">1.500.000 VND</span> </td>
                                             </tr>
-                                        </tbody>
+                                        </tbody> -->
                                         <tfoot>
 
                                             <tr class="cart-subtotal">
-                                                <th>Tổng phụ thu</th>
+                                                <th>Thành tiền</th>
                                                 <td><span class="amount">1.500.000 VND</span>
                                                 </td>
                                             </tr>
@@ -1085,31 +1069,41 @@
 
                                     <div id="payment">
                                         <ul class="payment_methods methods">
-                                            <li class="payment_method_bacs">
+                                            <li style="display: flex;" class="payment_method_bacs">
                                                 <input type="radio" data-order_button_text="" checked="checked" value="bacs" name="payment_method" class="input-radio" id="payment_method_bacs">
-                                                <label for="payment_method_bacs">Thanh toán trực tiếp qua ngân hàng </label>
-                                                <div class="payment_box payment_method_bacs">
+                                                <label style="padding-left: 10px;" for="payment_method_bacs">Thanh toán khi nhận hàng</label>
+                                                <!-- <div class="payment_box payment_method_bacs">
                                                     <p>Thanh toán trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn hàng của bạn làm tài liệu tham khảo thanh toán. Đơn hàng của bạn sẽ không được vận chuyển cho đến khi tiền được chuyển vào tài khoản của chúng tôi.</p>
-                                                </div>
+                                                </div> -->
                                             </li>
-                                            <li class="payment_method_cheque">
+                                            <!-- <li style="display: flex;" class="payment_method_cheque">
                                                 <input type="radio" data-order_button_text="" value="cheque" name="payment_method" class="input-radio" id="payment_method_cheque">
-                                                <label for="payment_method_cheque">Kiểm tra thanh toán </label>
+                                                <label style="padding-left: 10px;" for="payment_method_cheque">Kiểm tra thanh toán </label>
                                                 <div style="display:none;" class="payment_box payment_method_cheque">
                                                     <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
                                                 </div>
-                                            </li>
-                                            <li class="payment_method_paypal">
+                                            </li> -->
+                                            <br>
+                                            <li style="display: flex;" class="payment_method_paypal">
                                                 <input type="radio" data-order_button_text="Proceed to PayPal" value="paypal" name="payment_method" class="input-radio" id="payment_method_paypal">
-                                                <label for="payment_method_paypal">PayPal <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png"><a title="What is PayPal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">PayPal là gì?</a>
+                                                <label style="margin-top: -44px;" for="payment_method_paypal">PayPal <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png"><a title="What is PayPal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">PayPal là gì?</a>
                                                 </label>
                                                 <div style="display:none;" class="payment_box payment_method_paypal">
                                                     <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                                 </div>
                                             </li>
                                         </ul>
+                                            <div style="height: 120px;" class="create-account">
+                                                <p>Nhập mật khẩu của bạn để xác nhận đơn hàng.</p>
+                                                <p id="account_password_field" class="form-row validate-required">
+                                                    <label class="" for="account_password">Mật khẩu <abbr title="required" class="required">*</abbr>
+                                                    </label>
+                                                    <input style="float: left; width: 95%; margin-right: 3%; padding: 5px;" type="password" value="" placeholder="Password" id="account_password" name="account_password" class="input-text">
+                                                </p>
+                                                <div class="clear"></div>
+                                            </div>
 
-                                        <div class="form-row place-order">
+                                        <div style="text-align: center; margin-bottom: 50px;" class="form-row place-order">
 
                                             <input type="submit" data-value="Place order" value="Đặt hàng" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
 
