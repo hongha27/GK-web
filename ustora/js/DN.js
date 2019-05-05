@@ -253,7 +253,7 @@ function MyProfileType () {
                             </div>`;
             for (var i = 0; i < mem.length; i++)
             {
-                var s = (mem[i].match(/\d+/g, "")+'').split(',');
+                var s = (mem[i].match(/\d+/g)+'').split(',');
                 ans += `<div class="row">
                         <a href="single-product.html?id=${s[0]}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
                             <img style="height:95%;" src="${data[+s[0]-1].img}" alt="">
@@ -261,9 +261,9 @@ function MyProfileType () {
                         <a href="single-product.html?id=${s[0]}"><div class="OldBill Border col-md-4">${data[+s[0]-1].tenSP}</div></a>
                         <div class="width12 OldBill Border col-md-2">${s[1]}</div>
                         <div class="width18 OldBill Border col-md-2">${MoneyShow(data[+s[0]-1].sale)}</div>
-                        <div class="width20 OldBill Border col-md-2">${MoneyShow(data[+s[0]-1].gia*s[1])}</div>
+                        <div class="width20 OldBill Border col-md-2">${MoneyShow(data[+s[0]-1].sale*s[1])}</div>
                     </div>`;
-                total += data[+s[0]-1].gia*s[1];
+                total += data[+s[0]-1].sale*s[1];
             }
 
             ans+=`
