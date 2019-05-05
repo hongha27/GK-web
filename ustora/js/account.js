@@ -13,6 +13,7 @@ var accounts = [
 		email: "minhduynguyen10@gmail.com",
 		phone: "0933047332",
 		born: "06/11/1999",
+		card: "95513531212",
 
 		wishlist: [1,22,13]
 
@@ -31,6 +32,7 @@ var accounts = [
 		email: "minhduynguyen10@gmail.com",
 		phone: "0933047332",
 		born: "16/4/1999",
+		card: "3531131212",
 
 		wishlist: [5,6,9]
 

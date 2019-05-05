@@ -235,6 +235,7 @@ $(document).ready(function () {
   if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('checkout.html') != -1) {
     productLeft();
     recemtPost();
+    CheckoutInfo();
   }
   if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('contact.html') != -1) {
 
@@ -337,8 +338,7 @@ function showBill(user = "duynm619") {
     return;
   }
   CurrentCart = JSON.parse(localStorage.carts);
-  var ans = "",
-    cp = "";
+  var ans = "", cp = "";
   Total = 0;
   for (var i = 0; i < CurrentCart.length; i++) {
     var val = data.find(function (book) {

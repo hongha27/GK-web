@@ -1,5 +1,31 @@
 /* -------------------------------------------- File code của Duy -------------------------------------------- */
 $(function(){
+    $('#PlaceOrder').click(function(event) {
+        event.preventDefault();
+        if (!localStorage.user)
+            return alert('Bạn chưa đăng nhập.'),0;
+        // if ($('#BillingFirstName').val() == "")
+        //     return alert('Bạn chưa nhập họ.'),0;
+        if ($('#BillingLastName').val() == "")
+            return alert('Bạn chưa nhập tên.'),0;
+        if ($('#BillingAddress1').val() == "")
+            return alert('Bạn chưa nhập địa chỉ giao hàng.'),0;
+        if ($('#BillingState').val() == "")
+            return alert('Bạn chưa nhập quận.'),0;
+        if ($('#BillingCity').val() == "")
+            return alert('Bạn chưa nhập thành phố.'),0;
+        if ($('#BillingEmail').val() == "")
+            return alert('Bạn chưa nhập email.'),0;
+        if ($('#BillingPhone').val() == "")
+            return alert('Bạn chưa nhập số điện thoại.'),0;
+        if ($('#BillingPassword').val() == "")
+            return alert('Bạn chưa nhập mật khẩu để xác nhận đặt hàng.'),0;
+        if ($('#BillingPassword').val() != accounts.find(function(val){ return val.username == localStorage.user }).password)
+            return alert('Mật khẩu không chính xác.'),0;
+        
+        alert('Bạn đã đặt hàng thành công.\nBạn sẽ được chuyển về trang chủ.');
+        document.location = "index.html";
+    });
 	$('#ToTop').click(function(event) {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
@@ -314,7 +340,7 @@ function MyProfileType () {
         </div>
         <div id="ProfileInfo">
         	<div id="right">
-        		<form class="height650">
+        		<form class="height700">
         			<h1>Thông tin tài khoản</h1>
         			<hr class="bold"><br>
                     <div class="avataProfileForm">
@@ -357,6 +383,12 @@ function MyProfileType () {
                                 <input type="radio" name='gender' ${CurrentUser.gender=='Nữ'?'checked':''}> Nữ 
                             </div>
                         </div>
+                        <div class="height50 row">
+                            <div class="col-md-3">Số thẻ ngân hàng:</div> 
+                            <div class="col-md-3">
+                                <input type="text" size="45" placeholder="Nhập số thẻ ngân hàng mới" class="Profile" value="${CurrentUser.card}">
+                            </div>
+                        </div> 
                         <div class="row">
                             <div class="col-md-10 width570">
                                 <form method="post" action="#" class="shipping_calculator">
@@ -405,4 +437,25 @@ function ToWishList () {
         document.location = "myaccount.html?tab=WishList";
     else
         alert('Bạn chưa đăng nhập.');
+}
+
+function CheckoutInfo () {
+    if (localStorage.user)
+    {
+        var CurrentUser = accounts.find(function (valid) { return valid.username == localStorage.user; });
+        var name = CurrentUser.name.split(' ');
+        var total = 0, ship = 0;
+        if (Object.values(JSON.parse(localStorage.Ship)[0]).toString() != 'VN') ship = 500000;
+        for (var i = 0; i < CurrentCart.length; i++) {
+            var val = data.find(function (book) { return book.id == Object.keys(CurrentCart[i]);});
+            total += +Math.min(val.sale, val.gia) * +Object.values(CurrentCart[i]);
+        }
+        $('#BillingFirstName').val(name.shift());
+        $('#BillingLastName').val(name.join(' '));
+        $('#BillingEmail').val(CurrentUser.email);
+        $('#BillingPhone').val(CurrentUser.phone);
+        $('#CheckoutMoney').text(MoneyShow(total));
+        $('#ShippingMethod').text(ship == 0 ? 'Miễn phí vận chuyển' : MoneyShow(ship));
+        $('#TotalBill').text(MoneyShow(total+ship));
+    }
 }
