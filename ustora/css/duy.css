@@ -65,6 +65,11 @@ div.Border{
     border-top: 0;
     border-left: 0; 
 }
+div.BorderLeft{
+    border-left: 0.1px solid gray;
+    text-align: center;
+    color: red;
+}
 div.BoderTop{
     border-top: 0.1px solid gray;
 }
