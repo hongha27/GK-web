@@ -616,8 +616,10 @@ function addElement(val, user = "duynm619") {
 }
 
 function addElementShop(val, user = "duynm619") {
+  // event.preventDefault();
   // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
+  alert('Đã thêm sản phẩm vào giỏ hàng.')
   var index = CurrentCart.findIndex(function (valid) {
     return Object.keys(valid) == val
   });
@@ -787,7 +789,7 @@ function findId() {
           <div class="quantity">
             <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
           </div>
-          <button class="add_to_cart_button" type="submit">Thêm vào giỏ</button>
+          <button class="add_to_cart_button" type="submit" onclick = "event.preventDefault();addElementShop('${data[tmp-1].id}')">Thêm vào giỏ</button>
         </form>   
                                     
           <div class="product-inner-category">
