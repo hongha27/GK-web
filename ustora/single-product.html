@@ -213,7 +213,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="img/logo.png"></a></h1>
+                        <h1><a href="index.html"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
@@ -241,7 +241,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.html"><img src="https://img.icons8.com/windows/25/000000/home.png">Trang Chủ</a></li>
                         <li><a href="shop.html"><img src="https://img.icons8.com/windows/25/000000/courses.png">Cửa Hàng</a></li>
-                        <li class="active"><a href="single-product.html"><img src="https://img.icons8.com/windows/25/000000/book.png">Chi Tiết Sản Phẩm</a></li>
+                        <!-- <li class="active"><a href="single-product.html"><img src="https://img.icons8.com/windows/25/000000/book.png">Chi Tiết Sản Phẩm</a></li> -->
                         <li><a href="cart.html"><img src="https://img.icons8.com/windows/25/000000/shopping-cart.png">Giỏ Hàng</a></li>
                         <li><a href="checkout.html"><img src="https://img.icons8.com/windows/25/000000/stack-of-money.png">Thanh Toán</a></li>
                         <!-- <li><a href="#">Loại hàng</a></li>
@@ -277,8 +277,8 @@
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Tìm kiếm sản phẩm</h2>
                         <form action="">
-                            <input type="text" placeholder="Tìm sản phẩm...">
-                            <input type="submit" value="Tìm">
+                            <input id="idsearch" type="text" placeholder="Tìm sản phẩm...">
+                            <input type="submit" value="Tìm" onclick="event.preventDefault(); window.location.href = `shop.html?search=${$('#idsearch').val()}`;">
                         </form>
                     </div>
                     
@@ -524,13 +524,12 @@
                 
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-menu">
-                        <h2 class="footer-wid-title">Mặt hàng</h2>
-                        <ul>
-                            <li><a href="#">Mobile Phone</a></li>
-                            <li><a href="#">Home accesseries</a></li>
-                            <li><a href="#">LED TV</a></li>
-                            <li><a href="#">Computer</a></li>
-                            <li><a href="#">Gadets</a></li>
+                        <h2 class="footer-wid-title">Thể loại nổi bật</h2>
+                        <ul id="hotcategr">
+                            <!-- <li class="pNT" id="NT">Ngôn Tình</li>
+                            <li class="pNT" id="TE">Trẻ Em</li>
+                            <li class="pNT" id="TT">Truyện Tranh</li>
+                            <li class="pNT" id="TLK">Thể Loại Khác</li> -->
                         </ul>                        
                     </div>
                 </div>

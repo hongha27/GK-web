@@ -5,29 +5,27 @@
 var idpr = document.getElementById("showsp");
 var sp = document.getElementById("cacsp");
 
-
 function showProduct(index) {
+  var bookperpage = 12;
   var dssp = "";
-  if (data.length != 0) {
-    for (var i = (index - 1) * 10; i < index * 10; i++) {
-      // console.log(data[i].TT);
-      // console.log(data[i].category);
+  if (loadedData.length != 0) {
+    for (var i = (index - 1) * bookperpage; i < Math.min(index * bookperpage, loadedData.length); i++) {
       dssp += `
 
                         <div class="unselectable item">
-                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id} id="boxA" draggable="true" 
-     ondragstart="return dragStart(event,${data[i].id})">
+                        <div class="col-md-3 col-sm-6 product" id - ${loadedData[i].id} id="boxA" draggable="true" 
+     ondragstart="return dragStart(event,${loadedData[i].id})">
                             <div class="single-shop-product">
                                 <div class="product-upper">
-                                    <img style= "width = "src="${data[i].img}" alt="">
+                                    <img style= "width = "src="${loadedData[i].img}" alt="">
                                 </div>
-                                <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+                                <h2><a href="single-product.html?id=${loadedData[i].id}">${loadedData[i].tenSP}</a></h2>
                                 <div class="product-carousel-price">
                                     <ins>${MoneyShow(data[i].sale)}</ins> <del>${MoneyShow(data[i].gia)}</del>
                                 </div>  `;
-                              if (data[i].TT == true) {
+                              if (loadedData[i].TT == true) {
                               dssp += ` <div class="product-option-shop ">
-                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
+                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " loadedData-idpr="${loadedData[i].id}" onclick = "addElementShop('${loadedData[i].id}')">Mua Ngay</button>
                                 </div>  `;
                               } else {
                                 dssp += ` <div class="product-option-shop">
@@ -40,53 +38,112 @@ function showProduct(index) {
                         </div>
                     `;
     }
+    showPages(index, bookperpage);
   }
-  //console.log(data);
+  //console.log(loadedData);
   sp.innerHTML = dssp;
   //console.log(dssp + "hh");
   //alert(dssp);
 }
-var myselect = document.getElementById("selectOpt");
 
-function categories() {
-  // console.log(typeof myselect.options[myselect.selectedIndex].value);
-  var ans = "";
-
-  var n = data.length - 1;
-  for (var i = n; i > 0; i--) {
-    // console.log(data[i].category);
-    if (myselect.options[myselect.selectedIndex].value == data[i].category) {
-      ans += `
-                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
-                            <div class="single-shop-product">
-                                <div class="product-upper">
-                                    <img style= "width = "src="${data[i].img}" alt="">
-                                </div>
-                                <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
-                                <div class="product-carousel-price">
-                                    <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
-                                </div>  `;
-      if (data[i].TT == true) {
-        ans += ` <div class="product-option-shop ">
-                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
-                                </div>  `;
-      } else {
-        ans += ` <div class="product-option-shop">
-                                    <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
-                                </div>  `;
-      }
-      ans += `
-                            </div>
-                        </div>
-
-                    `;
-    }
+function showPages(index, bookperpage) {
+  var txt = "";
+  var maxPage = Math.floor(loadedData.length/bookperpage) + (loadedData.length%bookperpage>0 ? 1 : 0);
+  console.log(maxPage);
+  txt += `<li><a href="#" class="active" aria-hidden="true" onclick="showProduct(${Math.max(1,index-1)})">&laquo; </a></li>`;
+  for (var i = 1; i <= maxPage; ++i) {
+    txt += `<li><a href="#" onclick="showProduct(${i});">${i}</a></li>`;
   }
+  txt += `<li><a href="#" class="active" aria-hidden="true" onclick="showProduct(${Math.min(maxPage,index+1)})">&raquo;</a></li>`;
+  $("#pageid").html(txt);
+}
+
+function showCategories(category) {
+  var categories = new Set(data.map(i => i.category));
+  var txt = "";
+  txt += `<option value="">Tất cả</option>`;
+  categories.forEach(function(i) {
+    txt += `<option value="${i}">${i}</option>`;
+  })
+  $("#selectOpt").html(txt);
+  $("#selectOpt").val(category);
+}
+
+function shopFilter(searchStr, category) {
+  searchStr = searchStr.toLocaleLowerCase();
+  filteredData = data.filter(i => (
+    (category == "" ? true : (i.category == category)) &&
+    (i.tenSP.toLocaleLowerCase().includes(searchStr)) //|| i.category.toLocaleLowerCase().includes(searchStr))
+  ))
+
+  return filteredData;
+}
+
+function searchData(searchStr) {
+  loadedData = shopFilter(searchStr, $("#selectOpt").val());
+  showProduct(1);
+}
+
+function showFooterCate(){
+   var categories = new Set(data.map(i => i.category));
+  var txt = "";
+  categories.forEach(function(i) {
+    txt += `<li class="pNT" onclick = "window.location.href = 'shop.html?category=${i}' ">${i}</li>`;
+  })
+  $("#hotcategr").html(txt);
+}
 
 
-  document.getElementById("cacsp").innerHTML = ans;
-};
+ $(document).ready(function() {
+              showFooterCate();
+            
+        })
+// var myselect = document.getElementById("selectOpt");
+
+// function categories() {
+//   // console.log(typeof myselect.options[myselect.selectedIndex].value);
+//   var ans = "";
+
+//   var n = data.length - 1;
+//   for (var i = n; i > 0; i--) {
+//     // console.log(data[i].category);
+//     if (myselect.options[myselect.selectedIndex].value == data[i].category) {
+//       ans += `
+//                         <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
+//                             <div class="single-shop-product">
+//                                 <div class="product-upper">
+//                                     <img style= "width = "src="${data[i].img}" alt="">
+//                                 </div>
+//                                 <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
+//                                 <div class="product-carousel-price">
+//                                     <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
+//                                 </div>  `;
+//       if (data[i].TT == true) {
+//         ans += ` <div class="product-option-shop ">
+//                                     <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
+//                                 </div>  `;
+//       } else {
+//         ans += ` <div class="product-option-shop">
+//                                     <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
+//                                 </div>  `;
+//       }
+//       ans += `
+//                             </div>
+//                         </div>
+
+//                     `;
+//     }
+//   }
+
+
+//   document.getElementById("cacsp").innerHTML = ans;
+// };
 // console.log($('.option').offset().top);
+
+
+
+
+
 $(window).scroll(function () {
   var cart = $('.shopping-cart');
   if (window.pageYOffset >= 300 && window.pageYOffset <= 1500) {
@@ -98,6 +155,37 @@ $(window).scroll(function () {
   }
 
 });
+
+
+// $(document).ready(function(){ 
+
+// var search = $("#idsearch"); 
+// // console.log(search);
+// var items = $(".unselectable,.item"); 
+
+// $("#search").on("click", function(e){ 
+
+//  var v = search.val().toLowerCase(); 
+//  if(v == "") { 
+//   items.show(); 
+//  } 
+//  $.each(items, function(){ 
+ 
+//   var n = data.length-1;
+//   for (var i = 1; i <= n; i++) {
+//      var it = $(this); 
+//   var lb = it.find("a").text().toLowerCase(); 
+ 
+//   if (lb.indexOf (v) == -1) {
+//     it.hide(); 
+//   } 
+//   else {
+//     it.show(); 
+//   }
+//    }; 
+//  }); 
+// });   
+// });
 // chuyển array thành JSON
 //     var jsonProduct = JSON.stringify(data);
 //     var originArray = JSON.parse(jsonProduct);
@@ -769,7 +857,7 @@ function findId() {
   ans += `
     <div class="product-breadcroumb">
       <a href="index.html">Trang chủ</a>
-      <a href="">${data[tmp-1].category}</a>
+      <a href="shop.html?category=${data[tmp-1].category}">${data[tmp-1].category}</a>
       <a href="">${data[tmp-1].tenSP}</a>
     </div>
     <div class="row">
