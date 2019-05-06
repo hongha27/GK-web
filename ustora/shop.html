@@ -294,53 +294,7 @@
            
             </div>
             <script type="text/javascript">
-                  var n = data.length - 1;
-                
-                
-                function srch(){
-                 var search = document.getElementById('idsearch').value;
-              
-                var ans = "";
-                for (var i = n; i > 0; i--) {
-                   
-                    // console.log(search);
-                    if(search == data[i].tenSP || search == data[i].category){
-                        ans +=  `
-
-                        <div class="unselectable item">
-                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
-                            <div class="single-shop-product">
-                                <div class="product-upper">
-                                    <img style= "width = "src="${data[i].img}" alt="">
-                                </div>
-                                <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
-                                <div class="product-carousel-price">
-                                    <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
-                                </div>  `;
-                                if(data[i].TT == true){
-                               ans +=` <div class="product-option-shop ">
-                                    <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
-                                </div>  ` ;
-                            }   
-                                 else {
-                                     ans += ` <div class="product-option-shop">
-                                    <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
-                                </div>  `;
-                                 }
-                                 ans +=   `
-                            </div>
-                        </div>
-                        </div>
-                    `;
-                    }
-                  
-                }
-                 if(search ==""){
-                        alert('không tìm thấy');
-                       
-                    }
-                document.getElementById('cacsp').innerHTML = ans;
-                }
+               
             </script>
         </div>
             
@@ -357,11 +311,12 @@
                 <div class="col-md-12">
                     <div class="product-pagination text-center">
                         <nav>
-                          <ul class="pagination">
-                            <li>
-                              <!-- <a href="#" aria-label="Previous"> -->
+                          <ul class="pagination" id="pageid">
+                            <!-- showPage() -->
+                            <!-- <li>
+                            
                                 <span class="active" aria-hidden="true">&laquo;</span>
-                              <!-- </a> -->
+                              
                             </li>
                             <li class="ac1"><a href="#" onclick="showProduct(1);">1</a></li>
                             <li class="ra"><a href="#" onclick="showProduct(2);">2</a></li>
@@ -369,10 +324,10 @@
                             <li><a href="#" onclick="showProduct(4);">4</a></li>
                             
                             <li>
-                              <!-- <a href="#" aria-label="Next"> -->
+                             
                                 <span class="active" aria-hidden="true">&raquo;</span>
-                             <!--  </a> -->
-                            </li>
+                             
+                            </li> -->
                           </ul>
                         </nav>
                         <!-- <script type="text/javascript">
@@ -473,8 +428,9 @@
                         // var tT = document.getElementById("TT").innerHTML;
                         // var tlK = document.getElementById("TLK").innerHTML;
                         function getCategory(e){
-                            var Dt= e.target;
+                            var Dt = e.target;
                             // alert(Dt.innerHTML);
+                            console.log(Dt);
                     //    var ngT = document.getElementById("TE").innerText;
                     //     console.log(ngT);
                          var ans = "";

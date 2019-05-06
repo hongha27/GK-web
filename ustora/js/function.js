@@ -7,9 +7,10 @@ var sp = document.getElementById("cacsp");
 
 
 function showProduct(index) {
+  var bookperpage = 12;
   var dssp = "";
   if (data.length != 0) {
-    for (var i = (index - 1) * 10; i < index * 10; i++) {
+    for (var i = (index - 1) * bookperpage; i < Math.min(index * bookperpage, data.length); i++) {
       // console.log(data[i].TT);
       // console.log(data[i].category);
       dssp += `
@@ -39,12 +40,26 @@ function showProduct(index) {
                         </div>
                     `;
     }
+    showPages(index, bookperpage);
   }
   //console.log(data);
   sp.innerHTML = dssp;
   //console.log(dssp + "hh");
   //alert(dssp);
 }
+
+function showPages(index, bookperpage) {
+  var txt = "";
+  var maxPage = data.length/bookperpage + (data.length%bookperpage>0 ? 1 : 0);
+  txt += `<li><a href="#" class="active" aria-hidden="true" onclick="showProduct(${Math.max(1,index-1)})">&laquo; </a></li>`;
+  for (var i = 1; i <= maxPage; ++i) {
+    txt += `<li><a href="#" onclick="showProduct(${i});">${i}</a></li>`;
+  }
+  txt += `<li><a href="#" class="active" aria-hidden="true" onclick="showProduct(${Math.min(maxPage,index+1)})">&raquo;</a></li>`;
+  $("#pageid").html(txt);
+}
+
+
 var myselect = document.getElementById("selectOpt");
 
 function categories() {
@@ -97,6 +112,37 @@ $(window).scroll(function () {
   }
 
 });
+
+
+// $(document).ready(function(){ 
+
+// var search = $("#idsearch"); 
+// // console.log(search);
+// var items = $(".unselectable,.item"); 
+
+// $("#search").on("click", function(e){ 
+
+//  var v = search.val().toLowerCase(); 
+//  if(v == "") { 
+//   items.show(); 
+//  } 
+//  $.each(items, function(){ 
+ 
+//   var n = data.length-1;
+//   for (var i = 1; i <= n; i++) {
+//      var it = $(this); 
+//   var lb = it.find("a").text().toLowerCase(); 
+ 
+//   if (lb.indexOf (v) == -1) {
+//     it.hide(); 
+//   } 
+//   else {
+//     it.show(); 
+//   }
+//    }; 
+//  }); 
+// });   
+// });
 // chuyển array thành JSON
 //     var jsonProduct = JSON.stringify(data);
 //     var originArray = JSON.parse(jsonProduct);
