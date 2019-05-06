@@ -335,7 +335,7 @@ function showBill(user = "duynm619") {
     document.getElementById("NumProduct").innerHTML = 0;
     document.getElementById("TotalMoney").innerHTML = 0 + " VNĐ";
     STotal.innerHTML = 0 + " VNĐ";
-    CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
+    CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#" onclick="ToHistory()">Xem lịch sử giao dịch</a></h2></td></tr>`;
     return;
   }
   CurrentCart = JSON.parse(localStorage.carts);
