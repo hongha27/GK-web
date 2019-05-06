@@ -59,7 +59,22 @@ $(function(){
                 $('#TotalBill').text(MoneyShow(total+ship));
             }
             else
-                $('#TotalBill').text(MoneyShow("0"));
+            {
+                var total = 0, ship = 0;
+                if (Object.values(JSON.parse(localStorage.Ship)[0]).toString() != 'VN') ship = 500000;
+                for (var i = 0; i < CurrentCart.length; i++) {
+                    var val = data.find(function (book) { return book.id == Object.keys(CurrentCart[i]);});
+                    total += +Math.min(val.sale, val.gia) * +Object.values(CurrentCart[i]);
+                }
+                if (localStorage.coupon){
+                    if (localStorage.coupon.slice(-1) == '%')
+                        total = (total / 100) * (+localStorage.coupon.slice(0, -1));
+                    else
+                        total = Math.max(total - +localStorage.coupon, 0);
+                }
+
+                $('#TotalBill').text(MoneyShow(total+ship));
+            }
 
             $('#USD').val('Hiện giá bằng USD');
         }
@@ -571,6 +586,24 @@ function CheckoutInfo () {
         $('#BillingLastName').val(name.join(' '));
         $('#BillingEmail').val(CurrentUser.email);
         $('#BillingPhone').val(CurrentUser.phone);
+        $('#CheckoutMoney').text(MoneyShow(total));
+        if (localStorage.coupon){
+            if (localStorage.coupon.slice(-1) == '%')
+                total = (total / 100) * (+localStorage.coupon.slice(0, -1));
+            else
+                total = Math.max(total - +localStorage.coupon, 0);
+        }
+        $('#CheckoutCoupon').text(localStorage.coupon? "Đã dùng mã giảm giá: "+ (localStorage.coupon.slice(-1) == '%' ? localStorage.coupon : MoneyShow(localStorage.coupon)) : "Không");
+        $('#ShippingMethod').text(ship == 0 ? 'Miễn phí vận chuyển' : MoneyShow(ship));
+        $('#TotalBill').text(MoneyShow(total+ship));
+    }
+    else{
+        var total = 0, ship = 0;
+        if (Object.values(JSON.parse(localStorage.Ship)[0]).toString() != 'VN') ship = 500000;
+        for (var i = 0; i < CurrentCart.length; i++) {
+            var val = data.find(function (book) { return book.id == Object.keys(CurrentCart[i]);});
+            total += +Math.min(val.sale, val.gia) * +Object.values(CurrentCart[i]);
+        }
         $('#CheckoutMoney').text(MoneyShow(total));
         if (localStorage.coupon){
             if (localStorage.coupon.slice(-1) == '%')
