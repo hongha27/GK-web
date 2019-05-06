@@ -599,9 +599,7 @@ function delElement(val, user = "duynm619") {
 function addElement(val, user = "duynm619") {
   // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  var index = CurrentCart.findIndex(function (valid) {
-    return Object.keys(valid) == val
-  });
+  var index = CurrentCart.findIndex(function (valid) { return Object.keys(valid) == val;});
   if (index != -1)
     plusNumberElement(val, user);
   else {
@@ -620,6 +618,10 @@ function addElementShop(val, user = "duynm619") {
   // event.preventDefault();
   // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
+  var CurrentBook = data.find(function (valid) { return valid.id == val;});
+  if (CurrentBook.TT == false)
+    return alert('Sản phẩm ' + CurrentBook.tenSP + ' hiện đang hết hàng.'),0;
+
   alert('Đã thêm sản phẩm vào giỏ hàng.')
   var index = CurrentCart.findIndex(function (valid) {
     return Object.keys(valid) == val

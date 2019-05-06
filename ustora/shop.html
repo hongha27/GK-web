@@ -53,7 +53,7 @@ function dragStart(ev,i) {
    ev.dataTransfer.effectAllowed='move';
    ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
    ev.dataTransfer.setDragImage(ev.target,0,0);
-   console.log(i)
+   // console.log(i)
    localStorage.setItem('drop',i)
    return true;
 }
@@ -254,8 +254,8 @@ function dragDrop(ev,i) {
                 
                 <div class="col-sm-6">
                     <div class="shopping-cart">
-                    <div class="shopping-item">
-                       <a href="cart.html"><span style="margin: auto; padding: initial;" class="gh"> Giỏ hàng -</span> <span class="cart-amunt" id="TotalMoney"  id="boxB" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event, localStorage.drop)" ondragover="return dragOver(event)"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count" id="NumProduct"></span></a>
+                    <div style="float: right; margin-top: 40px;" class="shopping-item" id="boxB" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event, localStorage.drop)" ondragover="return dragOver(event)">
+                       <a href="cart.html"><span class="gh"> Giỏ hàng -</span> <span class="cart-amunt" id="TotalMoney" ></span> <i class="fa fa-shopping-cart"></i> <span class="product-count" id="NumProduct"></span></a>
                     </div>
                     </div>
                 </div>
