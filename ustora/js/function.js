@@ -84,7 +84,20 @@ function searchData(searchStr) {
   showProduct(1);
 }
 
+function showFooterCate(){
+   var categories = new Set(data.map(i => i.category));
+  var txt = "";
+  categories.forEach(function(i) {
+    txt += `<li class="pNT" onclick = "window.location.href = 'shop.html?category=${i}' ">${i}</li>`;
+  })
+  $("#hotcategr").html(txt);
+}
 
+
+ $(document).ready(function() {
+              showFooterCate();
+            
+        })
 // var myselect = document.getElementById("selectOpt");
 
 // function categories() {

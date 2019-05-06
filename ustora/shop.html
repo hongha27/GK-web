@@ -445,12 +445,11 @@ var loadedData = [];
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-menu" id="ALL">
                         <h2 class="footer-wid-title">Thể loại nổi bật</h2>
-                        <ul>
-                            <li class="pNT" id="NT">Ngôn Tình</li>
+                        <ul id="hotcategr">
+                            <!-- <li class="pNT" id="NT">Ngôn Tình</li>
                             <li class="pNT" id="TE">Trẻ Em</li>
                             <li class="pNT" id="TT">Truyện Tranh</li>
-                            <li class="pNT" id="TLK">Thể Loại Khác</li>
-                            <!-- <li><a href="">Gadets</a></li> -->
+                            <li class="pNT" id="TLK">Thể Loại Khác</li> -->
                         </ul>  
 
                     </div>
@@ -526,7 +525,7 @@ var loadedData = [];
             loadedData = shopFilter(params.get('search') || "", params.get('category') || '');
               showCategories(params.get('category') || '');
               showProduct(1);
-         
+          
             
         })
     </script>
