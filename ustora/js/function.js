@@ -16,7 +16,8 @@ function showProduct(index) {
       dssp += `
 
                         <div class="unselectable item">
-                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
+                        <div class="col-md-3 col-sm-6 product" id - ${data[i].id} id="boxA" draggable="true" 
+     ondragstart="return dragStart(event,${data[i].id})">
                             <div class="single-shop-product">
                                 <div class="product-upper">
                                     <img style= "width = "src="${data[i].img}" alt="">
@@ -281,6 +282,7 @@ $(document).ready(function () {
   if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('checkout.html') != -1) {
     productLeft();
     recemtPost();
+    CheckoutInfo();
   }
   if (document.URL.substring(document.URL.lastIndexOf('?')).toString().search('contact.html') != -1) {
 
@@ -379,12 +381,11 @@ function showBill(user = "duynm619") {
     document.getElementById("NumProduct").innerHTML = 0;
     document.getElementById("TotalMoney").innerHTML = 0 + " VNĐ";
     STotal.innerHTML = 0 + " VNĐ";
-    CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#">Xem lịch sử giao dịch</a></h2></td></tr>`;
+    CartShow.innerHTML = `<tr><td colspan = 6><h2 class="mauchu">Bạn chưa thêm gì vào giỏ hàng cả.<br><a href="shop.html">Mua hàng nào</a><br><a href="#" onclick="ToHistory()">Xem lịch sử giao dịch</a></h2></td></tr>`;
     return;
   }
   CurrentCart = JSON.parse(localStorage.carts);
-  var ans = "",
-    cp = "";
+  var ans = "", cp = "";
   Total = 0;
   for (var i = 0; i < CurrentCart.length; i++) {
     var val = data.find(function (book) {
@@ -506,12 +507,6 @@ function showBill(user = "duynm619") {
     document.getElementById('calc_shipping_state').value = Object.values(a[1]);
     document.getElementById('calc_shipping_postcode').value = Object.values(a[2]);
   }
-  if (document.getElementById('calc_shipping_country').value == 'VN')
-    FeeShip.innerHTML = 'Miễn Phí';
-  else {
-    FeeShip.innerHTML = '500.000';
-    Total += 500000;
-  }
   if (localStorage.coupon) {
     cp = 'Đã dùng mã giảm giá ';
     if (localStorage.coupon.slice(-1) == '%') {
@@ -523,8 +518,14 @@ function showBill(user = "duynm619") {
     }
     cp += " (mã khác)";
   } else
-    cp = "Mã giảm giá";
+    cp = "Nhập mã giảm giá (chỉ giảm giá hàng)";
 
+  if (document.getElementById('calc_shipping_country').value == 'VN')
+    FeeShip.innerHTML = 'Miễn Phí';
+  else {
+    FeeShip.innerHTML = '500.000';
+    Total += 500000;
+  }
   CartShow.innerHTML = ans;
   STotal.innerHTML = MoneyShow(Total);
   document.getElementById("TotalMoney").innerHTML = MoneyShow(Total);
@@ -644,9 +645,7 @@ function delElement(val, user = "duynm619") {
 function addElement(val, user = "duynm619") {
   // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
-  var index = CurrentCart.findIndex(function (valid) {
-    return Object.keys(valid) == val
-  });
+  var index = CurrentCart.findIndex(function (valid) { return Object.keys(valid) == val;});
   if (index != -1)
     plusNumberElement(val, user);
   else {
@@ -662,8 +661,14 @@ function addElement(val, user = "duynm619") {
 }
 
 function addElementShop(val, user = "duynm619") {
+  // event.preventDefault();
   // var currentBill = Bills.findIndex(function (valid) { return valid.user == user && valid.deal == false });
   // var currentProduct =  Bills[currentBill].products.findIndex(function (valid) { return valid == val; });
+  var CurrentBook = data.find(function (valid) { return valid.id == val;});
+  if (CurrentBook.TT == false)
+    return alert('Sản phẩm ' + CurrentBook.tenSP + ' hiện đang hết hàng.'),0;
+
+  alert('Đã thêm sản phẩm vào giỏ hàng.')
   var index = CurrentCart.findIndex(function (valid) {
     return Object.keys(valid) == val
   });
@@ -833,7 +838,7 @@ function findId() {
           <div class="quantity">
             <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
           </div>
-          <button class="add_to_cart_button" type="submit">Thêm vào giỏ</button>
+          <button class="add_to_cart_button" type="submit" onclick = "event.preventDefault();addElementShop('${data[tmp-1].id}')">Thêm vào giỏ</button>
         </form>   
                                     
           <div class="product-inner-category">

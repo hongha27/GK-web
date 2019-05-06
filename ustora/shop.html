@@ -40,6 +40,41 @@
     <![endif]-->
   <!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400i,700&amp;subset=vietnamese" rel="stylesheet"> -->  
   <script src="js/shopdata.js"></script>
+  <style type="text/css">
+
+#boxA, #boxB {
+   float:left;padding:10px;margin:10px;-moz-user-select:none;
+}
+#boxA { width:200px; height:320px;  }
+#boxB { /*width:auto; height:0px;*/ }
+</style>
+<script type="text/javascript">
+function dragStart(ev,i) {
+   ev.dataTransfer.effectAllowed='move';
+   ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
+   ev.dataTransfer.setDragImage(ev.target,0,0);
+   // console.log(i)
+   localStorage.setItem('drop',i)
+   return true;
+}
+function dragEnter(ev) {
+   event.preventDefault();
+   return true;
+}
+function dragOver(ev) {
+    return false;
+}
+function dragDrop(ev,i) {
+   // var src = ev.dataTransfer.getData("Text");
+   // ev.target.appendChild(document.getElementById(src));
+   // console.log(i)
+   // console.log(i.id, ev.target.id)
+   addElementShop(i);
+   localStorage.removeItem('drop');
+   ev.stopPropagation();
+   return false;
+}
+</script>
   </head>
   <body onload="showProduct(1);">
     <div class="modal fade" id="myModal" role="dialog">
@@ -219,8 +254,8 @@
                 
                 <div class="col-sm-6">
                     <div class="shopping-cart">
-                    <div class="shopping-item">
-                       <a href="cart.html"><span class="gh"> Giỏ hàng -</span> <span class="cart-amunt" id="TotalMoney"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count" id="NumProduct"></span></a>
+                    <div style="float: right; margin-top: 40px;" class="shopping-item" id="boxB" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event, localStorage.drop)" ondragover="return dragOver(event)">
+                       <a href="cart.html"><span class="gh"> Giỏ hàng -</span> <span class="cart-amunt" id="TotalMoney" ></span> <i class="fa fa-shopping-cart"></i> <span class="product-count" id="NumProduct"></span></a>
                     </div>
                     </div>
                 </div>
@@ -525,17 +560,15 @@
     
     <!-- Main Script -->
     <script src="js/main.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="js/shopdata.js"></script>
 
     <script src="js/function.js"></script>
     <script src="js/account.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/coupon.js"></script>
     <script src="js/DN.js"></script>
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    
    
   </body>
 </html>

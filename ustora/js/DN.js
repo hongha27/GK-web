@@ -1,5 +1,42 @@
 /* -------------------------------------------- File code của Duy -------------------------------------------- */
+class Tuple extends Array { 
+    constructor(...items) { 
+        super(...items); 
+        Object.freeze(this);
+    } 
+}
+
 $(function(){
+    $('#PlaceOrder').click(function(event) {
+        event.preventDefault();
+        if (!localStorage.user)
+            return alert('Bạn chưa đăng nhập.'),0;
+        // if ($('#BillingFirstName').val() == "")
+        //     return alert('Bạn chưa nhập họ.'),0;
+        if ($('#BillingLastName').val() == "")
+            return alert('Bạn chưa nhập tên.'),0;
+        if ($('#BillingAddress1').val() == "")
+            return alert('Bạn chưa nhập địa chỉ giao hàng.'),0;
+        if ($('#BillingState').val() == "")
+            return alert('Bạn chưa nhập quận.'),0;
+        if ($('#BillingCity').val() == "")
+            return alert('Bạn chưa nhập thành phố.'),0;
+        if ($('#BillingEmail').val() == "")
+            return alert('Bạn chưa nhập email.'),0;
+        if ($('#BillingPhone').val() == "")
+            return alert('Bạn chưa nhập số điện thoại.'),0;
+        if ($('#BillingPassword').val() == "")
+            return alert('Bạn chưa nhập mật khẩu để xác nhận đặt hàng.'),0;
+        if ($('#BillingPassword').val() != accounts.find(function(val){ return val.username == localStorage.user }).password)
+            return alert('Mật khẩu không chính xác.'),0;
+        
+        alert('Bạn đã đặt hàng thành công.');
+        localStorage.setItem('CRBill', new Tuple('#'+Math.round(Math.random()*1000000),localStorage.carts,localStorage.coupon,localStorage.Ship.slice(13,15)));
+        localStorage.removeItem('Ship');
+        localStorage.removeItem('carts');
+        localStorage.removeItem('coupon');
+        document.location = "myaccount.html?tab=OldBills";
+    });
 	$('#ToTop').click(function(event) {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
@@ -188,17 +225,23 @@ function MyProfileType () {
                 <form class="ProHeight" id="LSMHF">
                     <h1>Lịch sử mua hàng</h1>
                     <hr class="bold"><br>`;
-                    
-        for(var i = 0; i < CurrentBills.length; i++)
+        if (localStorage.CRBill)
         {
-        	ans+=`<div>
+            var total = 0;
+            var mem = localStorage.CRBill.split(',');
+            var ship = mem.pop() == 'VN' ? 0 : 500000;
+            var tmp = mem.pop();
+            var coupon = "";
+            if (tmp == "" || tmp == 0) coupon = "0";
+            else coupon = tmp;
+            ans += `<div>
                         <div class="AutoWidth container">
                             <div class="row">
                                 <div class="LabelBillCode col-md-2">Mã đơn hàng: </div>
-                                <div class="BillCode col-md-2">${Bills[i].id}</div>
-                                <div class="col-md-3"></div>
+                                <div class="BillCode col-md-2">${mem.shift()}</div>
+                                <div class="col-md-3"><input type="submit" value="hủy đơn hàng" onclick="CancelCart()"></div>
                                 <div class="col-md-2">Trạng thái: </div>
-                                <div class="BillCode col-md-2">${Bills[i].deal?'Đã giao hàng':'Đang giao hàng'}</div>
+                                <div class="BillCode col-md-2">${'Đang giao hàng'}</div>
                             </div>
                             <br>
                             <div class="row">
@@ -208,28 +251,93 @@ function MyProfileType () {
                                 <div class="width18 BoderTop Border col-md-2">đơn giá</div>
                                 <div class="width20 BoderTop Border col-md-2">Tổng</div>
                             </div>`;
-                  	for(var j = 0; j < Bills[i].products.length; j++)
+            for (var i = 0; i < mem.length; i++)
+            {
+                var s = (mem[i].match(/\d+/g)+'').split(',');
+                ans += `<div class="row">
+                        <a href="single-product.html?id=${s[0]}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
+                            <img style="height:95%;" src="${data[+s[0]-1].img}" alt="">
+                        </div></a>
+                        <a href="single-product.html?id=${s[0]}"><div class="OldBill Border col-md-4">${data[+s[0]-1].tenSP}</div></a>
+                        <div class="width12 OldBill Border col-md-2">${s[1]}</div>
+                        <div class="width18 OldBill Border col-md-2">${MoneyShow(data[+s[0]-1].sale)}</div>
+                        <div class="width20 OldBill Border col-md-2">${MoneyShow(data[+s[0]-1].sale*s[1])}</div>
+                    </div>`;
+                total += data[+s[0]-1].sale*s[1];
+            }
+
+            ans+=`
+                            <div class="row">
+                                <div class="BoderLeft Border col-md-6">
+                                    ${+coupon == 0 ? 'Không có mã giảm giá.' : 'Đã áp dụng mã giảm giá: ' + (coupon.slice(-1)=='%'?coupon:MoneyShow(coupon))}
+                                </div>
+                                <div class="Border col-md-6">
+                                    ${ship == 0 ? 'Miễn phí vận chuyển' : 'Phí vận chuyển: ' + MoneyShow(ship)}
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3"> </div>
+                                <div class="BorderLeft Border col-md-6">
+                                    Tổng đơn hàng: ${MoneyShow(+ship+(coupon.slice(-1)=='%'?(total/100)*(+coupon.slice(0,-1)):total-+coupon))}
+                                </div>
+                                <div class="col-md-3"> </div>
+                            </div>
+                        </div>
+                        <br><hr class="half"><br>
+                    </div>`;
+        }            
+        
+        for(var i = 0; i < CurrentBills.length; i++, TotalMoney = 0)
+        {
+            if (Bills[CurrentBills[i]].products.length == 0) continue;
+        	ans+=`<div>
+                        <div class="AutoWidth container">
+                            <div class="row">
+                                <div class="LabelBillCode col-md-2">Mã đơn hàng: </div>
+                                <div class="BillCode col-md-2">${Bills[CurrentBills[i]].id}</div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-2">Trạng thái: </div>
+                                <div class="BillCode col-md-2">${Bills[CurrentBills[i]].deal?'Đã giao hàng':'Đang giao hàng'}</div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="TextAlign BoderLeft BoderTop Border col-md-2">Hình ảnh</div>
+                                <div style="" class="BoderTop Border col-md-4">Tên sản phẩm</div>
+                                <div class="width12 BoderTop Border col-md-2">số lượng</div>
+                                <div class="width18 BoderTop Border col-md-2">đơn giá</div>
+                                <div class="width20 BoderTop Border col-md-2">Tổng</div>
+                            </div>`;
+                  	for(var j = 0; j < Bills[CurrentBills[i]].products.length; j++)
                   	{
                   		// console.log(Bills[i].products[j]+1)
                   		ans += `<div class="row">
-                                <a href="single-product.html?id=${Bills[i].products[j]}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
-                                    <img style="height:95%;" src="${data[+Bills[i].products[j]-1].img}" alt="">
+                                <a href="single-product.html?id=${Bills[CurrentBills[i]].products[j]}"><div class="TextAlign OldBill BoderLeft Border col-md-2">
+                                    <img style="height:95%;" src="${data[+Bills[CurrentBills[i]].products[j]-1].img}" alt="">
                                 </div></a>
-                                <a href="single-product.html?id=${Bills[i].products[j]}"><div class="OldBill Border col-md-4">${data[+Bills[i].products[j]-1].tenSP}</div></a>
+                                <a href="single-product.html?id=${Bills[CurrentBills[i]].products[j]}"><div class="OldBill Border col-md-4">${data[+Bills[CurrentBills[i]].products[j]-1].tenSP}</div></a>
                                 <div class="width12 OldBill Border col-md-2">${Bills[i].number[j]}</div>
-                                <div class="width18 OldBill Border col-md-2">${MoneyShow(data[+Bills[i].products[j]-1].gia)}</div>
-                                <div class="width20 OldBill Border col-md-2">${MoneyShow(data[+Bills[i].products[j]-1].gia*Bills[i].number[j])}</div>
+                                <div class="width18 OldBill Border col-md-2">${MoneyShow(data[+Bills[CurrentBills[i]].products[j]-1].gia)}</div>
+                                <div class="width20 OldBill Border col-md-2">${MoneyShow(data[+Bills[CurrentBills[i]].products[j]-1].gia*Bills[CurrentBills[i]].number[j])}</div>
                             </div>`;
-                        TotalMoney += data[+Bills[i].products[j]-1].gia*Bills[i].number[j];
+                        TotalMoney += data[+Bills[CurrentBills[i]].products[j]-1].gia*Bills[CurrentBills[i]].number[j];
                   	}
                     ans+=`
                             <div class="row">
                                 <div class="BoderLeft Border col-md-6">
-                                    Đã áp dụng mã giảm giá ${Bills[i].coupon.slice(-1)=='%'?Bills[i].coupon:MoneyShow(Bills[i].coupon)}
+                                    ${+Bills[CurrentBills[i]].coupon == 0 ? 'Không có mã giảm giá.' : 'Đã áp dụng mã giảm giá: ' + (Bills[CurrentBills[i]].coupon.slice(-1)=='%'?Bills[CurrentBills[i]].coupon:MoneyShow(Bills[CurrentBills[i]].coupon))}
                                 </div>
                                 <div class="Border col-md-6">
-                                    Tổng đơn hàng: ${MoneyShow(Bills[i].coupon.slice(-1)=='%'?TotalMoney = (TotalMoney/100) * (+Bills[i].coupon.slice(0,-1)):TotalMoney-+Bills[i].coupon)}
+                                    ${+Bills[CurrentBills[i]].ship == 0 ? 'Miễn phí vận chuyển' : 'Phí vận chuyển: ' + MoneyShow(Bills[CurrentBills[i]].ship)}
+                                    
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3"> </div>
+                                <div class="BorderLeft Border col-md-6">
+                                    Tổng đơn hàng: ${MoneyShow(+Bills[CurrentBills[i]].ship+(Bills[CurrentBills[i]].coupon.slice(-1)=='%'?(TotalMoney/100)*(+Bills[CurrentBills[i]].coupon.slice(0,-1)):TotalMoney-+Bills[CurrentBills[i]].coupon))}
+                                </div>
+                                <div class="col-md-3"> </div>
                             </div>
                         </div>
                         <br><hr class="half"><br>
@@ -314,7 +422,7 @@ function MyProfileType () {
         </div>
         <div id="ProfileInfo">
         	<div id="right">
-        		<form class="height650">
+        		<form class="height700">
         			<h1>Thông tin tài khoản</h1>
         			<hr class="bold"><br>
                     <div class="avataProfileForm">
@@ -357,6 +465,12 @@ function MyProfileType () {
                                 <input type="radio" name='gender' ${CurrentUser.gender=='Nữ'?'checked':''}> Nữ 
                             </div>
                         </div>
+                        <div class="height50 row">
+                            <div class="col-md-3">Số thẻ ngân hàng:</div> 
+                            <div class="col-md-3">
+                                <input type="text" size="45" placeholder="Nhập số thẻ ngân hàng mới" class="Profile" value="${CurrentUser.card}">
+                            </div>
+                        </div> 
                         <div class="row">
                             <div class="col-md-10 width570">
                                 <form method="post" action="#" class="shipping_calculator">
@@ -405,4 +519,42 @@ function ToWishList () {
         document.location = "myaccount.html?tab=WishList";
     else
         alert('Bạn chưa đăng nhập.');
+}
+
+function CheckoutInfo () {
+    if (localStorage.user)
+    {
+        var CurrentUser = accounts.find(function (valid) { return valid.username == localStorage.user; });
+        var name = CurrentUser.name.split(' ');
+        var total = 0, ship = 0;
+        if (Object.values(JSON.parse(localStorage.Ship)[0]).toString() != 'VN') ship = 500000;
+        for (var i = 0; i < CurrentCart.length; i++) {
+            var val = data.find(function (book) { return book.id == Object.keys(CurrentCart[i]);});
+            total += +Math.min(val.sale, val.gia) * +Object.values(CurrentCart[i]);
+        }
+            
+        $('#BillingFirstName').val(name.shift());
+        $('#BillingLastName').val(name.join(' '));
+        $('#BillingEmail').val(CurrentUser.email);
+        $('#BillingPhone').val(CurrentUser.phone);
+        $('#CheckoutMoney').text(MoneyShow(total));
+        if (localStorage.coupon){
+            if (localStorage.coupon.slice(-1) == '%')
+                total = (total / 100) * (+localStorage.coupon.slice(0, -1));
+            else
+                total = Math.max(total - +localStorage.coupon, 0);
+        }
+        $('#CheckoutCoupon').text(localStorage.coupon? "Đã dùng mã giảm giá: "+ (localStorage.coupon.slice(-1) == '%' ? localStorage.coupon : MoneyShow(localStorage.coupon)) : "Không");
+        $('#ShippingMethod').text(ship == 0 ? 'Miễn phí vận chuyển' : MoneyShow(ship));
+        $('#TotalBill').text(MoneyShow(total+ship));
+    }
+}
+
+function CancelCart () {
+    event.preventDefault();
+    if (!confirm("Bạn có chắc chắn muốn hủy bỏ đơn hàng?")) {
+        return;
+    }
+    localStorage.removeItem('CRBill');
+    document.location = "myaccount.html?tab=OldBills";
 }

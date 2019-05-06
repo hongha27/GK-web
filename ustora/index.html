@@ -261,7 +261,7 @@
                             <span class="primary"><strong>Chào Mừng Đến NHK </strong></span>
                             </h2>
                             <h4 class="caption subtitle">Ngôn Tình</h4>
-                            <a class="caption button-radius" href="#"><span class="icon"></span>Thêm vào giỏ</a>
+                            <a class="caption button-radius" href="#" onclick = "addElementShop(1)"><span class="icon"></span>Thêm vào giỏ</a>
                     </div>
                     </li>
                     <li>
@@ -271,7 +271,7 @@
                                 <span class="primary"><strong>5 Centimet Trên giây</strong></span>
                             </h2>
                             <h4 class="caption subtitle">Ngôn Tình</h4>
-                            <a class="caption button-radius" href="#"><span class="icon"></span>Thêm vào giỏ</a>
+                            <a class="caption button-radius" href="#" onclick = "addElementShop(2)"><span class="icon"></span>Thêm vào giỏ</a>
                         </div>
                     </li>
                     <li>
@@ -281,7 +281,7 @@
                                 <span class="primary"><strong>Nâng lên được</strong></span>
                             </h2>
                             <h4 class="caption subtitle">Ngôn Tình</h4>
-                            <a class="caption button-radius" href="#"><span class="icon"></span>Thêm vào giỏ</a>
+                            <a class="caption button-radius" href="#" onclick = "addElementShop(3)"><span class="icon"></span>Thêm vào giỏ</a>
                         </div>
                     </li>
                     <li>
@@ -291,7 +291,7 @@
                                 <span class="primary"><strong>Chậm lại để tổ tường</strong></span>
                             </h2>
                             <h4 class="caption subtitle">Ngôn Tình</h4>
-                            <a class="caption button-radius" href="#"><span class="icon"></span>Thêm vào giỏ</a>
+                            <a class="caption button-radius" href="#" onclick = "addElementShop(4)"><span class="icon"></span>Thêm vào giỏ</a>
                         </div>
                     </li>
                 </ul>
@@ -357,7 +357,7 @@
                                                 <div class="product-f-image">
                                                   <img style=" height: 297px;" src="${data[i].img}"alt="">
                                                   <div class="product-hover">
-                                                    <a href="javascript:addToCart(${data[i].id})" class="add-to-cart-link">
+                                                    <a href="javascript:addElementShop(${data[i].id})" class="add-to-cart-link">
                                                         <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
                                                     <a class="view-details-link" href="single-product.html?id=${data[i].id}">
                                                     <i class="fa fa-link"></i>Thông tin</a>
@@ -724,7 +724,7 @@
     <!-- jQuery sticky menu -->
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
-    
+    <script src="js/bxslider.min.js"></script>
     <!-- jQuery easing -->
     <script src="js/jquery.easing.1.3.min.js"></script>
     

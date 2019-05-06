@@ -10,7 +10,7 @@ li.accType{
 .avataProfileForm{
     float: left; 
     width: 30%; 
-    height: 300px;
+    height: 350px;
     border-right: 1px groove;
     text-align: center; 
 }
@@ -64,6 +64,11 @@ div.Border{
     border: 0.1px solid gray;
     border-top: 0;
     border-left: 0; 
+}
+div.BorderLeft{
+    border-left: 0.1px solid gray;
+    text-align: center;
+    color: red;
 }
 div.BoderTop{
     border-top: 0.1px solid gray;
@@ -119,6 +124,11 @@ div.ProfileInfo{
 div.Red{
     color: red;
 }
+span.MoneyShow{
+    font-size: 13pt; 
+    font-weight: bold; 
+    color: red;
+}
 hr.bold{
     height : 2px;
     border-width : 0;
@@ -130,8 +140,8 @@ hr.half{
     background-color : gray; 
     width: 50%;
 }
-form.height650{
-    height: 650px;
+form.height700{
+    height: 700px;
 }
 input.width350{
     width: 350px;
