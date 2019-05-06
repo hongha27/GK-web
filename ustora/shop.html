@@ -74,9 +74,10 @@ function dragDrop(ev,i) {
    ev.stopPropagation();
    return false;
 }
+var loadedData = [];
 </script>
   </head>
-  <body onload="showProduct(1);">
+  <body>
     <div class="modal fade" id="myModal" role="dialog">
         <div class="container">
             <div class="box-center" id="dangNhap">
@@ -280,7 +281,7 @@ function dragDrop(ev,i) {
                         <li><a href="index.html"><img src="https://img.icons8.com/windows/25/000000/home.png">Trang chủ</a></li>
                         <li class="active"><a href="shop.html">
                             <img src="https://img.icons8.com/windows/25/000000/courses.png">Cửa hàng</a></li>
-                        <li><a href="single-product.html"><img src="https://img.icons8.com/windows/25/000000/book.png">Chi Tiết Sản phẩm</a></li>
+                        <!-- <li><a href="single-product.html"><img src="https://img.icons8.com/windows/25/000000/book.png">Chi Tiết Sản phẩm</a></li> -->
                         <li><a href="cart.html"><img src="https://img.icons8.com/windows/25/000000/shopping-cart.png">Giỏ hàng</a></li>
                         <li><a href="checkout.html"><img src="https://img.icons8.com/windows/25/000000/stack-of-money.png">Thanh toán</a></li>
                      <!--    <li><a href="#">Loại hàng</a></li>
@@ -311,22 +312,21 @@ function dragDrop(ev,i) {
     
     <div class="single-product-area">
         <div class="option">
-            <select id="selectOpt">
-                <option disabled selected style="display:none;" value="--Lựa Chọn--">--Lựa Chọn--</option>
+            <select id="selectOpt" onChange="loadedData = shopFilter('', this.value); showProduct(1)">
+                <!-- <option disabled selected style="display:none;" value="--Lựa Chọn--">--Lựa Chọn--</option>
                 <option value="Ngôn Tình">Ngôn Tình</option>
                 <option value="Trẻ Em">Trẻ Em</option>
                 <option value="Truyện Tranh">Truyện Tranh</option>
-                <option value="Khác">Thể Loại Khác</option>
+                <option value="Khác">Thể Loại Khác</option> -->
             </select>
-            <button class="btnselect" id="idselect" onclick="categories()">Chọn</button>
 
 
             <div class="single-sidebar single">
          
-            
+            <form>
                 <input id="idsearch" type="text" placeholder="Tìm sản phẩm...">
-                <button class="btnse" onclick="srch()"> Tìm  <img src="https://img.icons8.com/ios/20/000000/search.png"></button>
-           
+                <input class="btnse" type="submit" onclick="event.preventDefault(); searchData($('#idsearch').val())" value="Tìm">   <!-- <img src="https://img.icons8.com/ios/20/000000/search.png"></button> -->
+           </form>
             </div>
             <script type="text/javascript">
                
@@ -446,7 +446,7 @@ function dragDrop(ev,i) {
                     <div class="footer-menu" id="ALL">
                         <h2 class="footer-wid-title">Thể loại nổi bật</h2>
                         <ul>
-                            <li class="pNT" id="NT" onclick="getCategory('${data[i].category}')">Ngôn Tình</li>
+                            <li class="pNT" id="NT">Ngôn Tình</li>
                             <li class="pNT" id="TE">Trẻ Em</li>
                             <li class="pNT" id="TT">Truyện Tranh</li>
                             <li class="pNT" id="TLK">Thể Loại Khác</li>
@@ -456,56 +456,7 @@ function dragDrop(ev,i) {
                     </div>
 
 
-                    <script type="text/javascript">
-                        var bien = document.getElementById("ALL");
-
-                        // var tE = document.getElementById("TE").innerHTML;
-                        // var tT = document.getElementById("TT").innerHTML;
-                        // var tlK = document.getElementById("TLK").innerHTML;
-                        function getCategory(e){
-                            var Dt = e.target;
-                            // alert(Dt.innerHTML);
-                            console.log(Dt);
-                    //    var ngT = document.getElementById("TE").innerText;
-                    //     console.log(ngT);
-                         var ans = "";
-
-                          var n = data.length - 1;
-                          for (var i = n; i > 0; i--) {
-                            if (Dt.innerHTML == data[i].category) {
-                              ans += `
-                            <div class="col-md-3 col-sm-6 product" id - ${data[i].id}>
-                                <div class="single-shop-product">
-                                    <div class="product-upper">
-                                        <img style= "width = "src="${data[i].img}" alt="">
-                                    </div>
-                                    <h2><a href="single-product.html?id=${data[i].id}">${data[i].tenSP}</a></h2>
-                                    <div class="product-carousel-price">
-                                        <ins>${data[i].sale} đ</ins> <del>${data[i].gia} đ</del>
-                                    </div>  `;
-                                if (data[i].TT == true) {
-                                ans += ` <div class="product-option-shop ">
-                                        <button id = "myBtn" href = "#" class="btn btn-outline-secondary bynow btn-block changecolor " data-idpr="${data[i].id}" onclick = "addElementShop('${data[i].id}')">Mua Ngay</button>
-                                    </div>  `;
-                              } else {
-                                ans += ` <div class="product-option-shop">
-                                        <button href = "#" class="btn btn-outline-secondary disabled btn-block">Hết Hàng</button>
-                                        </div>  `;
-                              }
-                              ans += `
-                            </div>
-                        </div>
-
-                    `;
-                      }
-                     }
-
-
-                    document.getElementById("cacsp").innersHTML = ans;
-                        };
-                    ALL.addEventListener("click", getCategory, false); 
-                      
-                    </script>
+                    
                 </div>
                 
                 <div class="col-md-3 col-sm-6">
@@ -569,6 +520,15 @@ function dragDrop(ev,i) {
     <script src="js/DN.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-   
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var params = new URLSearchParams(window.location.search);
+            loadedData = shopFilter(params.get('search') || "", params.get('category') || '');
+              showCategories(params.get('category') || '');
+              showProduct(1);
+         
+            
+        })
+    </script>
   </body>
 </html>
