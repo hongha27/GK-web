@@ -17,7 +17,7 @@ function showProduct(index) {
      ondragstart="return dragStart(event,${loadedData[i].id})">
                             <div class="single-shop-product">
                                 <div class="product-upper">
-                                    <a href="single-product.html?id=${loadedData[i].id}"><img style= "width = "src="${loadedData[i].img}" alt=""></a>
+                                    <img style= "width = "src="${loadedData[i].img}" alt="">
                                 </div>
                                 <h2><a href="single-product.html?id=${loadedData[i].id}">${loadedData[i].tenSP}</a></h2>
                                 <div class="product-carousel-price">
@@ -288,7 +288,7 @@ function productLeft(val = data, index = 0, cnt = 4) {
   for (var i = index; i < index + cnt; i++) {
     ans += `
             <div style = "width: 90%;" class="thubmnail-recent">
-              <a href="single-product.html?id=${data[i].id}"><img src="${val[i].img}" class="recent-thumb" alt=""></a>
+              <img src="${val[i].img}" class="recent-thumb" alt="">
               <h2><a href="single-product.html?id=${data[i].id}">${val[i].tenSP}</a></h2>
               <div class="product-sidebar-price">
                   <ins>${MoneyShow(val[i].sale)}</ins> <del>${MoneyShow(val[i].gia)}</del>
