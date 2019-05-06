@@ -17,7 +17,7 @@ function showProduct(index) {
      ondragstart="return dragStart(event,${loadedData[i].id})">
                             <div class="single-shop-product">
                                 <div class="product-upper">
-                                    <img style= "width = "src="${loadedData[i].img}" alt="">
+                                    <a href="single-product.html?id=${loadedData[i].id}"><img style= "width = "src="${loadedData[i].img}" alt=""></a>
                                 </div>
                                 <h2><a href="single-product.html?id=${loadedData[i].id}">${loadedData[i].tenSP}</a></h2>
                                 <div class="product-carousel-price">
@@ -886,7 +886,7 @@ function findId() {
         </form>   
                                     
           <div class="product-inner-category">
-            <p>Category: <a href="">Summer</a>. Tags: <a href="">${data[i].Tag[0]}</a>, <a href="">${data[i].Tag[1]}</a>, <a href="">${data[i].Tag[2]}</a></p>
+            <p>Category: <h style="color:blue;text-decoration: underline;">Summer</h>. Tags: <h style="color:blue;text-decoration: underline;">${data[i].Tag[0]}</h>, <h style="color:blue;text-decoration: underline;">${data[i].Tag[1]}</h>, <h style="color:blue;text-decoration: underline;">${data[i].Tag[2]}</h></p>
           </div> 
                                     
           <div role="tabpanel">
