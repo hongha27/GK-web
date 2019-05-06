@@ -59,7 +59,8 @@ function showPages(index, bookperpage) {
 }
 
 function showCategories(category) {
-  var categories = new Set(data.map(i => i.category));
+  var categories = new Set(data.filter(i => i.category != 'Khác').map(i => i.category));
+  categories.add('Khác');
   var txt = "";
   txt += `<option value="">Tất cả</option>`;
   categories.forEach(function(i) {
@@ -85,7 +86,8 @@ function searchData(searchStr) {
 }
 
 function showFooterCate(){
-   var categories = new Set(data.map(i => i.category));
+  var categories = new Set(data.filter(i => i.category != 'Khác').map(i => i.category));
+  categories.add('Khác');
   var txt = "";
   categories.forEach(function(i) {
     txt += `<li class="pNT" onclick = "window.location.href = 'shop.html?category=${i}' ">${i}</li>`;
