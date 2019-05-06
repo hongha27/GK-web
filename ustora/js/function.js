@@ -21,7 +21,7 @@ function showProduct(index) {
                                 </div>
                                 <h2><a href="single-product.html?id=${loadedData[i].id}">${loadedData[i].tenSP}</a></h2>
                                 <div class="product-carousel-price">
-                                    <ins>${loadedData[i].sale} đ</ins> <del>${loadedData[i].gia} đ</del>
+                                    <ins>${MoneyShow(data[i].sale)}</ins> <del>${MoneyShow(data[i].gia)}</del>
                                 </div>  `;
                               if (loadedData[i].TT == true) {
                               dssp += ` <div class="product-option-shop ">
@@ -291,7 +291,7 @@ function productLeft(val = data, index = 0, cnt = 4) {
               <img src="${val[i].img}" class="recent-thumb" alt="">
               <h2><a href="single-product.html?id=${data[i].id}">${val[i].tenSP}</a></h2>
               <div class="product-sidebar-price">
-                  <ins>${MoneyShow(val[i].gia)}</ins> <del>${MoneyShow(val[i].sale)}</del>
+                  <ins>${MoneyShow(val[i].sale)}</ins> <del>${MoneyShow(val[i].gia)}</del>
               </div>                             
             </div>
           `;
@@ -941,8 +941,8 @@ function changeContact() {
       break;
     case "bill":
       ans += `
-      <li><a href="#">Hướng dẫn mua hàng tại Shopee</a></li>
-      <li><a href="#">Shopee hỗ trợ những hình thức thanh toán nào?</a></li>
+      <li><a href="#">Hướng dẫn mua hàng tại Shop</a></li>
+      <li><a href="#">Shop hỗ trợ những hình thức thanh toán nào?</a></li>
       <li><a href="#">Làm sao liên kết tài khoản ngân hàng với Ví Airpay?</a></li>
       <li><a href="#">Làm sao để nạp tiền vào Ví AirPay?</a></li>
       <li><a href="#">Ví Điện tử AirPay là gì?</a></li>
