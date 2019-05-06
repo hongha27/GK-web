@@ -37,6 +37,40 @@ $(function(){
         localStorage.removeItem('coupon');
         document.location = "myaccount.html?tab=OldBills";
     });
+    $('#USD').click(function(event) {
+        if ($('#TotalBill').text().slice(-1) == 'D')
+        {
+            if (localStorage.user)
+            {
+                var CurrentUser = accounts.find(function (valid) { return valid.username == localStorage.user; });
+                var name = CurrentUser.name.split(' ');
+                var total = 0, ship = 0;
+                if (Object.values(JSON.parse(localStorage.Ship)[0]).toString() != 'VN') ship = 500000;
+                for (var i = 0; i < CurrentCart.length; i++) {
+                    var val = data.find(function (book) { return book.id == Object.keys(CurrentCart[i]);});
+                    total += +Math.min(val.sale, val.gia) * +Object.values(CurrentCart[i]);
+                }
+                if (localStorage.coupon){
+                    if (localStorage.coupon.slice(-1) == '%')
+                        total = (total / 100) * (+localStorage.coupon.slice(0, -1));
+                    else
+                        total = Math.max(total - +localStorage.coupon, 0);
+                }
+                $('#TotalBill').text(MoneyShow(total+ship));
+            }
+            else
+                $('#TotalBill').text(MoneyShow("0"));
+
+            $('#USD').val('Hiện giá bằng USD');
+        }
+        else
+        {
+            var usd = +$('#TotalBill').text().split(' ').shift().replace('.','')/1000/21;
+            $('#TotalBill').text(Math.round(usd*100)/100 +' USD');
+            $('#USD').val('Hiện giá bằng VNĐ');
+        }
+        
+    });
 	$('#ToTop').click(function(event) {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
