@@ -274,13 +274,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <!-- <div class="single-sidebar">
+                    <div class="single-sidebar">
                         <h2 class="sidebar-title">Tìm sản phẩm</h2>
-                        <form action="">
-                            <input type="text" placeholder="Tìm sản phẩm...">
-                            <input type="submit" value="Tìm">
+                        <form action="#">
+                            <input type="text" style="width: 90%;" id="idsearch" placeholder="Tìm sản phẩm...">
+                            <input type="submit" value="Tìm" onclick="event.preventDefault(); window.location.href = `shop.html?search=${$('#idsearch').val()}`;">
                         </form>
-                    </div> -->
+                    </div>
                     
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Sản phẩm mới</h2>
@@ -1168,12 +1168,12 @@
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Thanh điều hướng người dùng </h2>
                         <ul>
-                            <li><a href="#" onclick="checkLog()">Tài khoản của tôi</a></li>
-                            <li><a href="#" onclick="ToHistory()">Lịch sử đơn hàng</a></li>
-                            <li><a href="#" onclick="ToWishList()">Danh sách yêu thích</a></li>
+                            <li><a href="#" onclick="event.preventDefault();checkLog()">Tài khoản của tôi</a></li>
+                            <li><a href="#" onclick="event.preventDefault();ToHistory()">Lịch sử đơn hàng</a></li>
+                            <li><a href="#" onclick="event.preventDefault();ToWishList()">Danh sách yêu thích</a></li>
                             <li><a href="contact.html">Liên hệ</a></li>
                             <li><a href="#" id="ToTop">Lên đầu trang</a></li>
-                        </ul>                        
+                        </ul>                       
                     </div>
                 </div>
                 
